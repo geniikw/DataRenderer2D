@@ -9,8 +9,21 @@ namespace geniikw.UIMeshLab
     public class WorldLine : MonoBehaviour
     {
         public Line line;
+
         public void Start()
         {
+        }
+
+        public void Reset()
+        {
+            var mf = GetComponent<MeshFilter>();
+           
+            if(mf.sharedMesh == null)
+            {
+                var mesh = new Mesh(); ;
+                mesh.name = name;
+                mf.sharedMesh = mesh;
+            }
         }
     }
 }
