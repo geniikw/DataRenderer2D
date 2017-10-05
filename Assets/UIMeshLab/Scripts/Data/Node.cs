@@ -43,5 +43,12 @@ namespace geniikw.UIMeshLab
                 return nextControlOffset + position;
             }
         }
+        public int DivideCount
+        {
+            get
+            {
+                return Math.Max(1, nextDivieCount);
+            }
+        }
     }
 }

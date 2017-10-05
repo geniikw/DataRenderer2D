@@ -21,13 +21,15 @@ namespace geniikw.UIMeshLab
     ///     float endRatio
 
     [Serializable]
-    public class Line 
+    public partial class Line 
     {
         public List<Node> points = new List<Node>();
         [Range(0, 1)]
         public float startRatio = 0f;
         [Range(0, 1)]
         public float endRatio = 1f;
+
+        public float Length => m_pairList.Sum(p => p.Length);
 
         private Queue<LinePair> m_pairList = new Queue<LinePair>(); 
         public Queue<LinePair> PairList {
@@ -37,9 +39,13 @@ namespace geniikw.UIMeshLab
                 for (int i = 0; i < points.Count - 1; i++)
                 {
                     var n0 = points[i];
-                    var n1 = (i + 1 == points.Count - 1 && points[i + 1].loop) ? points[0] : points[i + 1];
+                    var n1 = points[i + 1];
                     m_pairList.Enqueue(new LinePair(n0, n1));
                 }
+
+                if (points[points.Count - 1].loop)
+                    m_pairList.Enqueue(new LinePair(points[points.Count - 1], points[0]));
+
                 return m_pairList;
             }
         }
@@ -52,6 +58,7 @@ namespace geniikw.UIMeshLab
                 this.n0 = n0;
                 this.n1 = n1;
             }
+            public float Length => CurveLength.Auto(n0, n1);
         }
     }
 

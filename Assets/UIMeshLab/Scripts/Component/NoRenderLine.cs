@@ -31,10 +31,10 @@ namespace geniikw.UIMeshLab
 
             foreach (var pair in line.PairList)
             {
-                for (int i = 0; i < pair.n0.nextDivieCount; i++)
+                for (int i = 0; i < pair.n0.DivideCount; i++)
                 {
-                    var p0 = Curve.Cubic(transform, pair.n0, pair.n1, 1f / pair.n0.nextDivieCount * i);
-                    var p1 = Curve.Cubic(transform, pair.n0, pair.n1, 1f / pair.n0.nextDivieCount * (i+1f));
+                    var p0 = transform.TransformPoint(Curve.Auto(pair.n0, pair.n1, 1f / pair.n0.DivideCount * i));
+                    var p1 = transform.TransformPoint(Curve.Auto(pair.n0, pair.n1, 1f / pair.n0.DivideCount * (i+1f)));
                     Gizmos.DrawLine(p0,p1);
                 }
             }

@@ -19,7 +19,6 @@ namespace geniikw.UIMeshLab.Editors {
             _owner = target as MonoBehaviour;
 
             _pointHandler = new PointHandler(_points, _owner);
-            
         }
         protected void OnSceneGUI()
         {
