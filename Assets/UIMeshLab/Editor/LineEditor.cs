@@ -32,7 +32,7 @@ namespace geniikw.UIMeshLab.Editors {
     [CustomEditor(typeof(WorldLine))]
     public class WorldLineEditor : LineEditor { }
 
-    [CustomEditor(typeof(NoRenderLine))]
+    [CustomEditor(typeof(GizmoLine))]
     public class NoRenderLineEditor : LineEditor { }
 
 }

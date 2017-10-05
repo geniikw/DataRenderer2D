@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace geniikw.UIMeshLab
 {
-    public class NoRenderLine : MonoBehaviour
+    public class GizmoLine : MonoBehaviour
     {
         public Line line;
 

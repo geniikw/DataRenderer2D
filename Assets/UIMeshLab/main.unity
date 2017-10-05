@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   line:
     points:
-    - position: {x: 0, y: 0, z: 0}
+    - position: {x: -44.424324, y: -14.973379, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       color: {r: 0, g: 0, b: 0, a: 0}
@@ -234,21 +234,21 @@ MonoBehaviour:
       angle: 0
       nextDivieCount: 10
       loop: 0
-    - position: {x: 30.575218, y: 23.61507, z: 100}
-      previousControlOffset: {x: 100, y: 0, z: 0}
-      nextControlOffset: {x: -20.59, y: 0, z: 0}
+    - position: {x: 2.4209366, y: -17.723484, z: 0}
+      previousControlOffset: {x: 0, y: 0, z: 0}
+      nextControlOffset: {x: 0, y: 0, z: 0}
       color: {r: 0, g: 0, b: 0, a: 0}
       width: 0
       angle: 0
       nextDivieCount: 10
-      loop: 0
-    - position: {x: -26.834759, y: 65.64432, z: 0}
-      previousControlOffset: {x: -1.16, y: 0, z: 0}
-      nextControlOffset: {x: -41.17, y: 1.56, z: 0}
+      loop: 1
+    - position: {x: -8.831482, y: 16.023062, z: 0}
+      previousControlOffset: {x: 0, y: 0, z: 0}
+      nextControlOffset: {x: 0, y: 0, z: 0}
       color: {r: 0, g: 0, b: 0, a: 0}
       width: 0
       angle: 0
-      nextDivieCount: 0
+      nextDivieCount: 10
       loop: 1
     startRatio: 0
     endRatio: 1
@@ -260,7 +260,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 747293599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: -0.3, z: 0}
+  m_LocalPosition: {x: -65.3, y: -0.3, z: -218.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -289,16 +289,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 824695648}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.10553633, y: -0.2821347, z: 0.1039481, w: 0.9478697}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1583464513}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 165.006, y: 147.927, z: 188.184}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10.000038, y: 0.00012207031}
+  m_AnchoredPosition: {x: -101.9, y: -38.8}
   m_SizeDelta: {x: 196.3, y: 77.6}
   m_Pivot: {x: 0.50000006, y: 0.5}
 --- !u!222 &824695650
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_RaycastTarget: 0
   line:
     points:
-    - position: {x: -11.127327, y: -1.4694061, z: -5.0805664}
+    - position: {x: 29.221281, y: 20.002533, z: -5.0805655}
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       color: {r: 0, g: 0, b: 0, a: 0}

@@ -4,11 +4,16 @@ using UnityEngine;
 
 namespace geniikw.UIMeshLab {
     public static class CurveLength {
-
+        /// <summary>
+        /// for test
+        /// </summary>
         public static float SumDirections(Node n0, Node n1)
         {
             return SumDirections(n0.position, n0.NextControlPosition, n1.PreviousControlPoisition, n1.position);
         }
+        /// <summary>
+        /// for test
+        /// </summary>
         public static float SumDirections(Vector3 p0, Vector3 c0, Vector3 c1, Vector3 p1)
         {
             var length = 0f;
