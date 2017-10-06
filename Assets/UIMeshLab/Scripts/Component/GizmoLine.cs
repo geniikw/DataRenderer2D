@@ -9,7 +9,9 @@ namespace geniikw.UIMeshLab
         public Line line;
 
         public bool isOnlyViewSelected = true;
-        
+
+        public bool debugColor = false;
+
         private void OnDrawGizmos()
         {
             if (isOnlyViewSelected)
@@ -34,11 +36,13 @@ namespace geniikw.UIMeshLab
             var e = l * line.endRatio;
             foreach (var pair in line.PairList)
             {
-                var divide = Mathf.Floor( pair.Length / line.divideRatido);
-                for (int i = 0; i < divide; i++)
+                var dt = (line.divideLength/pair.Length) * (pair.end - pair.start);
+                for (float t = pair.start; t < pair.end; t+=dt)
                 {
-                    var p0 = transform.TransformPoint(Curve.Auto(pair.n0, pair.n1, 1f / divide * i));
-                    var p1 = transform.TransformPoint(Curve.Auto(pair.n0, pair.n1, 1f / divide * (i+1f)));
+                    var p0 = transform.TransformPoint(Curve.Auto(pair.n0, pair.n1, t));
+                    var p1 = transform.TransformPoint(Curve.Auto(pair.n0, pair.n1, t+dt));
+                    if(debugColor)
+                        Gizmos.color = Random.ColorHSV();
                     Gizmos.DrawLine(p0,p1);
                 }
             }

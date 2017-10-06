@@ -21,7 +21,7 @@ namespace geniikw.UIMeshLab
     ///     float endRatio
 
     [Serializable]
-    public partial class Line 
+    public partial class Line
     {
         public List<Node> points = new List<Node>();
         [Range(0, 1)]
@@ -30,33 +30,77 @@ namespace geniikw.UIMeshLab
         public float endRatio = 1f;
 
         public bool loop = false;
-        public float divideRatido = 1f;
-
-        public float Length => PairList.Sum(p=>p.Length);
-
+        [Range(1,100)]
+        public float divideLength = 1f;
+        /// <summary>
+        /// O(n)
+        /// </summary>
+        public float Length
+        {
+            get
+            {
+                var length = 0f;
+                if (points.Count > 1)
+                   for (int i = 0; i < points.Count - 1; i++)
+                        length += CurveLength.Auto(points[i], points[i + 1]);
+                if (loop)
+                    length += CurveLength.Auto(points.Last(), points[0]);
+                return length;
+            }
+        }
+        
         public IEnumerable<LinePair> PairList {
             get
             {
+                var l = Length;
+                var ls = l * startRatio;
+                var le = l * endRatio;
+                var ps = 0f;
+                var pe = 0f;
+                var pl = 0f;
+                if (ls >= le)
+                    yield break;
+                
                 for (int i = 0; i < points.Count-1; i++)
                 {
-                    yield return new LinePair(points[i], points[i + 1]);
+                    pl = CurveLength.Auto(points[i], points[i + 1]);
+                    pe = ps + pl;
+                    
+                    if (le < ps)
+                        yield break;
+                    if (ls < pe)
+                        yield return new LinePair(points[i], points[i + 1], Mathf.Max(0f, (ls - ps) / pl), Mathf.Min(1f, (le - ps) / pl));
+                    ps = pe;
                 }
+
                 if (loop)
-                    yield return new LinePair(points.Last(), points.First());
+                {
+                    pl = CurveLength.Auto(points.Last(), points.First());
+                    pe = ps + pl;
+
+                    if (ls > pe)
+                        yield break;
+                    if (le < ps)
+                        yield break;
+
+                    yield return new LinePair(points.Last(), points.First(), Mathf.Max(0f, (ls - ps) / pl), Mathf.Min(1f, (le - ps) / pl));
+                }
             }
         }
         public struct LinePair
         {
             public Node n0;
             public Node n1;
-            public LinePair(Node n0, Node n1)
+            public float start;
+            public float end;
+            public LinePair(Node n0, Node n1, float s, float e)
             {
                 this.n0 = n0;
                 this.n1 = n1;
+                start = s;
+                end = e;
             }
-            public float Length => CurveLength.Auto(n0, n1);
+            public float Length => CurveLength.Auto(n0, n1)*(end - start);
         }
     }
-
-  
 }

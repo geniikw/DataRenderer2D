@@ -11,7 +11,7 @@ namespace geniikw.UIMeshLab
 
             if (c0 == Vector3.zero || c1 == Vector3.zero)
                 return Quadratic(p0, c0 == Vector3.zero ? c1 : c0, p1, t);
-
+            t = Mathf.Clamp01(t);
             return Cubic(p0, c0, c1, p1, t);
         }
         
