@@ -226,33 +226,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   line:
     points:
-    - position: {x: -44.424324, y: -14.973379, z: 0}
-      previousControlOffset: {x: 0, y: 0, z: 0}
-      nextControlOffset: {x: 0, y: 0, z: 0}
+    - position: {x: 2.813385, y: 15.954295, z: 0}
+      previousControlOffset: {x: 14.67775, y: 6.8780766, z: 0}
+      nextControlOffset: {x: -25.895523, y: 4.784952, z: 0}
       color: {r: 0, g: 0, b: 0, a: 0}
-      width: 10
+      width: 0
       angle: 0
-      nextDivieCount: 10
-      loop: 0
-    - position: {x: 2.4209366, y: -17.723484, z: 0}
+    - position: {x: -27.3759, y: 45.601242, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       color: {r: 0, g: 0, b: 0, a: 0}
       width: 0
       angle: 0
-      nextDivieCount: 10
-      loop: 1
-    - position: {x: -8.831482, y: 16.023062, z: 0}
+    - position: {x: -0.97940063, y: 64.07734, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       color: {r: 0, g: 0, b: 0, a: 0}
       width: 0
       angle: 0
-      nextDivieCount: 10
-      loop: 1
+    - position: {x: 49.080025, y: 36.54217, z: 0}
+      previousControlOffset: {x: 0, y: 0, z: 0}
+      nextControlOffset: {x: 0, y: 0, z: 0}
+      color: {r: 0, g: 0, b: 0, a: 0}
+      width: 0
+      angle: 0
     startRatio: 0
     endRatio: 1
-  isViewSelected: 1
+    loop: 1
+    divideRatido: 1
+  isOnlyViewSelected: 1
 --- !u!4 &747293601
 Transform:
   m_ObjectHideFlags: 0
@@ -260,7 +262,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 747293599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -65.3, y: -0.3, z: -218.3}
+  m_LocalPosition: {x: -149, y: 14.2, z: -218.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -290,7 +292,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 824695648}
   m_LocalRotation: {x: 0.10553633, y: -0.2821347, z: 0.1039481, w: 0.9478697}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 11.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1583464513}
@@ -298,7 +300,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 165.006, y: 147.927, z: 188.184}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -101.9, y: -38.8}
+  m_AnchoredPosition: {x: -87.3, y: -34.1}
   m_SizeDelta: {x: 196.3, y: 77.6}
   m_Pivot: {x: 0.50000006, y: 0.5}
 --- !u!222 &824695650
@@ -329,10 +331,10 @@ MonoBehaviour:
       color: {r: 0, g: 0, b: 0, a: 0}
       width: 0
       angle: 0
-      nextDivieCount: 0
-      loop: 0
     startRatio: 0
     endRatio: 1
+    loop: 0
+    divideRatido: 1
 --- !u!1 &1374640983
 GameObject:
   m_ObjectHideFlags: 0

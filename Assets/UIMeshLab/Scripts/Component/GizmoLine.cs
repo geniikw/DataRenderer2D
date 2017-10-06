@@ -8,18 +8,18 @@ namespace geniikw.UIMeshLab
     {
         public Line line;
 
-        public bool isViewSelected = true;
+        public bool isOnlyViewSelected = true;
         
         private void OnDrawGizmos()
         {
-            if (isViewSelected)
+            if (isOnlyViewSelected)
                 return;
             DrawLine();
         }
 
         private void OnDrawGizmosSelected()
         {
-            if (!isViewSelected)
+            if (!isOnlyViewSelected)
                 return;
             DrawLine();
         }
@@ -28,17 +28,20 @@ namespace geniikw.UIMeshLab
         {
             if (line == null)
                 return;
-
+           
+            var l = line.Length;
+            var s = l * line.startRatio;
+            var e = l * line.endRatio;
             foreach (var pair in line.PairList)
             {
-                for (int i = 0; i < pair.n0.DivideCount; i++)
+                var divide = Mathf.Floor( pair.Length / line.divideRatido);
+                for (int i = 0; i < divide; i++)
                 {
-                    var p0 = transform.TransformPoint(Curve.Auto(pair.n0, pair.n1, 1f / pair.n0.DivideCount * i));
-                    var p1 = transform.TransformPoint(Curve.Auto(pair.n0, pair.n1, 1f / pair.n0.DivideCount * (i+1f)));
+                    var p0 = transform.TransformPoint(Curve.Auto(pair.n0, pair.n1, 1f / divide * i));
+                    var p1 = transform.TransformPoint(Curve.Auto(pair.n0, pair.n1, 1f / divide * (i+1f)));
                     Gizmos.DrawLine(p0,p1);
                 }
             }
-
         }
     }
 }

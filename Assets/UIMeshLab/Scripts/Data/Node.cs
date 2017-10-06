@@ -14,8 +14,6 @@ namespace geniikw.UIMeshLab
         public Color color;
         public float width;
         public float angle;
-        public int nextDivieCount;
-        public bool loop;
 
         public Node()
         {
@@ -25,8 +23,6 @@ namespace geniikw.UIMeshLab
             color = Color.white;
             width = 1f;
             angle = 0f;
-            nextDivieCount = 5;
-            loop = false;
         }
         
         public Vector3 PreviousControlPoisition
@@ -41,13 +37,6 @@ namespace geniikw.UIMeshLab
             get
             {
                 return nextControlOffset + position;
-            }
-        }
-        public int DivideCount
-        {
-            get
-            {
-                return Math.Max(1, nextDivieCount);
             }
         }
     }

@@ -23,12 +23,10 @@ namespace geniikw.UIMeshLab
             testLine.points[0].position = Vector3.zero;
             testLine.points[0].previousControlOffset = Vector3.zero;
             testLine.points[0].nextControlOffset = Vector3.zero;
-            testLine.points[0].nextDivieCount = 20;
 
             testLine.points[1].position = Vector3.one;
             testLine.points[1].previousControlOffset = Vector3.left;
             testLine.points[1].nextControlOffset = Vector3.right * 2f;
-            testLine.points[1].nextDivieCount = 100;
 
             testLine.points[2].position = Vector3.one*2f;
             testLine.points[2].previousControlOffset = Vector3.down;

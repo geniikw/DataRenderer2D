@@ -20,7 +20,10 @@ public class PointHandler {
 
     readonly SerializedProperty _points;
     readonly Component _owner;
-    
+
+    readonly float buttonSize = 3f;
+    readonly float buttonDistance = 10f;
+
     public PointHandler(SerializedProperty points, Component owner)
     {
         _points = points;
@@ -33,6 +36,7 @@ public class PointHandler {
         {
             var node = _points.GetArrayElementAtIndex(i);
             var position = node.FindPropertyRelative("position");
+ 
             HandleControlPoint(i, node);
             HandlePoint(i, position);
         }
@@ -45,15 +49,25 @@ public class PointHandler {
         var prevNode = _points.GetArrayElementAtIndex(n - 1 < 0 ? _points.arraySize - 1 : n - 1);
         var prevPosition = _owner.transform.TransformPoint(prevNode.FindPropertyRelative("position").vector3Value);
         var prevDirection = (prevPosition - pos).normalized;
-     
+
+        var nextCOffset = node.FindPropertyRelative("nextControlOffset");
+        var nextNode = _points.GetArrayElementAtIndex(n + 1 == _points.arraySize ? 0 : n + 1);
+        var nextPosition = _owner.transform.TransformPoint(nextNode.FindPropertyRelative("position").vector3Value);
+        var nextDirection = (nextPosition - pos).normalized;
+
         var buffer = Handles.color;
         Handles.color = Color.blue;
         if (prevCOffset.vector3Value.magnitude < 1f)
         {
-            prevCOffset.vector3Value = Vector3.zero;
-            if (Handles.Button(pos + prevDirection * 5, _owner.transform.rotation, 1, 1, Handles.DotHandleCap))
+            if (prevCOffset.vector3Value != Vector3.zero)
             {
-                var mid = (pos + prevPosition)/2f;
+                prevCOffset.vector3Value = Vector3.zero;
+                _points.serializedObject.ApplyModifiedProperties();
+            }
+
+            if (Handles.Button(pos + prevDirection * buttonDistance, _owner.transform.rotation, buttonSize, buttonSize, Handles.CubeHandleCap))
+            {
+                var mid = (pos + prevPosition) / 2f;
                 prevCOffset.vector3Value = mid - pos;
                 _points.serializedObject.ApplyModifiedProperties();
             }
@@ -63,19 +77,18 @@ public class PointHandler {
             Handles.DrawDottedLine(pos, pos + prevCOffset.vector3Value, 5f);
             HandleOffset(n, prevCOffset, pos);
         }
-        Handles.color = buffer;
 
-
-        var nextCOffset = node.FindPropertyRelative("nextControlOffset");
-        var nextNode = _points.GetArrayElementAtIndex(n + 1 == _points.arraySize ? 0 : n + 1);
-        var nextPosition = _owner.transform.TransformPoint(nextNode.FindPropertyRelative("position").vector3Value);
-        var nextDirection = (nextPosition - pos).normalized;
-        buffer = Handles.color;
         Handles.color = Color.red;
         if (nextCOffset.vector3Value.magnitude < 1f)
         {
-            nextCOffset.vector3Value = Vector3.zero;
-            if (Handles.Button(pos + nextDirection * 5, _owner.transform.rotation, 1, 1, Handles.DotHandleCap))
+            if(nextCOffset.vector3Value != Vector3.zero)
+            {
+                nextCOffset.vector3Value = Vector3.zero;
+                _points.serializedObject.ApplyModifiedProperties();
+            }
+
+
+            if (Handles.Button(pos + nextDirection * buttonDistance, _owner.transform.rotation, buttonSize, buttonSize, Handles.CubeHandleCap))
             {
                 var mid = (pos + nextPosition) / 2f;
                 nextCOffset.vector3Value = mid - pos;

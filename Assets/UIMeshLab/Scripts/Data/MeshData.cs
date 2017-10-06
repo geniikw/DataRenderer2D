@@ -12,11 +12,15 @@ namespace geniikw.UIMeshLab
     ///      color
     /// triangles
     /// </summary>
-
-
-    public struct MeshData
+    
+    public class MeshData
     {
         public List<Vertex> vertexes;
         public List<int> triangles;
+
+        public void AddQuad()
+        {
+
+        }
     }
 }

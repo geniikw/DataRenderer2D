@@ -16,7 +16,7 @@ namespace geniikw.UIMeshLab
     ///          float width;
     ///          float angle;
     ///          int nextDivieCount;
-    ///          bool loop;
+    ///     bool loop;
     ///     float startRatio
     ///     float endRatio
 
@@ -29,24 +29,20 @@ namespace geniikw.UIMeshLab
         [Range(0, 1)]
         public float endRatio = 1f;
 
-        public float Length => m_pairList.Sum(p => p.Length);
+        public bool loop = false;
+        public float divideRatido = 1f;
 
-        private Queue<LinePair> m_pairList = new Queue<LinePair>(); 
-        public Queue<LinePair> PairList {
+        public float Length => PairList.Sum(p=>p.Length);
+
+        public IEnumerable<LinePair> PairList {
             get
             {
-                m_pairList.Clear();
-                for (int i = 0; i < points.Count - 1; i++)
+                for (int i = 0; i < points.Count-1; i++)
                 {
-                    var n0 = points[i];
-                    var n1 = points[i + 1];
-                    m_pairList.Enqueue(new LinePair(n0, n1));
+                    yield return new LinePair(points[i], points[i + 1]);
                 }
-
-                if (points[points.Count - 1].loop)
-                    m_pairList.Enqueue(new LinePair(points[points.Count - 1], points[0]));
-
-                return m_pairList;
+                if (loop)
+                    yield return new LinePair(points.Last(), points.First());
             }
         }
         public struct LinePair
