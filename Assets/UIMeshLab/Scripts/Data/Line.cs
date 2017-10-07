@@ -32,6 +32,8 @@ namespace geniikw.UIMeshLab
         [Range(1,100)]
         public float divideLength = 1f;
 
+        public Vector3 CrossVectorForWidthDirectionVector = Vector3.forward;
+
         public Vector3 GetPosition(float ratio)
         {
             ratio = Mathf.Clamp01(ratio);
@@ -137,6 +139,12 @@ namespace geniikw.UIMeshLab
                 end = e;
             }
             public float Length => CurveLength.Auto(n0, n1)*(end - start);
+
+            public float GetDT(float divideLength)
+            {
+                return (divideLength / Length) * (end - start);
+            }
+
             public Vector3 GetPoisition(float r)
             {
                 return Curve.Auto(n0, n1, Mathf.Lerp(start, end, r));

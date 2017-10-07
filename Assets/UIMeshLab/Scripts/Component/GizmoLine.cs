@@ -40,13 +40,11 @@ namespace geniikw.UIMeshLab
         {
             if (line == null)
                 return;
-            var l = line.AllLength;
-            var s = l * line.startRatio;
-            var e = l * line.endRatio;
+
             var colorStore = Gizmos.color;
             foreach (var pair in line.PairList)
             {
-                var dt = (line.divideLength/pair.Length) * (pair.end - pair.start);
+                var dt = pair.GetDT(line.divideLength);
                 for (float t = pair.start; t < pair.end; t+=dt)
                 {
                     var p0 = transform.TransformPoint(Curve.Auto(pair.n0, pair.n1, t));

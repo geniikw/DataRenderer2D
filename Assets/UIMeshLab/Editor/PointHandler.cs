@@ -21,8 +21,13 @@ public class PointHandler {
     readonly SerializedProperty _points;
     readonly Component _owner;
 
-    readonly float buttonSize = 1f;
-    readonly float buttonDistance = 5f;
+    readonly float buttonSize = 3f;
+    readonly float buttonDistance = 6f;
+
+    readonly float AddDeleteButtonSize = 3f;
+    readonly float AddButtonDistance = 10f;
+    readonly float AddInitialDistance = 30f;
+    readonly float DeleteButtonDistance = 20f;
 
     public PointHandler(SerializedProperty points, Component owner)
     {
@@ -49,8 +54,7 @@ public class PointHandler {
         Vector3 direction;
 
         var last = _points.arraySize == 0?Vector3.zero:_points.GetArrayElementAtIndex(_points.arraySize - 1).FindPropertyRelative("position").vector3Value;
-
-
+        
         if (_points.arraySize < 2)
             direction = Vector3.right;
         else
@@ -61,17 +65,17 @@ public class PointHandler {
         
         var buffer = Handles.color;
         Handles.color = Color.green;
-        if (Handles.Button(_owner.transform.TransformPoint(last + direction * 6f), _owner.transform.rotation, 1, 1, Handles.DotHandleCap))
+        if (Handles.Button(_owner.transform.TransformPoint(last + direction * AddButtonDistance), _owner.transform.rotation, AddDeleteButtonSize, AddDeleteButtonSize, Handles.DotHandleCap))
         {
             _points.InsertArrayElementAtIndex(_points.arraySize);
-            _points.GetArrayElementAtIndex(_points.arraySize - 1).FindPropertyRelative("position").vector3Value = last + direction * 6f;
+            _points.GetArrayElementAtIndex(_points.arraySize - 1).FindPropertyRelative("position").vector3Value = last + direction * AddInitialDistance;
             _points.serializedObject.ApplyModifiedProperties();
         }
         
         if(_points.arraySize > 1)
         {
             Handles.color = Color.black;
-            if (Handles.Button(_owner.transform.TransformPoint(last + direction * 3f), _owner.transform.rotation, 1, 1, Handles.DotHandleCap))
+            if (Handles.Button(_owner.transform.TransformPoint(last + direction * DeleteButtonDistance), _owner.transform.rotation, AddDeleteButtonSize, AddDeleteButtonSize, Handles.DotHandleCap))
             {
                 _points.DeleteArrayElementAtIndex(_points.arraySize-1);
                 _points.serializedObject.ApplyModifiedProperties();
@@ -103,7 +107,7 @@ public class PointHandler {
                 _points.serializedObject.ApplyModifiedProperties();
             }
 
-            if (Handles.Button(pos + prevDirection * buttonDistance, _owner.transform.rotation, buttonSize, buttonSize, Handles.CubeHandleCap))
+            if (Handles.Button(pos + prevDirection * buttonDistance, _owner.transform.rotation, buttonSize, buttonSize, Handles.DotHandleCap))
             {
                 var mid = (pos + prevPosition) / 2f;
                 prevCOffset.vector3Value = mid - pos;
@@ -125,7 +129,7 @@ public class PointHandler {
                 _points.serializedObject.ApplyModifiedProperties();
             }
             
-            if (Handles.Button(pos + nextDirection * buttonDistance, _owner.transform.rotation, buttonSize, buttonSize, Handles.CubeHandleCap))
+            if (Handles.Button(pos + nextDirection * buttonDistance, _owner.transform.rotation, buttonSize, buttonSize, Handles.DotHandleCap))
             {
                 var mid = (pos + nextPosition) / 2f;
                 nextCOffset.vector3Value = mid - pos;

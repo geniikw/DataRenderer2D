@@ -5,10 +5,10 @@ using UnityEngine;
 namespace geniikw.UIMeshLab {
     
     public interface IBezierDrawer {
-        MeshData Build(Node n0, Node n1);
+        MeshData Build(Line.LinePair pair);
     }
 
-    public interface IEndCapDrawer
+    public interface ICapDrawer
     {
         MeshData Build(Vector3 position, Vector3 direction, float radian);
     }

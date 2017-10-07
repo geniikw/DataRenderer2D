@@ -31,6 +31,15 @@ namespace geniikw.UIMeshLab
             }
         }
 
+        public static MeshData Void()
+        {
+            return new MeshData
+            {
+                vertexes = new List<Vertex>(),
+                triangles = new List<int>()
+            };
+        }
+
         public static MeshData Quad(Vertex p0, Vertex p1, Vertex p2, Vertex p3)
         {
             return new MeshData
@@ -51,7 +60,7 @@ namespace geniikw.UIMeshLab
 
         public static MeshData operator +(MeshData ls, MeshData rs){
 
-            var tc = rs.vertexes.Count;
+            var tc = ls.vertexes.Count;
             ls.vertexes.AddRange(rs.vertexes);
             var tt = rs.triangles.Select(t => t + tc).ToArray();
             ls.triangles.AddRange(tt);
