@@ -28,14 +28,47 @@ namespace geniikw.UIMeshLab
         public float startRatio = 0f;
         [Range(0, 1)]
         public float endRatio = 1f;
-
         public bool loop = false;
         [Range(1,100)]
         public float divideLength = 1f;
+
+        public Vector3 GetPosition(float ratio)
+        {
+            ratio = Mathf.Clamp01(ratio);
+
+            var cl = ratio * Length;
+            
+            foreach(var pair in PairList)
+            {
+                if (cl > pair.Length)
+                    cl -= pair.Length;
+                else
+                    return pair.GetPoisition(cl / pair.Length);
+            }
+            return points.Last().position;
+        }
+        
+        public Vector3 GetDirection(float ratio)
+        {
+            ratio = Mathf.Clamp01(ratio);
+
+            var cl = ratio * Length;
+
+            foreach (var pair in PairList)
+            {
+                if (cl > pair.Length)
+                    cl -= pair.Length;
+                else
+                    return pair.GetDirection(cl / pair.Length);
+            }
+            throw new Exception("ㅇㅇㅇ?");
+        }
+
+
         /// <summary>
         /// O(n)
         /// </summary>
-        public float Length
+        public float AllLength
         {
             get
             {
@@ -48,11 +81,12 @@ namespace geniikw.UIMeshLab
                 return length;
             }
         }
-        
+
+        public float Length => PairList.Sum(p => p.Length);
         public IEnumerable<LinePair> PairList {
             get
             {
-                var l = Length;
+                var l = AllLength;
                 var ls = l * startRatio;
                 var le = l * endRatio;
                 var ps = 0f;
@@ -101,6 +135,14 @@ namespace geniikw.UIMeshLab
                 end = e;
             }
             public float Length => CurveLength.Auto(n0, n1)*(end - start);
+            public Vector3 GetPoisition(float r)
+            {
+                return Curve.Auto(n0, n1, Mathf.Lerp(start, end, r));
+            }
+            public Vector3 GetDirection(float r)
+            {
+                return Curve.AutoDirection(n0, n1, Mathf.Lerp(start, end, r));
+            }
         }
     }
 }

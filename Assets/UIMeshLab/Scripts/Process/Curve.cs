@@ -24,7 +24,28 @@ namespace geniikw.UIMeshLab
 
             return Auto(p0, c0, c1, p1, t);
         }
-      
+
+        public static Vector3 AutoDirection(Node n0, Node n1, float t)
+        {
+            var p0 = n0.position;
+            var c0 = n0.NextControlPosition;
+            var c1 = n1.PreviousControlPoisition;
+            var p1 = n1.position;
+
+            return AutoDirection(p0, c0, c1, p1, t);
+        }
+
+
+        public static Vector3 AutoDirection(Vector3 p0, Vector3 c0, Vector3 c1, Vector3 p1, float t)
+        {
+            if (c0 == Vector3.zero && c1 == Vector3.zero)
+                return (p1 - p0).normalized;
+
+            if (c0 == Vector3.zero || c1 == Vector3.zero)
+                return QuadraticDirection(p0, c0 == Vector3.zero ? c1 : c0, p1, t);
+            t = Mathf.Clamp01(t);
+            return CubicDirection(p0, c0, c1, p1, t);
+        }
 
         public static Vector3 CubicDirection(Node n0, Node n1, float t)
         {
@@ -38,7 +59,7 @@ namespace geniikw.UIMeshLab
         public static Vector3 CubicDirection(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
         {
             float mt = 1f - t;
-            return (3f * mt * mt * (p1 - p0) + 6f * mt * t * (p2 - p1) + 3f * t * t * (p3 - p2)).normalized;
+            return (3f * mt * mt * (p1 - p0) + 6f * mt * t * (p2 - p1) + 3f * t * t * (p3 - p2));
         }
 
         public static Vector3 Cubic(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)

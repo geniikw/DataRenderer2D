@@ -26,12 +26,21 @@ namespace geniikw.UIMeshLab
             DrawLine();
         }
 
+        public Vector3 GetPosition(float r)
+        {
+            return transform.TransformPoint( line.GetPosition(r));
+        }
+        public Vector3 GetDirection(float r)
+        {
+            return line.GetDirection(r);
+        }
+        
         private void DrawLine()
         {
             if (line == null)
                 return;
            
-            var l = line.Length;
+            var l = line.AllLength;
             var s = l * line.startRatio;
             var e = l * line.endRatio;
             foreach (var pair in line.PairList)
