@@ -47,7 +47,10 @@ public class PointHandler {
     private void HandlesAddPointButton()
     {
         Vector3 direction;
-        var last = _points.GetArrayElementAtIndex(_points.arraySize - 1).FindPropertyRelative("position").vector3Value;
+
+        var last = _points.arraySize == 0?Vector3.zero:_points.GetArrayElementAtIndex(_points.arraySize - 1).FindPropertyRelative("position").vector3Value;
+
+
         if (_points.arraySize < 2)
             direction = Vector3.right;
         else
@@ -55,14 +58,13 @@ public class PointHandler {
             var last2 = _points.GetArrayElementAtIndex(_points.arraySize - 2).FindPropertyRelative("position").vector3Value;
             direction = (last - last2).normalized;
         }
-
-
+        
         var buffer = Handles.color;
         Handles.color = Color.green;
-        if (Handles.Button(_owner.transform.TransformPoint(last + direction * 5f), _owner.transform.rotation, 1, 1, Handles.DotHandleCap))
+        if (Handles.Button(_owner.transform.TransformPoint(last + direction * 6f), _owner.transform.rotation, 1, 1, Handles.DotHandleCap))
         {
             _points.InsertArrayElementAtIndex(_points.arraySize);
-            _points.GetArrayElementAtIndex(_points.arraySize - 1).FindPropertyRelative("position").vector3Value = last + direction * 5f;
+            _points.GetArrayElementAtIndex(_points.arraySize - 1).FindPropertyRelative("position").vector3Value = last + direction * 6f;
             _points.serializedObject.ApplyModifiedProperties();
         }
         
@@ -75,9 +77,7 @@ public class PointHandler {
                 _points.serializedObject.ApplyModifiedProperties();
             }
         }
-        
         Handles.color = buffer;
-
     }
 
     private void HandleControlPoint(int n, SerializedProperty node)

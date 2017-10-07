@@ -60,25 +60,25 @@ namespace geniikw.UIMeshLab
                 else
                     return pair.GetDirection(cl / pair.Length);
             }
-            throw new Exception("ㅇㅇㅇ?");
+            return (points[points.Count-2].position-points.Last().position).normalized;
         }
-        
+
         /// <summary>
         /// O(n)
         /// </summary>
-        public float AllLength
-        {
-            get
-            {
-                var length = 0f;
-                if (points.Count > 1)
-                   for (int i = 0; i < points.Count - 1; i++)
-                        length += CurveLength.Auto(points[i], points[i + 1]);
-                if (loop)
-                    length += CurveLength.Auto(points.Last(), points[0]);
-                return length;
-            }
-        }
+        public float AllLength => Pair.Sum(p => CurveLength.Auto(p[0], p[1]));
+        //{
+        //    get
+        //    {
+        //        var length = 0f;
+        //        if (points.Count > 1)
+        //           for (int i = 0; i < points.Count - 1; i++)
+        //                length += CurveLength.Auto(points[i], points[i + 1]);
+        //        if (loop)
+        //            length += CurveLength.Auto(points.Last(), points[0]);
+        //        return length;
+        //    }
+        //}
 
         public float Length => PairList.Sum(p => p.Length);
 
@@ -106,6 +106,7 @@ namespace geniikw.UIMeshLab
                 var ps = 0f;
                 var pe = 0f;
                 var pl = 0f;
+
                 if (ls >= le)
                     yield break;
 

@@ -11,7 +11,7 @@ namespace geniikw.UIMeshLab
     {
         public Line line;
 
-        MeshBuilder _meshBuilder = new MeshBuilder();
+        LineBuilder _lineBuilder = new LineBuilder();
 
         protected override void Start()
         {
@@ -23,19 +23,11 @@ namespace geniikw.UIMeshLab
         public void ModifyMesh(VertexHelper verts)
         {
             verts.Clear();
-            var meshData = _meshBuilder.Build(line);
-            meshData.vertexes.ForEach(v=> verts.AddVert(v.position,v.color,v.uv));
+            var meshData = _lineBuilder.Build(line);
+            meshData.vertexes.ForEach(v => verts.AddVert(v.position, v.color, v.uv));
 
-            var tb = new List<int>();
-            meshData.triangles.ForEach(t => 
-            {
-                tb.Add(t);
-                if (tb.Count == 3)
-                {
-                    verts.AddTriangle(tb[0], tb[1], tb[2]);
-                    tb.Clear();
-                }
-            });
+            foreach (var t in meshData.Triangles)
+                verts.AddTriangle(t[0], t[1], t[2]);
         }
 
         public void ModifyMesh(Mesh mesh)
