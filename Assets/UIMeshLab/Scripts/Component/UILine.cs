@@ -12,7 +12,14 @@ namespace geniikw.UIMeshLab
         public Line line;
 
         MeshBuilder _meshBuilder = new MeshBuilder();
-        
+
+        protected override void Start()
+        {
+            base.Start();
+
+            UpdateGeometry();
+        }
+
         public void ModifyMesh(VertexHelper verts)
         {
             verts.Clear();
@@ -33,7 +40,11 @@ namespace geniikw.UIMeshLab
 
         public void ModifyMesh(Mesh mesh)
         {
-            
+            using (var vh = new VertexHelper(mesh))
+            {
+                ModifyMesh(vh);
+                vh.FillMesh(mesh);
+            }
         }
     }
 }

@@ -21,8 +21,8 @@ public class PointHandler {
     readonly SerializedProperty _points;
     readonly Component _owner;
 
-    readonly float buttonSize = 3f;
-    readonly float buttonDistance = 10f;
+    readonly float buttonSize = 1f;
+    readonly float buttonDistance = 5f;
 
     public PointHandler(SerializedProperty points, Component owner)
     {
@@ -40,6 +40,44 @@ public class PointHandler {
             HandleControlPoint(i, node);
             HandlePoint(i, position);
         }
+
+        HandlesAddPointButton();
+    }
+
+    private void HandlesAddPointButton()
+    {
+        Vector3 direction;
+        var last = _points.GetArrayElementAtIndex(_points.arraySize - 1).FindPropertyRelative("position").vector3Value;
+        if (_points.arraySize < 2)
+            direction = Vector3.right;
+        else
+        {
+            var last2 = _points.GetArrayElementAtIndex(_points.arraySize - 2).FindPropertyRelative("position").vector3Value;
+            direction = (last - last2).normalized;
+        }
+
+
+        var buffer = Handles.color;
+        Handles.color = Color.green;
+        if (Handles.Button(_owner.transform.TransformPoint(last + direction * 5f), _owner.transform.rotation, 1, 1, Handles.DotHandleCap))
+        {
+            _points.InsertArrayElementAtIndex(_points.arraySize);
+            _points.GetArrayElementAtIndex(_points.arraySize - 1).FindPropertyRelative("position").vector3Value = last + direction * 5f;
+            _points.serializedObject.ApplyModifiedProperties();
+        }
+        
+        if(_points.arraySize > 1)
+        {
+            Handles.color = Color.black;
+            if (Handles.Button(_owner.transform.TransformPoint(last + direction * 3f), _owner.transform.rotation, 1, 1, Handles.DotHandleCap))
+            {
+                _points.DeleteArrayElementAtIndex(_points.arraySize-1);
+                _points.serializedObject.ApplyModifiedProperties();
+            }
+        }
+        
+        Handles.color = buffer;
+
     }
 
     private void HandleControlPoint(int n, SerializedProperty node)
@@ -86,8 +124,7 @@ public class PointHandler {
                 nextCOffset.vector3Value = Vector3.zero;
                 _points.serializedObject.ApplyModifiedProperties();
             }
-
-
+            
             if (Handles.Button(pos + nextDirection * buttonDistance, _owner.transform.rotation, buttonSize, buttonSize, Handles.CubeHandleCap))
             {
                 var mid = (pos + nextPosition) / 2f;

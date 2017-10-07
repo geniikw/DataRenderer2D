@@ -51,7 +51,6 @@ namespace geniikw.UIMeshLab
         public Vector3 GetDirection(float ratio)
         {
             ratio = Mathf.Clamp01(ratio);
-
             var cl = ratio * Length;
 
             foreach (var pair in PairList)
@@ -63,8 +62,7 @@ namespace geniikw.UIMeshLab
             }
             throw new Exception("ㅇㅇㅇ?");
         }
-
-
+        
         /// <summary>
         /// O(n)
         /// </summary>
@@ -83,6 +81,22 @@ namespace geniikw.UIMeshLab
         }
 
         public float Length => PairList.Sum(p => p.Length);
+
+        IEnumerable<Node[]> Pair
+        {
+            get
+            {
+                for (int i = 0; i < points.Count-1; i++)
+                {
+                    yield return new Node[] { points[i], points[i + 1] };
+                }
+                if (loop)
+                {
+                    yield return new Node[] { points.Last(), points.First() };
+                }
+            }
+        }
+
         public IEnumerable<LinePair> PairList {
             get
             {
@@ -94,30 +108,17 @@ namespace geniikw.UIMeshLab
                 var pl = 0f;
                 if (ls >= le)
                     yield break;
-                
-                for (int i = 0; i < points.Count-1; i++)
+
+                foreach(var pair in Pair)
                 {
-                    pl = CurveLength.Auto(points[i], points[i + 1]);
+                    pl = CurveLength.Auto(pair[0], pair[1]);
                     pe = ps + pl;
-                    
+
                     if (le < ps)
                         yield break;
                     if (ls < pe)
-                        yield return new LinePair(points[i], points[i + 1], Mathf.Max(0f, (ls - ps) / pl), Mathf.Min(1f, (le - ps) / pl));
+                        yield return new LinePair(pair[0], pair[1], Mathf.Max(0f, (ls - ps) / pl), Mathf.Min(1f, (le - ps) / pl));
                     ps = pe;
-                }
-
-                if (loop)
-                {
-                    pl = CurveLength.Auto(points.Last(), points.First());
-                    pe = ps + pl;
-
-                    if (ls > pe)
-                        yield break;
-                    if (le < ps)
-                        yield break;
-
-                    yield return new LinePair(points.Last(), points.First(), Mathf.Max(0f, (ls - ps) / pl), Mathf.Min(1f, (le - ps) / pl));
                 }
             }
         }

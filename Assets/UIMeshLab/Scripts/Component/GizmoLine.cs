@@ -7,6 +7,7 @@ namespace geniikw.UIMeshLab
     public class GizmoLine : MonoBehaviour
     {
         public Line line;
+        public Color color = Color.white;
 
         public bool isOnlyViewSelected = true;
 
@@ -39,10 +40,10 @@ namespace geniikw.UIMeshLab
         {
             if (line == null)
                 return;
-           
             var l = line.AllLength;
             var s = l * line.startRatio;
             var e = l * line.endRatio;
+            var colorStore = Gizmos.color;
             foreach (var pair in line.PairList)
             {
                 var dt = (line.divideLength/pair.Length) * (pair.end - pair.start);
@@ -50,11 +51,15 @@ namespace geniikw.UIMeshLab
                 {
                     var p0 = transform.TransformPoint(Curve.Auto(pair.n0, pair.n1, t));
                     var p1 = transform.TransformPoint(Curve.Auto(pair.n0, pair.n1, t+dt));
-                    if(debugColor)
+                    if (debugColor)
                         Gizmos.color = Random.ColorHSV();
+                    else
+                        Gizmos.color = color;
+
                     Gizmos.DrawLine(p0,p1);
                 }
             }
+            Gizmos.color = colorStore;
         }
     }
 }

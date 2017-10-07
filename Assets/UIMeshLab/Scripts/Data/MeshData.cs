@@ -17,10 +17,5 @@ namespace geniikw.UIMeshLab
     {
         public List<Vertex> vertexes;
         public List<int> triangles;
-
-        public void AddQuad()
-        {
-
-        }
     }
 }

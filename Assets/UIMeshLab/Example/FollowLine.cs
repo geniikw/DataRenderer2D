@@ -24,15 +24,7 @@ namespace geniikw.UIMeshLab
                     transform.rotation = Quaternion.LookRotation(transform.position + line.GetDirection(t));
                     yield return null;
                 }
-                while(t > 0)
-                {
-                    t -= Time.deltaTime* speed;
-                    transform.position = line.GetPosition(t);
-                    transform.rotation = Quaternion.LookRotation(transform.position + line.GetDirection(t));
-                    yield return null;
-                }
-
-
+                t = 0;
             }
 
 
