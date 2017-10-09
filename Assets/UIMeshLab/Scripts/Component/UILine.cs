@@ -9,6 +9,9 @@ namespace geniikw.UIMeshLab
 {
     public class UILine : Graphic, IMeshModifier
     {
+        /// <summary>
+        /// if change in code. Should call GeometryUpdate();
+        /// </summary>
         public Line line;
 
         LineBuilder m_lineBuilder;

@@ -23,6 +23,7 @@ namespace geniikw.UIMeshLab
         public MeshData Build()
         {
             var output = MeshData.Void();
+
             if (DrawJoint)
             {
                 foreach (var triple in _line.TripleList)

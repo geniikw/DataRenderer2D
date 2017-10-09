@@ -42,8 +42,8 @@ namespace geniikw.UIMeshLab
                 previous = p; target = c; next = n;
             }
 
-            public Vector3 ForwardDirection => Curve.AutoDirection(target, next, 0.01f);
-            public Vector3 BackDirection => Curve.AutoDirection(previous, target , 0.99f);
+            public Vector3 ForwardDirection => Curve.AutoDirection(target, next, 0f);
+            public Vector3 BackDirection => Curve.AutoDirection(previous, target , 1f);
             public Vector3 Position => target.position;
             public float CurrentWidth => target.width;
             public Color CurrentColor => target.color;

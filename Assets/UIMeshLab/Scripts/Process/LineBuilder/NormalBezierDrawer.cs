@@ -33,18 +33,23 @@ namespace geniikw.UIMeshLab
                 
                 var d = pe - ps;
                 var wd = Vector3.Cross(d, _line.normalVector).normalized;
+                var wds = t ==0f ? Vector3.Cross(Curve.AutoDirection(pair.n0, pair.n1, 0), _line.normalVector).normalized : wd;
+                var wde = Vector3.Cross(Curve.AutoDirection(pair.n0, pair.n1, 1), _line.normalVector).normalized;
+                
+                var p0 = Vertex.New(t == pair.start ? ps + wds * ws : prv1, _line.UVRotate(new Vector2(0, 1)), cs);
+                var p1 = Vertex.New(t == pair.start ? ps - wds * ws : prv2, _line.UVRotate(new Vector2(1, 1)), cs);
 
-                var p0 = Vertex.New(prv1 == Vector3.zero ? ps + wd * ws : prv1, _line.UVRotate(new Vector2(0, 1)), cs);
-                var p1 = Vertex.New(prv2 == Vector3.zero ? ps - wd * ws : prv2, _line.UVRotate(new Vector2(1, 1)), cs);
-                var p2 = Vertex.New(pe + wd * we, _line.UVRotate(new Vector2(0, 0)), ce);
-                var p3 = Vertex.New(pe - wd * we, _line.UVRotate(new Vector2(1, 0)), ce);
+                var end = Mathf.Abs(t - pair.end) < dt;
+
+                var p2 = Vertex.New(end ? pe + wde * we : pe + wd * we, _line.UVRotate(new Vector2(0, 0)), ce);
+                var p3 = Vertex.New(end ? pe - wde * we : pe - wd * we, _line.UVRotate(new Vector2(1, 0)), ce);
 
                 prv1 = pe + wd * we;
                 prv2 = pe - wd * we;
 
                 output += MeshData.Quad(p0, p1, p2, p3);
             }
-
+            
             return output;
         }
     }

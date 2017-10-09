@@ -8,17 +8,12 @@ namespace geniikw.UIMeshLab
     [ExecuteInEditMode]
     [RequireComponent(typeof(MeshRenderer))]
     [RequireComponent(typeof(MeshFilter))]
-    public class WorldLine : MonoBehaviour
+    public class WorldLine : MonoBehaviour, ISerializationCallbackReceiver
     {
         public Line line;
 
         LineBuilder m_lineBuilder;
         LineBuilder LineBuilder => m_lineBuilder ??(m_lineBuilder = LineBuilder.Factory.Normal(line));
-
-        public void Update()
-        {
-            UpdateGeometry();
-        }
 
         private void UpdateGeometry()
         {
@@ -43,6 +38,16 @@ namespace geniikw.UIMeshLab
                 mesh.name = name;
                 mf.sharedMesh = mesh;
             }
+        }
+
+        public void OnBeforeSerialize()
+        {
+            UpdateGeometry();
+        }
+
+        public void OnAfterDeserialize()
+        {
+
         }
     }
 }

@@ -29,8 +29,11 @@ namespace geniikw.UIMeshLab
         [Range(0, 1)]
         public float endRatio = 1f;
         public bool loop = false;
-        [Range(1,100)]
+        [Range(5,100)]
         public float divideLength = 1f;
+
+        [Range(1, 180)]
+        public float divideAngle = 10f;
 
         public Vector3 normalVector = Vector3.forward;
 
