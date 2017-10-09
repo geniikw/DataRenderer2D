@@ -21,10 +21,10 @@ public class PointHandler {
     readonly SerializedProperty _points;
     readonly Component _owner;
 
-    readonly float buttonSize = 3f;
+    readonly float buttonSize = 2f;
     readonly float buttonDistance = 6f;
 
-    readonly float AddDeleteButtonSize = 3f;
+    readonly float AddDeleteButtonSize = 2f;
     readonly float AddButtonDistance = 10f;
     readonly float AddInitialDistance = 30f;
     readonly float DeleteButtonDistance = 20f;
@@ -69,6 +69,9 @@ public class PointHandler {
         {
             _points.InsertArrayElementAtIndex(_points.arraySize);
             _points.GetArrayElementAtIndex(_points.arraySize - 1).FindPropertyRelative("position").vector3Value = last + direction * AddInitialDistance;
+            _points.GetArrayElementAtIndex(_points.arraySize - 1).FindPropertyRelative("previousControlOffset").vector3Value = Vector3.zero;
+            _points.GetArrayElementAtIndex(_points.arraySize - 1).FindPropertyRelative("nextControlOffset").vector3Value = Vector3.zero;
+
             _points.serializedObject.ApplyModifiedProperties();
         }
         

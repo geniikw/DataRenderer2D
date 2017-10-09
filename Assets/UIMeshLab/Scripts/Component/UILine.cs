@@ -17,20 +17,19 @@ namespace geniikw.UIMeshLab
         {
             get
             {
-                return m_lineBuilder ?? (m_lineBuilder = new LineBuilder { bezierDrawer = new NormalBezierDrawer(line) });
+                return m_lineBuilder ?? (m_lineBuilder = LineBuilder.Factory.Normal(line));
             }
         }
 
         protected override void Start()
         {
             base.Start();
-            
         }
 
         public void ModifyMesh(VertexHelper verts)
         {
             verts.Clear();
-            var meshData = LineBuilder.Build(line);
+            var meshData = LineBuilder.Build();
             meshData.vertexes.ForEach(v => verts.AddVert(v.position, v.color, v.uv));
 
             foreach (var t in meshData.Triangles)

@@ -330,9 +330,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24, y: 13.5}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -74.4, y: 8.2}
+  m_SizeDelta: {x: 100.73001, y: 100}
+  m_Pivot: {x: 0.54, y: 0.5}
 --- !u!114 &1426298152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,26 +349,32 @@ MonoBehaviour:
   m_RaycastTarget: 1
   line:
     points:
-    - position: {x: -31.005463, y: 27.873436, z: 0}
-      previousControlOffset: {x: -48.032646, y: -7.9087753, z: 0}
-      nextControlOffset: {x: -10.733444, y: -42.73889, z: 0}
+    - position: {x: 7.6438828, y: 36.861835, z: -10.652336}
+      previousControlOffset: {x: -10.859108, y: 24.846237, z: 15.189881}
+      nextControlOffset: {x: 0, y: 0, z: 0}
       color: {r: 1, g: 0.03676468, b: 0.03676468, a: 1}
       width: 3.7
       angle: 0
-    - position: {x: 23.014359, y: -26.603165, z: 0}
+    - position: {x: 34.553543, y: -5.086483, z: 3.0358963}
+      previousControlOffset: {x: 9.986008, y: 16.952988, z: 0}
+      nextControlOffset: {x: -34.329086, y: 1.9694138, z: 0}
+      color: {r: 1, g: 1, b: 1, a: 1}
+      width: 3.87
+      angle: 0
+    - position: {x: -38.47696, y: -31.210293, z: 0}
+      previousControlOffset: {x: 39.617767, y: 7.9127197, z: 0}
+      nextControlOffset: {x: -4.9213295, y: 27.947403, z: 0}
+      color: {r: 1, g: 1, b: 1, a: 1}
+      width: 3.87
+      angle: 0
+    - position: {x: -56.026123, y: 20.81726, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
       width: 3.87
       angle: 0
-    - position: {x: -43.438858, y: -60.007328, z: 0}
-      previousControlOffset: {x: 0, y: 0, z: 0}
-      nextControlOffset: {x: 0, y: 0, z: 0}
-      color: {r: 1, g: 1, b: 1, a: 1}
-      width: 3.87
-      angle: 0
-    - position: {x: -103.50162, y: -33.257423, z: 0}
-      previousControlOffset: {x: 0, y: 0, z: 0}
+    - position: {x: -34.818146, y: 49.3958, z: 0}
+      previousControlOffset: {x: -47.136368, y: 13.242584, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
       width: 3.87
@@ -376,8 +382,8 @@ MonoBehaviour:
     startRatio: 0
     endRatio: 1
     loop: 1
-    divideLength: 10
-    CrossVectorForWidthDirectionVector: {x: 0, y: 0, z: 1}
+    divideLength: 4.7
+    NormalVector: {x: 0, y: 0, z: 1}
 --- !u!222 &1426298153
 CanvasRenderer:
   m_ObjectHideFlags: 0

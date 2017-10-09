@@ -32,17 +32,17 @@ namespace geniikw.UIMeshLab
                 var ce = Color.Lerp(pair.n0.color, pair.n1.color, t+dt);
                 
                 var d = pe - ps;
-                var wd = Vector3.Cross(d, _line.CrossVectorForWidthDirectionVector).normalized;
+                var wd = Vector3.Cross(d, _line.normalVector).normalized;
 
-                var p0 = Vertex.New(prv1 == Vector3.zero ? ps + wd * ws : prv1, new Vector2(0, 1), cs);
-                var p1 = Vertex.New(prv2 == Vector3.zero ? ps - wd * ws : prv2, new Vector2(1, 1), cs);
-                var p2 = Vertex.New(pe + wd * we, new Vector2(0, 0), ce);
-                var p3 = Vertex.New(pe - wd * we, new Vector2(1, 0), ce);
+                var p0 = Vertex.New(prv1 == Vector3.zero ? ps + wd * ws : prv1, _line.UVRotate(new Vector2(0, 1)), cs);
+                var p1 = Vertex.New(prv2 == Vector3.zero ? ps - wd * ws : prv2, _line.UVRotate(new Vector2(1, 1)), cs);
+                var p2 = Vertex.New(pe + wd * we, _line.UVRotate(new Vector2(0, 0)), ce);
+                var p3 = Vertex.New(pe - wd * we, _line.UVRotate(new Vector2(1, 0)), ce);
 
                 prv1 = pe + wd * we;
                 prv2 = pe - wd * we;
 
-                output =  output + MeshData.Quad(p0, p1, p2, p3);
+                output += MeshData.Quad(p0, p1, p2, p3);
             }
 
             return output;

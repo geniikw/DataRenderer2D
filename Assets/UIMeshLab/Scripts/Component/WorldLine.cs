@@ -12,6 +12,9 @@ namespace geniikw.UIMeshLab
     {
         public Line line;
 
+        LineBuilder m_lineBuilder;
+        LineBuilder LineBuilder => m_lineBuilder ??(m_lineBuilder = LineBuilder.Factory.Normal(line));
+
         public void Update()
         {
             UpdateGeometry();
@@ -21,18 +24,13 @@ namespace geniikw.UIMeshLab
         {
             var mf = GetComponent<MeshFilter>();
 
-            var lineBuilder = new LineBuilder()
-            {
-                bezierDrawer = new NormalBezierDrawer(line)
-            };
-
-            var meshData = lineBuilder.Build(line);
-            mf.mesh.Clear();
-            mf.mesh.vertices = meshData.vertexes.Select(v => v.position).ToArray();
-            mf.mesh.uv = meshData.vertexes.Select(v => v.uv).ToArray();
-            mf.mesh.triangles = meshData.triangles.ToArray();
-            mf.mesh.colors = meshData.vertexes.Select(v => v.color).ToArray();
-            mf.mesh.RecalculateNormals();
+            var meshData = LineBuilder.Build();
+            mf.sharedMesh.Clear();
+            mf.sharedMesh.vertices = meshData.vertexes.Select(v => v.position).ToArray();
+            mf.sharedMesh.uv = meshData.vertexes.Select(v => v.uv).ToArray();
+            mf.sharedMesh.triangles = meshData.triangles.ToArray();
+            mf.sharedMesh.colors = meshData.vertexes.Select(v => v.color).ToArray();
+            mf.sharedMesh.RecalculateNormals();
         }
 
         public void Reset()
@@ -45,8 +43,6 @@ namespace geniikw.UIMeshLab
                 mesh.name = name;
                 mf.sharedMesh = mesh;
             }
-
-         
         }
     }
 }

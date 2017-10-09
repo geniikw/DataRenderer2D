@@ -15,6 +15,6 @@ namespace geniikw.UIMeshLab {
 
     public interface IJointDrawer
     {
-        MeshData Build(Vector3 center, Vector3 next, Vector3 prev);
+        MeshData Build(Line.Triple triple);
     }
 }

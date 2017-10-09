@@ -246,12 +246,12 @@ MonoBehaviour:
       angle: 0
     - position: {x: 18.633057, y: 7.6399336, z: 0}
       previousControlOffset: {x: 5.537758, y: -6.4341145, z: 0}
-      nextControlOffset: {x: -4.5177307, y: 4.322853, z: 0}
+      nextControlOffset: {x: -4.1546326, y: 7.1550484, z: 0}
       color: {r: 0, g: 0, b: 0, a: 0}
       width: 0
       angle: 0
     - position: {x: -1.7872925, y: 7.0772715, z: 0}
-      previousControlOffset: {x: 11.88443, y: 8.317728, z: 0}
+      previousControlOffset: {x: 8.108154, y: 7.010561, z: 0}
       nextControlOffset: {x: -15.227753, y: -6.278433, z: 0}
       color: {r: 0, g: 0, b: 0, a: 0}
       width: 0
@@ -264,8 +264,9 @@ MonoBehaviour:
       angle: 0
     startRatio: 0
     endRatio: 1
-    loop: 1
+    loop: 0
     divideLength: 1
+    CrossVectorForWidthDirectionVector: {x: 0, y: 0, z: 1}
   color: {r: 1, g: 1, b: 1, a: 1}
   isOnlyViewSelected: 0
   debugColor: 0
@@ -313,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   line: {fileID: 783014360}
-  speed: 1
+  speed: 50
 --- !u!23 &856945622
 MeshRenderer:
   m_ObjectHideFlags: 0

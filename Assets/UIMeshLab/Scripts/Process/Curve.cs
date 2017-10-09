@@ -38,11 +38,14 @@ namespace geniikw.UIMeshLab
 
         public static Vector3 AutoDirection(Vector3 p0, Vector3 c0, Vector3 c1, Vector3 p1, float t)
         {
-            if (c0 == Vector3.zero && c1 == Vector3.zero)
+            var dif0 = p0 - c0;
+            var dif1 = p1 - c1;
+
+            if (dif0 == Vector3.zero && dif1 == Vector3.zero)
                 return (p1 - p0).normalized;
 
-            if (c0 == Vector3.zero || c1 == Vector3.zero)
-                return QuadraticDirection(p0, c0 == Vector3.zero ? c1 : c0, p1, t);
+            if (dif0 == Vector3.zero || dif1 == Vector3.zero)
+                return QuadraticDirection(p0, dif0 == Vector3.zero ? c1 : c0, p1, t);
             t = Mathf.Clamp01(t);
             return CubicDirection(p0, c0, c1, p1, t);
         }
