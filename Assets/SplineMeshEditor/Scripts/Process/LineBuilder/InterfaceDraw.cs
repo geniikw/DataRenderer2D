@@ -4,17 +4,18 @@ using UnityEngine;
 
 namespace geniikw.UIMeshLab {
     
-    public interface IBezierDrawer {
-        MeshData Build(Line.LinePair pair);
+    public interface IJointBuilder
+    {
+        MeshData Build(Spline.Triple triple);
     }
 
-    public interface ICapDrawer
+    public interface IBezierBuilder
     {
-        MeshData Build(Vector3 position, Vector3 direction, float radian);
+        MeshData Build(Spline.LinePair pair);
     }
 
-    public interface IJointDrawer
+    public interface ICapBuilder
     {
-        MeshData Build(Line.Triple triple);
+        MeshData Build(Spline.LinePair pair, bool isEnd);
     }
 }

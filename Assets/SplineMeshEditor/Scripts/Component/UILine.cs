@@ -7,12 +7,12 @@ using System.Linq;
 
 namespace geniikw.UIMeshLab
 {
-    public class UILine : Graphic, IMeshModifier
+    public class UILine : Graphic, IMeshModifier, ISpline
     {
         /// <summary>
         /// if change in code. Should call GeometryUpdate();
         /// </summary>
-        public Line line;
+        public Spline line;
 
         LineBuilder m_lineBuilder;
 
@@ -20,9 +20,12 @@ namespace geniikw.UIMeshLab
         {
             get
             {
-                return m_lineBuilder ?? (m_lineBuilder = LineBuilder.Factory.Normal(line));
+                return m_lineBuilder ?? (m_lineBuilder = LineBuilder.Factory.Normal(this));
             }
         }
+
+        public Spline Line => line;
+
 
         protected override void Start()
         {
@@ -32,7 +35,7 @@ namespace geniikw.UIMeshLab
         public void ModifyMesh(VertexHelper verts)
         {
             verts.Clear();
-            var meshData = LineBuilder.Build();
+            var meshData = LineBuilder.Build(this);
             meshData.vertexes.ForEach(v => verts.AddVert(v.position, v.color, v.uv));
 
             foreach (var t in meshData.Triangles)

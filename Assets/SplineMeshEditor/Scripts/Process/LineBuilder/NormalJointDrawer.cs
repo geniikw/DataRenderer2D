@@ -4,15 +4,16 @@ using UnityEngine;
 
 namespace geniikw.UIMeshLab
 {
-    public class NormalJointDrawer : IJointDrawer
+    public class NormalJointDrawer : IJointBuilder
     {
-        Line _line;
-        public NormalJointDrawer(Line line)
+        readonly ISpline _line;
+        public NormalJointDrawer(ISpline target)
         {
-            _line = line;
+            _line = target;
         }
 
-        public MeshData Build(Line.Triple triple)
+
+        public MeshData Build(Spline.Triple triple)
         {
             ///부채꼴에서 가운데점
             var p0 = triple.Position;
@@ -23,22 +24,22 @@ namespace geniikw.UIMeshLab
             Vector3 p1;
             Vector3 p2;
 
-            if((Vector3.Cross(bd,fd).normalized+_line.normalVector).magnitude < _line.normalVector.magnitude)
+            if((Vector3.Cross(bd,fd).normalized+_line.Line.normalVector).magnitude < _line.Line.normalVector.magnitude)
             {
-                p1 = p0 + Vector3.Cross(_line.normalVector, bd).normalized * triple.CurrentWidth;
-                p2 = p0 + Vector3.Cross(_line.normalVector, fd).normalized * triple.CurrentWidth;
+                p1 = p0 + Vector3.Cross(_line.Line.normalVector, bd).normalized * triple.CurrentWidth;
+                p2 = p0 + Vector3.Cross(_line.Line.normalVector, fd).normalized * triple.CurrentWidth;
             }
             else
             {
-                p1 = p0 - Vector3.Cross(_line.normalVector, fd).normalized * triple.CurrentWidth;
-                p2 = p0 - Vector3.Cross(_line.normalVector, bd).normalized * triple.CurrentWidth;
+                p1 = p0 - Vector3.Cross(_line.Line.normalVector, fd).normalized * triple.CurrentWidth;
+                p2 = p0 - Vector3.Cross(_line.Line.normalVector, bd).normalized * triple.CurrentWidth;
             }
 
             var angle = Vector3.Angle( p1 - p0, p2 - p0);
-            var dc = Mathf.Max(1, Mathf.Floor( angle / _line.divideAngle));
+            var dc = Mathf.Max(1, Mathf.Floor( angle / _line.Line.divideAngle));
             var da =  angle/ dc;
             var mesh = MeshData.Void();
-            var rot = Quaternion.Euler(-_line.normalVector * da);
+            var rot = Quaternion.Euler(-_line.Line.normalVector * da);
             var d = p1 - p0;
 
             for (float a = 0f; a < angle; a+=da)

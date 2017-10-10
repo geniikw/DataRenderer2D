@@ -25,12 +25,24 @@ public class PointHandler {
     readonly SerializedProperty _normal;
     readonly SerializedProperty _mode;
 
-    readonly float AddDeleteButtonSize = 2f;
+    readonly float AddDeleteButtonSize = 3f;
     readonly float AddButtonDistance = 10f;
     readonly float AddInitialDistance = 30f;
     readonly float DeleteButtonDistance = 20f;
 
     readonly float AddButtonAngle = 20f;
+
+
+    public IEnumerable<SerializedProperty> Points
+    {
+        get
+        {
+            for (int i = 0; i < _points.arraySize; i++)
+            {
+                yield return _points.GetArrayElementAtIndex(i);
+            }
+        }
+    }
 
     public PointHandler(Component owner, SerializedProperty line)
     {
@@ -47,8 +59,7 @@ public class PointHandler {
         {
             var node = _points.GetArrayElementAtIndex(i);
             var position = node.FindPropertyRelative("position");
-
-
+            
             if(_mode.enumValueIndex == 1 || i != _points.arraySize-1)
                 HandleNextControlPoint(i, node);
 
@@ -192,13 +203,14 @@ public class PointHandler {
         if (Handles.Button(_owner.transform.TransformPoint(last + direction * AddButtonDistance), _owner.transform.rotation, AddDeleteButtonSize, AddDeleteButtonSize, Handles.DotHandleCap))
         {
             var index = _points.arraySize;
+            var width = _points.GetArrayElementAtIndex(index - 1).FindPropertyRelative("width").floatValue;
+
             _points.InsertArrayElementAtIndex(index);
             _points.GetArrayElementAtIndex(index).FindPropertyRelative("position").vector3Value = index == 0 ? Vector3.zero : last + direction * AddInitialDistance;
             _points.GetArrayElementAtIndex(index).FindPropertyRelative("previousControlOffset").vector3Value = Vector3.zero;
             _points.GetArrayElementAtIndex(index).FindPropertyRelative("nextControlOffset").vector3Value = Vector3.zero;
-            _points.GetArrayElementAtIndex(index).FindPropertyRelative("width").floatValue = 2f;
-
-
+            _points.GetArrayElementAtIndex(index).FindPropertyRelative("width").floatValue = width;
+            
             _points.serializedObject.ApplyModifiedProperties();
         }
 

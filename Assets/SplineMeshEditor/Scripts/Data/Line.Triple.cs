@@ -8,7 +8,7 @@ namespace geniikw.UIMeshLab
     /// <summary>
     /// to draw joint, Define IEnumerable<Triple>
     /// </summary>
-    public partial class Line 
+    public partial struct Spline 
     {
         public IEnumerable<Triple> TripleList
         {
@@ -25,17 +25,17 @@ namespace geniikw.UIMeshLab
                 var le = endRatio * l;
                 var c = 0f;
                 
-                for (int i = 0; i < points.Count-2; i++)
+                for (int i = 0; i < points.Count-1; i++)
                 {
                     c += CurveLength.Auto(points[i], points[i + 1]);
                     if(ls < c && c < le)
+                    {
+                        if (i == points.Count - 1 && mode != Mode.Loop)
+                            break;
+
                         yield return new Triple(points[i], points[i + 1], points[(i + 2)%points.Count],color.Evaluate(c/l));
+                    }
                 }
-
-                if (mode == Mode.Loop && ls <= c && c < le)
-                    yield return new Triple(points[points.Count-1], points.Last() , points.First(), color.Evaluate(c / l));
-
-
             }
         }
         

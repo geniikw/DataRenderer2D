@@ -10,10 +10,10 @@ namespace geniikw.UIMeshLab
     {
         public static Vector3 Auto(Vector3 p0, Vector3 c0, Vector3 c1, Vector3 p1, float t)
         {
+            t = Mathf.Clamp01(t);
             if (c0 == p0 && c1 == p1)
                 return Vector3.Lerp(p0, p1, t);
 
-            t = Mathf.Clamp01(t);
             if (c0 == p0 || c1 == p1)
                 return Quadratic(p0, c0 == p0 ? c1 : c0, p1, t);
 

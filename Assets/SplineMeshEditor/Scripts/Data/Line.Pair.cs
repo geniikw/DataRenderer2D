@@ -7,7 +7,7 @@ namespace geniikw.UIMeshLab
     /// <summary>
     /// to draw bezier, define IEnumerable<LinePair>
     /// </summary>
-    public partial class Line
+    public partial struct Spline
     {
         IEnumerable<Point[]> Pair
         {
@@ -78,7 +78,6 @@ namespace geniikw.UIMeshLab
             {
                 return (divideLength / Length) * (end - start);
             }
-
             public Vector3 GetPoisition(float r)
             {
                 return Curve.Auto(n0, n1, Mathf.Lerp(start, end, r));
@@ -86,6 +85,10 @@ namespace geniikw.UIMeshLab
             public Vector3 GetDirection(float r)
             {
                 return Curve.AutoDirection(n0, n1, Mathf.Lerp(start, end, r));
+            }
+            public float GetWidth(float t)
+            {
+                return Mathf.Lerp(n0.width, n1.width, Mathf.Lerp(start, end, t));
             }
         }
     }

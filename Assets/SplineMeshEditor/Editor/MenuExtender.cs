@@ -6,11 +6,11 @@ namespace geniikw.UIMeshLab
 {
     public static class MenuExtender 
     {
-        public static Line BasicLine
+        public static Spline BasicLine
         {
             get
             {
-                var line = new Line();
+                var line = new Spline(1);
                 line.points.Add(new Point());
                 line.points.Add(new Point());
                 line.points[1].position = Vector3.right * 30f;

@@ -13,7 +13,7 @@ namespace geniikw.UIMeshLab
     /// </summary>
 
     [Serializable]
-    public partial class Line
+    public partial struct Spline
     {
         
         public enum Mode
@@ -23,21 +23,35 @@ namespace geniikw.UIMeshLab
             RoundEdge=2
         }
 
-        public List<Point> points = new List<Point>();
+        public List<Point> points;
         [Range(0, 1)]
-        public float startRatio = 0f;
+        public float startRatio;
         [Range(0, 1)]
-        public float endRatio = 1f;
-        public Mode mode = Mode.Noraml;
-        [Range(1,100)]
-        public float divideLength = 1f;
+        public float endRatio;
+        public Mode mode;
+        [Range(1, 100)]
+        public float divideLength;
         [Range(5, 180)]
-        public float divideAngle = 10f;
+        public float divideAngle;
 
-        public float uvAngle = 0f;
-        public Gradient color = new Gradient();
+        public float uvAngle;
+        public Gradient color;
 
-        public Vector3 normalVector = Vector3.forward;
+        public Vector3 normalVector;
+
+        public Spline(int number)
+        {
+            points = new List<Point>();
+            startRatio = 0f;
+            endRatio = 1f;
+            mode = Mode.Noraml;
+            divideLength = 1f;
+            divideAngle = 10f;
+            uvAngle = 0f;
+            color = new Gradient();
+            normalVector = Vector3.back;
+
+        }
 
         public Vector3 GetPosition(float ratio)
         {
@@ -52,7 +66,7 @@ namespace geniikw.UIMeshLab
                 else
                     return pair.GetPoisition(cl / pair.Length);
             }
-            return mode==Mode.Loop ?points.First().position : points.Last().position;
+            return mode==Mode.Loop ?points[0].position : points.Last().position;
         }
         
         public Vector3 GetDirection(float ratio)

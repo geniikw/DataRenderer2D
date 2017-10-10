@@ -6,7 +6,7 @@ namespace geniikw.UIMeshLab
 {
     public class GizmoLine : MonoBehaviour
     {
-        public Line line;
+        public Spline line;
         public Color color = Color.white;
 
         public bool isOnlyViewSelected = true;
@@ -38,9 +38,6 @@ namespace geniikw.UIMeshLab
         
         private void DrawLine()
         {
-            if (line == null)
-                return;
-
             var colorStore = Gizmos.color;
             foreach (var pair in line.PairList)
             {

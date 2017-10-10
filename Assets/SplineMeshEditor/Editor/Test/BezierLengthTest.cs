@@ -10,12 +10,12 @@ namespace geniikw.UIMeshLab
 {
     public class BezierLengthTest
     {
-        Line testLine;
+        Spline testLine;
 
         [SetUp]
         public void Init()
         {
-            testLine = new Line();
+            testLine = new Spline();
             testLine.points.Add(new Point());
             testLine.points.Add(new Point());
             testLine.points.Add(new Point());

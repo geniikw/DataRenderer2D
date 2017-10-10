@@ -10,40 +10,39 @@ namespace geniikw.UIMeshLab
     /// </summary>
     public class LineBuilder 
     {
-        Line _line;
+        public IBezierBuilder bezierDrawer;
+        public IJointBuilder jointDrawer;
+        public ICapBuilder capDrawer;
 
-        public IBezierDrawer bezierDrawer;
-        public IJointDrawer jointDrawer;
-        public ICapDrawer capDrawer;
+        public LineBuilder(){ }
 
-        public bool DrawJoint = true;
-        public bool DrawLine = true;
-
-        public LineBuilder(Line line)
+        public MeshData Build(ISpline target)
         {
-            _line = line;
-        }
-
-        public MeshData Build()
-        {
-            
             var output = MeshData.Void();
-           
 
-            if (DrawJoint)
+            if (target.Line.endRatio - target.Line.startRatio <= 0)
+                return output;
+
+            var pairList = target.Line.PairList.ToList();
+            
+            if (target.Line.mode == Spline.Mode.RoundEdge)
             {
-                foreach (var triple in _line.TripleList)
-                {
-                    output += jointDrawer.Build(triple);
-                }
+                output += capDrawer.Build(pairList.First(), false);
             }
 
-            if (DrawLine)
+            foreach (var triple in target.Line.TripleList)
             {
-                foreach (var pair in _line.PairList)
-                {
-                    output += bezierDrawer.Build(pair);
-                }
+                output += jointDrawer.Build(triple);
+            }
+
+            foreach (var pair in pairList)
+            {
+                output += bezierDrawer.Build(pair);
+            }
+
+            if(target.Line.mode == Spline.Mode.RoundEdge)
+            {
+                 output += capDrawer.Build(pairList.Last(),true);
             }
 
             return output;
@@ -51,12 +50,13 @@ namespace geniikw.UIMeshLab
 
         public class Factory
         {
-            public static LineBuilder Normal(Line line)
+            public static LineBuilder Normal(ISpline line)
             {
-                var builder = new LineBuilder(line)
+                var builder = new LineBuilder()
                 {
                     bezierDrawer = new NormalBezierDrawer(line),
-                    jointDrawer = new NormalJointDrawer(line)
+                    jointDrawer = new NormalJointDrawer(line),
+                    capDrawer = new RoundCapDrawer(line)
                 };
  
                 return builder;
