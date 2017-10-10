@@ -26,6 +26,7 @@ namespace geniikw.UIMeshLab
             mf.sharedMesh.triangles = meshData.triangles.ToArray();
             mf.sharedMesh.colors = meshData.vertexes.Select(v => v.color).ToArray();
             mf.sharedMesh.RecalculateNormals();
+
         }
 
         public void Reset()

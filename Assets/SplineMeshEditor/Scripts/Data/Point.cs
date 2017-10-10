@@ -5,23 +5,26 @@ using System;
 
 namespace geniikw.UIMeshLab
 {
+    /// <summary>
+    /// define each point
+    /// </summary>
     [Serializable]
-    public class Node
+    public class Point
     {
         public Vector3 position;
         public Vector3 previousControlOffset;
         public Vector3 nextControlOffset;
-        public Color color;
+        
         public float width;
         public float angle;
 
-        public Node()
+        public Point()
         {
             position = Vector3.zero;
             previousControlOffset = Vector3.zero;
             nextControlOffset = Vector3.zero;
-            color = Color.white;
-            width = 1f;
+
+            width = 2f;
             angle = 0f;
         }
         

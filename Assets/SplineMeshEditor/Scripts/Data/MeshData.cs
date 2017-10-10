@@ -11,6 +11,8 @@ namespace geniikw.UIMeshLab
     ///      uv
     ///      color
     /// triangles
+    /// 
+    /// Line <-> MeshData <-> Mesh, UIMesh, GizmoMesh.
     /// </summary>
 
     public struct MeshData
@@ -45,7 +47,7 @@ namespace geniikw.UIMeshLab
             return new MeshData
             {
                 vertexes = new List<Vertex> { p0, p1, p2, p3 },
-                triangles = new List<int> { 0, 1, 2, 1, 3, 2 }
+                triangles = new List<int> { 0, 2, 1, 1, 2, 3 }
             };
         }
 
@@ -54,12 +56,11 @@ namespace geniikw.UIMeshLab
             return new MeshData
             {
                 vertexes = new List<Vertex> { p0, p1, p2 },
-                triangles = new List<int> { 0, 1, 2 }
+                triangles = new List<int> { 0, 2, 1 }
             };
         }
 
         public static MeshData operator +(MeshData ls, MeshData rs){
-
             var tc = ls.vertexes.Count;
             ls.vertexes.AddRange(rs.vertexes);
             var tt = rs.triangles.Select(t => t + tc).ToArray();

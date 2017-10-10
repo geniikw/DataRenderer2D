@@ -15,10 +15,9 @@ namespace geniikw.UIMeshLab.Editors {
         protected void OnEnable()
         {
             _line = serializedObject.FindProperty("line");
-            _points = _line.FindPropertyRelative("points");
             _owner = target as MonoBehaviour;
 
-            _pointHandler = new PointHandler(_points, _owner);
+            _pointHandler = new PointHandler(_owner, _line);
         }
         protected void OnSceneGUI()
         {

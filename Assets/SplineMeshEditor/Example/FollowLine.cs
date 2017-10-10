@@ -18,6 +18,8 @@ namespace geniikw.UIMeshLab
             {
                 while (t < 1)
                 {
+                    if (line == null)
+                        yield break;
                     //라인 길이에 상관없이 같은 속도로 움직이게 한다.
                     t += Time.deltaTime* speed / line.line.Length;
                     transform.position = line.GetPosition(t);

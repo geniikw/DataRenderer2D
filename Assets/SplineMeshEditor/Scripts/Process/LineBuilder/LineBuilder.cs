@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace geniikw.UIMeshLab
 {
+    /// <summary>
+    /// converter (Line -> MeshData)
+    /// </summary>
     public class LineBuilder 
     {
         Line _line;
@@ -22,7 +26,9 @@ namespace geniikw.UIMeshLab
 
         public MeshData Build()
         {
+            
             var output = MeshData.Void();
+           
 
             if (DrawJoint)
             {
@@ -52,8 +58,7 @@ namespace geniikw.UIMeshLab
                     bezierDrawer = new NormalBezierDrawer(line),
                     jointDrawer = new NormalJointDrawer(line)
                 };
-                //builder.DrawLine = false;
-
+ 
                 return builder;
             }
         }

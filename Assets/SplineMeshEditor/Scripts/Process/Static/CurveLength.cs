@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace geniikw.UIMeshLab {
+    
     public static class CurveLength {
         /// <summary>
         /// for test
         /// </summary>
-        public static float SumDirections(Node n0, Node n1)
+        public static float SumDirections(Point n0, Point n1)
         {
             return SumDirections(n0.position, n0.NextControlPosition, n1.PreviousControlPoisition, n1.position);
         }
@@ -29,7 +30,7 @@ namespace geniikw.UIMeshLab {
         }
 
 
-        public static float Auto(Node n0, Node n1)
+        public static float Auto(Point n0, Point n1)
         {
             return Auto(n0.position, n0.NextControlPosition, n1.PreviousControlPoisition, n1.position);
         }

@@ -2,20 +2,25 @@
 
 namespace geniikw.UIMeshLab
 {
+    /// <summary>
+    /// Mathmaical stuff.
+    /// </summary>
+    
     public static class Curve
     {
         public static Vector3 Auto(Vector3 p0, Vector3 c0, Vector3 c1, Vector3 p1, float t)
         {
-            if (c0 == Vector3.zero && c1 == Vector3.zero)
+            if (c0 == p0 && c1 == p1)
                 return Vector3.Lerp(p0, p1, t);
 
-            if (c0 == Vector3.zero || c1 == Vector3.zero)
-                return Quadratic(p0, c0 == Vector3.zero ? c1 : c0, p1, t);
             t = Mathf.Clamp01(t);
+            if (c0 == p0 || c1 == p1)
+                return Quadratic(p0, c0 == p0 ? c1 : c0, p1, t);
+
             return Cubic(p0, c0, c1, p1, t);
         }
         
-        public static Vector3 Auto(Node n0, Node n1, float t)
+        public static Vector3 Auto(Point n0, Point n1, float t)
         {
             var p0 = n0.position;
             var c0 = n0.NextControlPosition;
@@ -25,7 +30,7 @@ namespace geniikw.UIMeshLab
             return Auto(p0, c0, c1, p1, t);
         }
 
-        public static Vector3 AutoDirection(Node n0, Node n1, float t)
+        public static Vector3 AutoDirection(Point n0, Point n1, float t)
         {
             var p0 = n0.position;
             var c0 = n0.NextControlPosition;
@@ -50,7 +55,7 @@ namespace geniikw.UIMeshLab
             return CubicDirection(p0, c0, c1, p1, t);
         }
 
-        public static Vector3 CubicDirection(Node n0, Node n1, float t)
+        public static Vector3 CubicDirection(Point n0, Point n1, float t)
         {
             var p0 = n0.position;
             var c0 = n0.NextControlPosition;

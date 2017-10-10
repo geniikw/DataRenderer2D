@@ -4,19 +4,22 @@ using UnityEngine;
 using System.Linq;
 namespace geniikw.UIMeshLab
 {
+    /// <summary>
+    /// to draw bezier, define IEnumerable<LinePair>
+    /// </summary>
     public partial class Line
     {
-        IEnumerable<Node[]> Pair
+        IEnumerable<Point[]> Pair
         {
             get
             {
                 for (int i = 0; i < points.Count - 1; i++)
                 {
-                    yield return new Node[] { points[i], points[i + 1] };
+                    yield return new Point[] { points[i], points[i + 1] };
                 }
-                if (loop && points.Count > 1)
+                if (mode == Mode.Loop && points.Count > 1)
                 {
-                    yield return new Node[] { points.Last(), points.First() };
+                    yield return new Point[] { points.Last(), points.First() };
                 }
             }
         }
@@ -43,7 +46,7 @@ namespace geniikw.UIMeshLab
                     if (le < ps)
                         yield break;
                     if (ls < pe)
-                        yield return new LinePair(pair[0], pair[1], Mathf.Max(0f, (ls - ps) / pl), Mathf.Min(1f, (le - ps) / pl));
+                        yield return new LinePair(pair[0], pair[1], Mathf.Max(0f, (ls - ps) / pl), Mathf.Min(1f, (le - ps) / pl), ps / l, pe / l);
                     ps = pe;
                 }
             }
@@ -51,16 +54,23 @@ namespace geniikw.UIMeshLab
 
         public struct LinePair
         {
-            public Node n0;
-            public Node n1;
+            public Point n0;
+            public Point n1;
+
+            public float sRatio;
+            public float eRatio;
+            public float RatioLength => eRatio - sRatio;
+
             public float start;
             public float end;
-            public LinePair(Node n0, Node n1, float s, float e)
+            public LinePair(Point n0, Point n1, float s, float e, float sr, float er)
             {
                 this.n0 = n0;
                 this.n1 = n1;
                 start = s;
                 end = e;
+                sRatio = sr;
+                eRatio = er;
             }
             public float Length => CurveLength.Auto(n0, n1) * (end - start);
 

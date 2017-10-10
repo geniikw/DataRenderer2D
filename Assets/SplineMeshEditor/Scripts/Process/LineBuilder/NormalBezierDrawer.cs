@@ -19,7 +19,7 @@ namespace geniikw.UIMeshLab
             float dt = pair.GetDT(_line.divideLength);
             Vector3 prv1 = Vector3.zero;
             Vector3 prv2 = Vector3.zero;
-
+            
             for (float t = pair.start; t < pair.end; t += dt)
             {
                 var ws = Mathf.Lerp(pair.n0.width, pair.n1.width, t);
@@ -28,9 +28,9 @@ namespace geniikw.UIMeshLab
                 var ps = Curve.Auto(pair.n0, pair.n1, t);
                 var pe = Curve.Auto(pair.n0, pair.n1, t+dt);
 
-                var cs = Color.Lerp(pair.n0.color, pair.n1.color, t);
-                var ce = Color.Lerp(pair.n0.color, pair.n1.color, t+dt);
-                
+                var cs = _line.color.Evaluate(pair.sRatio + t * pair.RatioLength);
+                var ce = _line.color.Evaluate(pair.sRatio + (t+dt) * pair.RatioLength);
+
                 var d = pe - ps;
                 var wd = Vector3.Cross(d, _line.normalVector).normalized;
                 var wds = t ==0f ? Vector3.Cross(Curve.AutoDirection(pair.n0, pair.n1, 0), _line.normalVector).normalized : wd;

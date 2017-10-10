@@ -7,33 +7,35 @@ using System.Linq;
 
 namespace geniikw.UIMeshLab
 {
-    /// Line 
-    ///     List<Node> points 
-    ///          Vector3 position;
-    ///          Vector3 previousCurvePosition;
-    ///          Vector3 nextCurvePosition;
-    ///          Color color;
-    ///          float width;
-    ///          float angle;
-    ///          int nextDivieCount;
-    ///     bool loop;
-    ///     float startRatio
-    ///     float endRatio
+
+    /// <summary>
+    /// data container of bezierLine.
+    /// </summary>
 
     [Serializable]
     public partial class Line
     {
-        public List<Node> points = new List<Node>();
+        
+        public enum Mode
+        {
+            Noraml=0,
+            Loop=1,
+            RoundEdge=2
+        }
+
+        public List<Point> points = new List<Point>();
         [Range(0, 1)]
         public float startRatio = 0f;
         [Range(0, 1)]
         public float endRatio = 1f;
-        public bool loop = false;
-        [Range(5,100)]
+        public Mode mode = Mode.Noraml;
+        [Range(1,100)]
         public float divideLength = 1f;
-
-        [Range(1, 180)]
+        [Range(5, 180)]
         public float divideAngle = 10f;
+
+        public float uvAngle = 0f;
+        public Gradient color = new Gradient();
 
         public Vector3 normalVector = Vector3.forward;
 
@@ -50,7 +52,7 @@ namespace geniikw.UIMeshLab
                 else
                     return pair.GetPoisition(cl / pair.Length);
             }
-            return points.Last().position;
+            return mode==Mode.Loop ?points.First().position : points.Last().position;
         }
         
         public Vector3 GetDirection(float ratio)
@@ -67,12 +69,9 @@ namespace geniikw.UIMeshLab
             }
             return (points[points.Count-2].position-points.Last().position).normalized;
         }
-
-        
+                
         public float AllLength => Pair.Sum(p => CurveLength.Auto(p[0], p[1]));
-
         public float Length => PairList.Sum(p => p.Length);
-        public float uvAngle = 0f;
 
         public Vector2 UVRotate(Vector2 uv)
         {

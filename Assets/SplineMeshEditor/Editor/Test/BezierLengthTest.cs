@@ -16,9 +16,9 @@ namespace geniikw.UIMeshLab
         public void Init()
         {
             testLine = new Line();
-            testLine.points.Add(new Node());
-            testLine.points.Add(new Node());
-            testLine.points.Add(new Node());
+            testLine.points.Add(new Point());
+            testLine.points.Add(new Point());
+            testLine.points.Add(new Point());
 
             testLine.points[0].position = Vector3.zero;
             testLine.points[0].previousControlOffset = Vector3.zero;
