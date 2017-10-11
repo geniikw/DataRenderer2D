@@ -9,7 +9,9 @@ namespace geniikw.UIMeshLab
 {
 
     /// <summary>
-    /// data container of bezierLine.
+    /// data container of spline.
+    /// define struct to use animator.
+    /// and define ISpline to use like pointer.
     /// </summary>
 
     [Serializable]
@@ -68,21 +70,23 @@ namespace geniikw.UIMeshLab
             }
             return mode==Mode.Loop ?points[0].position : points.Last().position;
         }
-        
+
         public Vector3 GetDirection(float ratio)
         {
             ratio = Mathf.Clamp01(ratio);
             var cl = ratio * Length;
-
+            Vector3 dir = Vector3.zero;
             foreach (var pair in PairList)
             {
+                dir = pair.GetDirection(cl / pair.Length);
                 if (cl > pair.Length)
                     cl -= pair.Length;
                 else
-                    return pair.GetDirection(cl / pair.Length);
+                    break;
             }
-            return (points[points.Count-2].position-points.Last().position).normalized;
+            return dir;
         }
+   
                 
         public float AllLength => Pair.Sum(p => CurveLength.Auto(p[0], p[1]));
         public float Length => PairList.Sum(p => p.Length);

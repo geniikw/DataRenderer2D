@@ -14,8 +14,9 @@ namespace geniikw.UIMeshLab
         public Vector3 position;
         public Vector3 previousControlOffset;
         public Vector3 nextControlOffset;
-        
+        [Range(0,100)]
         public float width;
+        [Range(0,180)]
         public float angle;
 
         public Point()

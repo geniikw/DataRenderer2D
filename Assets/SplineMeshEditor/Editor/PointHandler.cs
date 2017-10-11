@@ -20,7 +20,6 @@ public class PointHandler {
 
     readonly SerializedProperty _points;
     readonly Component _owner;
-    readonly SerializedProperty _line;
 
     readonly SerializedProperty _normal;
     readonly SerializedProperty _mode;
@@ -47,7 +46,6 @@ public class PointHandler {
     public PointHandler(Component owner, SerializedProperty line)
     {
         _owner = owner;
-        _line = line;
         _points = line.FindPropertyRelative("points");
         _normal = line.FindPropertyRelative("normalVector");
         _mode = line.FindPropertyRelative("mode");

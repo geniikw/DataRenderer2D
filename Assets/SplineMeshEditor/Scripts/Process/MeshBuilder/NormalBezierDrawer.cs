@@ -19,7 +19,7 @@ namespace geniikw.UIMeshLab
             float dt = pair.GetDT(_line.Line.divideLength);
             Vector3 prv1 = Vector3.zero;
             Vector3 prv2 = Vector3.zero;
-            
+            /// todo : too complicate need split code for test or something.
             for (float t = pair.start; t < pair.end; t += dt)
             {
                 var ws = Mathf.Lerp(pair.n0.width, pair.n1.width, t);

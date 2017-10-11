@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace geniikw.UIMeshLab
 {
+    /// <summary>
+    /// no render line.
+    /// </summary>
     public class GizmoLine : MonoBehaviour
     {
         public Spline line;

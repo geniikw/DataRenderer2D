@@ -7,20 +7,20 @@ using System.Linq;
 
 namespace geniikw.UIMeshLab
 {
+    /// <summary>
+    /// draw mesh in canvas
+    /// </summary>
     public class UILine : Graphic, IMeshModifier, ISpline
     {
-        /// <summary>
         /// if change in code. Should call GeometryUpdate();
-        /// </summary>
         public Spline line;
 
-        LineBuilder m_lineBuilder;
-
-        LineBuilder LineBuilder
+        IMeshBuilder m_builder;
+        IMeshBuilder Builder
         {
             get
             {
-                return m_lineBuilder ?? (m_lineBuilder = LineBuilder.Factory.Normal(this));
+                return m_builder ?? (m_builder = LineBuilder.Factory.Normal(this));
             }
         }
 
@@ -35,7 +35,7 @@ namespace geniikw.UIMeshLab
         public void ModifyMesh(VertexHelper verts)
         {
             verts.Clear();
-            var meshData = LineBuilder.Build(this);
+            var meshData = Builder.Build();
             meshData.vertexes.ForEach(v => verts.AddVert(v.position, v.color, v.uv));
 
             foreach (var t in meshData.Triangles)

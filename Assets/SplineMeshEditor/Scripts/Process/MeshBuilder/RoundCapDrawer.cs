@@ -17,7 +17,6 @@ namespace geniikw.UIMeshLab
         public MeshData Build(Spline.LinePair pair, bool isEnd)
         {
             var output = MeshData.Void();
-            var points = _line.Line.points;
 
             var normal = _line.Line.normalVector;
             var divideAngle = _line.Line.divideAngle;
