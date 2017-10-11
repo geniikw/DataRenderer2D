@@ -13,9 +13,19 @@ namespace geniikw.UIMeshLab
         public Spline line;
 
         IMeshBuilder m_builder;
-        IMeshBuilder Builder => m_builder ?? (m_builder = LineBuilder.Factory.Normal(this));
-
-        public Spline Line => line;
+        IMeshBuilder Builder {
+            get
+            {
+                return m_builder ?? (m_builder = LineBuilder.Factory.Normal(this));
+            }
+            
+        }
+        public Spline Line {
+            get
+            {
+                return line;
+            }
+        }
 
         private void UpdateGeometry()
         {

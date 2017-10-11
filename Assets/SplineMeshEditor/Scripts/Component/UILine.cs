@@ -24,7 +24,13 @@ namespace geniikw.UIMeshLab
             }
         }
 
-        public Spline Line => line;
+        public Spline Line
+        {
+            get
+            {
+                return line;
+            }
+        }
 
 
         protected override void Start()

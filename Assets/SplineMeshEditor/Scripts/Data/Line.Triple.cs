@@ -38,7 +38,7 @@ namespace geniikw.UIMeshLab
                 }
             }
         }
-        
+
         public struct Triple
         {
             Point previous;
@@ -48,14 +48,43 @@ namespace geniikw.UIMeshLab
 
             public Triple(Point p, Point c, Point n, Color cl)
             {
-                previous = p; target = c; next = n;color = cl;
+                previous = p; target = c; next = n; color = cl;
             }
 
-            public Vector3 ForwardDirection => Curve.AutoDirection(target, next, 0f);
-            public Vector3 BackDirection => Curve.AutoDirection(previous, target , 1f);
-            public Vector3 Position => target.position;
-            public float CurrentWidth => target.width;
-            public Color CurrentColor => color;
+            public Vector3 ForwardDirection {
+                get
+                {
+                    return Curve.AutoDirection(target, next, 0f);
+                }
+            }
+            public Vector3 BackDirection
+            {
+                get
+                {
+                    return Curve.AutoDirection(previous, target, 1f);
+                }
+            }
+            public Vector3 Position
+            {
+                get
+                {
+                    return target.position;
+                }
+            }
+            public float CurrentWidth
+            {
+                get
+                {
+                    return target.width;
+                }
+            }
+            public Color CurrentColor
+            {
+                get
+                {
+                    return color;
+                }
+            }
         }
     }
 }

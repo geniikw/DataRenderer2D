@@ -59,7 +59,13 @@ namespace geniikw.UIMeshLab
 
             public float sRatio;
             public float eRatio;
-            public float RatioLength => eRatio - sRatio;
+            public float RatioLength
+            {
+                get
+                {
+                    return eRatio - sRatio;
+                }
+            }
 
             public float start;
             public float end;
@@ -72,7 +78,13 @@ namespace geniikw.UIMeshLab
                 sRatio = sr;
                 eRatio = er;
             }
-            public float Length => CurveLength.Auto(n0, n1) * (end - start);
+            public float Length
+            {
+                get
+                {
+                    return CurveLength.Auto(n0, n1) * (end - start);
+                }
+            }
 
             public float GetDT(float divideLength)
             {

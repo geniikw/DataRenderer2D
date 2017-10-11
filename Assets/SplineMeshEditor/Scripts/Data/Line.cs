@@ -17,12 +17,12 @@ namespace geniikw.UIMeshLab
     [Serializable]
     public partial struct Spline
     {
-        
+
         public enum Mode
         {
-            Noraml=0,
-            Loop=1,
-            RoundEdge=2
+            Noraml = 0,
+            Loop = 1,
+            RoundEdge = 2
         }
 
         public List<Point> points;
@@ -60,15 +60,15 @@ namespace geniikw.UIMeshLab
             ratio = Mathf.Clamp01(ratio);
 
             var cl = ratio * Length;
-            
-            foreach(var pair in PairList)
+
+            foreach (var pair in PairList)
             {
                 if (cl > pair.Length)
                     cl -= pair.Length;
                 else
                     return pair.GetPoisition(cl / pair.Length);
             }
-            return mode==Mode.Loop ?points[0].position : points.Last().position;
+            return mode == Mode.Loop ? points[0].position : points.Last().position;
         }
 
         public Vector3 GetDirection(float ratio)
@@ -86,10 +86,21 @@ namespace geniikw.UIMeshLab
             }
             return dir;
         }
-   
-                
-        public float AllLength => Pair.Sum(p => CurveLength.Auto(p[0], p[1]));
-        public float Length => PairList.Sum(p => p.Length);
+
+
+        public float AllLength {
+            get
+            {
+                return Pair.Sum(p => CurveLength.Auto(p[0], p[1]));
+            }
+        }
+        public float Length
+        {
+            get
+            {
+                return PairList.Sum(p => p.Length);
+            }
+        }
 
         public Vector2 UVRotate(Vector2 uv)
         {
