@@ -253,35 +253,29 @@ MonoBehaviour:
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       width: 0.61
-      angle: 0
     - position: {x: 27.534714, y: -71.77574, z: 0}
       previousControlOffset: {x: -17.504608, y: 2.8225098, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       width: 5.98
-      angle: 0
     - position: {x: -102.86788, y: 49.553223, z: 0}
       previousControlOffset: {x: 36.03418, y: -71.69667, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       width: 1.11
-      angle: 0
     - position: {x: -57.274307, y: -95.32748, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: -3.21167, y: 57.380974, z: 0}
       width: 1.43
-      angle: 0
     - position: {x: -28.914383, y: 58.095276, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: -40.8116, y: -39.638794, z: 0}
       width: 4.38
-      angle: 0
     - position: {x: -119.358055, y: -98.549576, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
-      width: 1.12
-      angle: 0
+      width: 0.95
     startRatio: 0
     endRatio: 1
-    mode: 0
+    mode: 2
     divideLength: 1
     divideAngle: 23
     uvAngle: 0

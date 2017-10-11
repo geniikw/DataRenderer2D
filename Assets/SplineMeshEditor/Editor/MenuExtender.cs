@@ -19,7 +19,7 @@ namespace geniikw.UIMeshLab
         }
 
         //[ContextMenu()]
-        [MenuItem("GameObject/UI/Line/UILine")]
+        [MenuItem("GameObject/2D Object/Line/UILine")]
         public static void CreateUILine()
         {
             var canvas = Object.FindObjectOfType<Canvas>();
@@ -42,7 +42,7 @@ namespace geniikw.UIMeshLab
         }
 
         //[ContextMenu()]
-        [MenuItem("GameObject/UI/Line/GizmoLine")]
+        [MenuItem("GameObject/2D Object/Line/GizmoLine")]
         public static void CreateNoRenderLine()
         {
             var linego = new GameObject("line");
@@ -53,7 +53,7 @@ namespace geniikw.UIMeshLab
             Selection.activeObject = linego;
         }
 
-        [MenuItem("GameObject/UI/Line/WorldLine")]
+        [MenuItem("GameObject/2D Object/Line/WorldLine")]
         public static void CreateWorldLine()
         {
             var linego = new GameObject("line");

@@ -16,8 +16,8 @@ namespace geniikw.UIMeshLab
         public Vector3 nextControlOffset;
         [Range(0,100)]
         public float width;
-        [Range(0,180)]
-        public float angle;
+        //[Range(0,180)]
+        //public float angle;
 
         public Point()
         {
@@ -26,7 +26,7 @@ namespace geniikw.UIMeshLab
             nextControlOffset = Vector3.zero;
 
             width = 2f;
-            angle = 0f;
+//            angle = 0f;
         }
         
         public Vector3 PreviousControlPoisition
