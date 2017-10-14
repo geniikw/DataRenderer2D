@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace geniikw.UIMeshLab
+namespace geniikw.UIMeshLab.Test
 {
 
     public class MeshDataTest {     

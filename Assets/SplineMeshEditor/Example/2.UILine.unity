@@ -346,7 +346,7 @@ MonoBehaviour:
     - position: {x: -119.358055, y: -98.549576, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
-      width: 0.95
+      width: 0.2
     startRatio: 0
     endRatio: 1
     mode: 2

@@ -30,7 +30,7 @@ namespace geniikw.UIMeshLab
         private void UpdateGeometry()
         {
             var mf = GetComponent<MeshFilter>();
-
+            
             var meshData = Builder.Build();
             mf.sharedMesh.Clear();
             mf.sharedMesh.vertices = meshData.vertexes.Select(v => v.position).ToArray();

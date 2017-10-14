@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-namespace geniikw.UIMeshLab
+namespace geniikw.UIMeshLab.Editors
 {
     public static class MenuExtender 
     {
