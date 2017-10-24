@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 176186421}
   - component: {fileID: 176186420}
   m_Layer: 0
-  m_Name: Normal(1,0,0)
+  m_Name: Normal(1,0,0)(Animate)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

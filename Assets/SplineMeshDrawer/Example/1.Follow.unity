@@ -195,123 +195,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &783014359
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 783014361}
-  - component: {fileID: 783014360}
-  m_Layer: 0
-  m_Name: Gizmo (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &783014360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 783014359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 671416d9c558e56428a918a932d3e442, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  line:
-    points:
-    - position: {x: 4.857239, y: 37.421272, z: 0}
-      previousControlOffset: {x: 9.441666, y: -4.0550117, z: 0}
-      nextControlOffset: {x: -18.419693, y: 11.475979, z: 7.2765503}
-      width: 0
-      angle: 0
-    - position: {x: 27.031273, y: 48.54879, z: 0}
-      previousControlOffset: {x: -21.172852, y: 18.369915, z: 0}
-      nextControlOffset: {x: 9.095863, y: -4.3210907, z: -3.627121}
-      width: 0
-      angle: 0
-    - position: {x: 35.401016, y: 20.77729, z: -10.494003}
-      previousControlOffset: {x: -1.5146637, y: 11.310406, z: 2.5937195}
-      nextControlOffset: {x: 3.0430298, y: -14.317154, z: 1.3814545}
-      width: 0
-      angle: 0
-    - position: {x: 18.633057, y: -3.2423906, z: 0}
-      previousControlOffset: {x: 13.251884, y: 7.0464535, z: -7.2611694}
-      nextControlOffset: {x: -7.4818726, y: -6.1605377, z: -4.9259796}
-      width: 0
-      angle: 0
-    - position: {x: -1.7872925, y: 9.135179, z: 0}
-      previousControlOffset: {x: 10.28801, y: 6.436899, z: 0}
-      nextControlOffset: {x: -9.387054, y: -5.9342327, z: 0}
-      width: 0
-      angle: 0
-    - position: {x: -16.625397, y: 34.109135, z: 0}
-      previousControlOffset: {x: -11.042603, y: -5.0715714, z: 0}
-      nextControlOffset: {x: 9.735168, y: 4.109482, z: 0}
-      width: 0
-      angle: 0
-    - position: {x: 16.028229, y: 52.015987, z: 11.251678}
-      previousControlOffset: {x: -13.210236, y: 10.229439, z: 0}
-      nextControlOffset: {x: 7.161171, y: -10.507484, z: -6.6326447}
-      width: 0
-      angle: 0
-    startRatio: 0
-    endRatio: 1
-    mode: 1
-    divideLength: 1
-    divideAngle: 5
-    uvAngle: 0
-    color:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    normalVector: {x: 0, y: 0, z: 1}
-  color: {r: 1, g: 1, b: 1, a: 1}
-  isOnlyViewSelected: 0
-  debugColor: 0
---- !u!4 &783014361
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 783014359}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -149, y: 14.2, z: -218.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &788448639
 GameObject:
@@ -390,7 +274,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &856945620
 GameObject:
@@ -422,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129536242496d404b8a33ffbde06a261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  line: {fileID: 783014360}
+  line: {fileID: 1410870487}
   speed: 30
 --- !u!23 &856945622
 MeshRenderer:
@@ -483,10 +367,10 @@ Transform:
   m_GameObject: {fileID: 856945620}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -133.96378, y: 8.701439, z: -177.31966}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 20.49, y: 70.98, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1374640983
 GameObject:
@@ -549,4 +433,113 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1410870486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1410870488}
+  - component: {fileID: 1410870487}
+  m_Layer: 0
+  m_Name: line
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1410870487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1410870486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671416d9c558e56428a918a932d3e442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  line:
+    useListPoints: 1
+    p0:
+      position: {x: 0, y: 0, z: 0}
+      previousControlOffset: {x: 0, y: 0, z: 0}
+      nextControlOffset: {x: 0, y: 0, z: 0}
+      width: 2
+    p1:
+      position: {x: 1, y: 0, z: 0}
+      previousControlOffset: {x: 0, y: 0, z: 0}
+      nextControlOffset: {x: 0, y: 0, z: 0}
+      width: 2
+    points:
+    - position: {x: -151.94449, y: 55.741886, z: 0}
+      previousControlOffset: {x: -49.51381, y: -64.10274, z: 0}
+      nextControlOffset: {x: 38.23646, y: 45.15144, z: 0}
+      width: 2
+    - position: {x: 36.30799, y: 62.08403, z: 0}
+      previousControlOffset: {x: -7.3885117, y: 43.69568, z: 0}
+      nextControlOffset: {x: 10.812546, y: -41.992115, z: 0}
+      width: 2
+    - position: {x: -20.381226, y: -26.397297, z: 0}
+      previousControlOffset: {x: -28.120686, y: 17.209408, z: 0}
+      nextControlOffset: {x: 33.519318, y: -16.810284, z: 0}
+      width: 2
+    - position: {x: -67.4467, y: -74.22475, z: 0}
+      previousControlOffset: {x: -47.048866, y: 11.899834, z: 0}
+      nextControlOffset: {x: 89.60355, y: -27.823997, z: 0}
+      width: 2
+    option:
+      startRatio: 0
+      endRatio: 1
+      mode: 1
+      divideLength: 1
+      divideAngle: 10
+      uvAngle: 0
+      color:
+        serializedVersion: 2
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
+        key4: {r: 0, g: 0, b: 0, a: 0}
+        key5: {r: 0, g: 0, b: 0, a: 0}
+        key6: {r: 0, g: 0, b: 0, a: 0}
+        key7: {r: 0, g: 0, b: 0, a: 0}
+        ctime0: 0
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
+        ctime4: 0
+        ctime5: 0
+        ctime6: 0
+        ctime7: 0
+        atime0: 0
+        atime1: 65535
+        atime2: 0
+        atime3: 0
+        atime4: 0
+        atime5: 0
+        atime6: 0
+        atime7: 0
+        m_Mode: 0
+        m_NumColorKeys: 2
+        m_NumAlphaKeys: 2
+      normalVector: {x: 0, y: 0, z: -1}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  isOnlyViewSelected: 0
+  debugColor: 0
+--- !u!4 &1410870488
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1410870486}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

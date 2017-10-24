@@ -16,8 +16,8 @@ namespace geniikw.UIMeshLab
         public Vector3 nextControlOffset;
         [Range(0,100)]
         public float width;
-        //[Range(0,180)]
-        //public float angle;
+        //todo : move normalVector from LineOption to Point.
+        //public float normal;
 
         public Point(Vector3 pos, Vector3 next, Vector3 prev)
         {
@@ -26,7 +26,6 @@ namespace geniikw.UIMeshLab
             nextControlOffset = next;
 
             width = 2f;
-//            angle = 0f;
         }
         
         public Vector3 PreviousControlPoisition

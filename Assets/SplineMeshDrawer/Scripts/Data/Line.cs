@@ -24,11 +24,13 @@ namespace geniikw.UIMeshLab
             RoundEdge = 2
         }
 
-        [Tooltip("list can't animate, so if you want to animat point, set false")]
+        [Tooltip("list can't animate, so if you want to animate point, set false")]
         public bool useListPoints;
-
+        [Header("it's valid when useListPoint is false")]
         public Point p0;
+        [Header("it's valid when useListPoint is false")]
         public Point p1;
+        [Header("it's valid when useListPoint is true")]
         public List<Point> points;
         
         public IList<Point> Points
