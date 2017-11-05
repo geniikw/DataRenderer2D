@@ -462,7 +462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   line:
-    useListPoints: 1
+    splineMode: 1
     p0:
       position: {x: 0, y: 0, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}

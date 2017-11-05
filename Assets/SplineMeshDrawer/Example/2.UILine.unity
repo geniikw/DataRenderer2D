@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   line:
-    useListPoints: 1
+    splineMode: 1
     p0:
       position: {x: 0, y: 0, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
@@ -259,7 +259,7 @@ MonoBehaviour:
       nextControlOffset: {x: 0, y: 0, z: 0}
       width: 2
     points:
-    - position: {x: -179.21152, y: 100.18718, z: 0}
+    - position: {x: -165.4145, y: 106.80617, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 115.16092, y: 5.9075165, z: 0}
       width: 2
@@ -275,7 +275,7 @@ MonoBehaviour:
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       width: 2
-    - position: {x: -182.64218, y: -73.34813, z: 0}
+    - position: {x: -94.77074, y: -108.49672, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       width: 2
@@ -373,10 +373,10 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   line:
-    useListPoints: 0
+    splineMode: 0
     p0:
       position: {x: -111.935356, y: 29.65052, z: 0}
-      previousControlOffset: {x: 54.06141, y: 59.710625, z: 0}
+      previousControlOffset: {x: 59.30188, y: 50.976532, z: 0}
       nextControlOffset: {x: -55.577522, y: 54.131035, z: 0}
       width: 2
     p1:

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.UI;
 
 namespace geniikw.UIMeshLab.Editors {
         
@@ -10,11 +11,12 @@ namespace geniikw.UIMeshLab.Editors {
         private PointHandler _pointHandler;
         //private LineInpectorHandler _inspector;
         private MonoBehaviour _owner;
-        
+        private SerializedProperty _SplineMode;
+
         protected void OnEnable()
-        {
+        { 
             _owner = target as MonoBehaviour;
-                  
+            _SplineMode = serializedObject.FindProperty("line").FindPropertyRelative("splineMode");
             _pointHandler = new PointHandler(_owner,serializedObject);
             //_inspector = new LineInpectorHandler(serializedObject);
         }
@@ -28,43 +30,45 @@ namespace geniikw.UIMeshLab.Editors {
         public override void OnInspectorGUI()
         {
             EditorGUI.BeginChangeCheck();
-            base.OnInspectorGUI();
+            EditorGUILayout.PropertyField(_SplineMode);
             if (EditorGUI.EndChangeCheck())
             {
                 SyncPoint();
             }
+            base.OnInspectorGUI();
         }
 
         void SyncPoint()
         {
-            if (serializedObject.FindProperty("line").FindPropertyRelative("useListPoints").boolValue)
-                return;
+            if (!serializedObject.FindProperty("line").FindPropertyRelative("splineMode").boolValue)
+            {
+                var p0 = serializedObject
+                    .FindProperty("line")
+                    .FindPropertyRelative("points")
+                    .GetArrayElementAtIndex(0);
 
-            var p0 = serializedObject
-                .FindProperty("line")
-                .FindPropertyRelative("points")
-                .GetArrayElementAtIndex(0);
+                var p1 = serializedObject
+                    .FindProperty("line")
+                    .FindPropertyRelative("points")
+                    .GetArrayElementAtIndex(1);
 
-            var p1 = serializedObject
-                .FindProperty("line")
-                .FindPropertyRelative("points")
-                .GetArrayElementAtIndex(1);
+                var p00 = serializedObject
+                   .FindProperty("line")
+                   .FindPropertyRelative("p0");
 
-            var p00 = serializedObject
-               .FindProperty("line")
-               .FindPropertyRelative("p0");
+                var p11 = serializedObject
+                         .FindProperty("line")
+                         .FindPropertyRelative("p1");
 
-            var p11 = serializedObject
-                     .FindProperty("line")
-                     .FindPropertyRelative("p1");
+                p00.Position().vector3Value = p0.Position().vector3Value;
+                p00.NextOffset().vector3Value = p0.NextOffset().vector3Value;
+                p00.PrevOffset().vector3Value = p0.PrevOffset().vector3Value;
 
-            p00.Position().vector3Value = p0.Position().vector3Value;
-            p00.NextOffset().vector3Value = p0.NextOffset().vector3Value;
-            p00.PrevOffset().vector3Value = p0.PrevOffset().vector3Value;
-
-            p11.Position().vector3Value = p1.Position().vector3Value;
-            p11.NextOffset().vector3Value = p1.NextOffset().vector3Value;
-            p00.PrevOffset().vector3Value = p1.PrevOffset().vector3Value;
+                p11.Position().vector3Value = p1.Position().vector3Value;
+                p11.NextOffset().vector3Value = p1.NextOffset().vector3Value;
+                p11.PrevOffset().vector3Value = p1.PrevOffset().vector3Value;
+            }
+            serializedObject.ApplyModifiedProperties();
         }
 
     }

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using System.Linq;
+using System;
+
 namespace geniikw.UIMeshLab.Editors
 {
     public class PointHandler
     {
-
         /// Line 
         ///     List<Node> points 
         ///          Vector3 position;
@@ -28,18 +29,23 @@ namespace geniikw.UIMeshLab.Editors
         readonly SerializedProperty _line;
         readonly SerializedObject _target;
 
-        readonly float AddDeleteButtonSize = 3f;
-        readonly float AddButtonDistance = 10f;
-        readonly float AddInitialDistance = 30f;
-        readonly float DeleteButtonDistance = 20f;
-
+        [Serializable]
+        public class Setting
+        {
+            public float AddButtonSize = 3f;
+            public float DeleteButtonSize = 3f;
+            public float AddButtonDistance = 10f;
+            public float AddInitialDistance = 30f;
+            public float DeleteButtonDistance = 20f;
+        }
+        
         readonly float AddButtonAngle = 20f;
         
         public IEnumerable<SerializedProperty> Points
         {
             get
             {
-                if(!_line.FindPropertyRelative("useListPoints").boolValue)
+                if(!_line.FindPropertyRelative("splineMode").boolValue)
                 {
                     yield return _line.FindPropertyRelative("p0");
                     yield return _line.FindPropertyRelative("p1");
@@ -56,7 +62,7 @@ namespace geniikw.UIMeshLab.Editors
         }
         public SerializedProperty GetPoint(int index)
         {
-            if(!_line.FindPropertyRelative("useListPoints").boolValue)
+            if(!_line.FindPropertyRelative("splineMode").boolValue)
             {
                 if (index == 0)
                     return _line.FindPropertyRelative("p0");
@@ -68,7 +74,7 @@ namespace geniikw.UIMeshLab.Editors
         public int Size
         {
             get {
-                if (!_line.FindPropertyRelative("useListPoints").boolValue) return 2;
+                if (!_line.FindPropertyRelative("splineMode").boolValue) return 2;
                 return _line.FindPropertyRelative("points").arraySize; }
         }
 
@@ -104,7 +110,7 @@ namespace geniikw.UIMeshLab.Editors
                 HandlePoint(index, position);
                 index++;
             }
-            if(_line.FindPropertyRelative("useListPoints").boolValue)
+            if(_line.FindPropertyRelative("splineMode").boolValue)
                 HandlesAddPointButton();
         }
 
@@ -220,8 +226,7 @@ namespace geniikw.UIMeshLab.Editors
                 position.serializedObject.ApplyModifiedProperties();
             }
         }
-
-
+        
         private void HandlesAddPointButton()
         {
             ///add button
@@ -239,7 +244,12 @@ namespace geniikw.UIMeshLab.Editors
 
             var buffer = Handles.color;
             Handles.color = Color.green;
-            if (Handles.Button(_owner.transform.TransformPoint(last + direction * AddButtonDistance), _owner.transform.rotation, AddDeleteButtonSize, AddDeleteButtonSize, Handles.DotHandleCap))
+            
+            if (Handles.Button(_owner.transform.TransformPoint(last + direction * EditorSetting.Get.PS.AddButtonDistance),
+                               _owner.transform.rotation,
+                               EditorSetting.Get.PS.AddButtonSize,
+                               EditorSetting.Get.PS.AddButtonSize, 
+                               Handles.DotHandleCap))
             {
                 var index = Size;
                 var width = GetPoint(index - 1).FindPropertyRelative("width").floatValue;
@@ -247,7 +257,7 @@ namespace geniikw.UIMeshLab.Editors
                 _line.FindPropertyRelative("points").InsertArrayElementAtIndex(index);
 
                 var addedPoint = _line.FindPropertyRelative("points").GetArrayElementAtIndex(index);
-                addedPoint.FindPropertyRelative("position").vector3Value = index == 0 ? Vector3.zero : last + direction * AddInitialDistance;
+                addedPoint.FindPropertyRelative("position").vector3Value = index == 0 ? Vector3.zero : last + direction * EditorSetting.Get.PS.AddInitialDistance;
                 addedPoint.FindPropertyRelative("previousControlOffset").vector3Value = Vector3.zero;
                 addedPoint.FindPropertyRelative("nextControlOffset").vector3Value = Vector3.zero;
                 addedPoint.FindPropertyRelative("width").floatValue = width;
@@ -259,7 +269,11 @@ namespace geniikw.UIMeshLab.Editors
             if (Size > 1)
             {
                 Handles.color = Color.black;
-                if (Handles.Button(_owner.transform.TransformPoint(last + direction * DeleteButtonDistance), _owner.transform.rotation, AddDeleteButtonSize, AddDeleteButtonSize, Handles.DotHandleCap))
+                if (Handles.Button(_owner.transform.TransformPoint(last + direction * EditorSetting.Get.PS.DeleteButtonDistance), 
+                                   _owner.transform.rotation,
+                                   EditorSetting.Get.PS.DeleteButtonSize,
+                                   EditorSetting.Get.PS.DeleteButtonSize, 
+                                   Handles.DotHandleCap))
                 {
                     _line.FindPropertyRelative("points").DeleteArrayElementAtIndex(Size - 1);
                     _target.ApplyModifiedProperties();

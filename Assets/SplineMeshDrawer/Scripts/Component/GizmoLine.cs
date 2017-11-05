@@ -50,7 +50,7 @@ namespace geniikw.UIMeshLab
                     var p0 = transform.TransformPoint(Curve.Auto(pair.n0, pair.n1, t));
                     var p1 = transform.TransformPoint(Curve.Auto(pair.n0, pair.n1, t+dt));
                     if (debugColor)
-                        Gizmos.color = Random.ColorHSV();
+                        Gizmos.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
                     else
                         Gizmos.color = color;
 

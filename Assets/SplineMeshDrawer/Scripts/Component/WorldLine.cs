@@ -27,7 +27,7 @@ namespace geniikw.UIMeshLab
             }
         }
 
-        private void UpdateGeometry()
+        public void UpdateGeometry()
         {
             var mf = GetComponent<MeshFilter>();
             
@@ -54,7 +54,9 @@ namespace geniikw.UIMeshLab
 
         public void Update()
         {
-            /// if you have better idea. please send me(geniikw@gmail.com). 
+            //I recommand to use UniRx.
+            ///Observable.EveryUpdate()
+            ///     .Select(_=>line)
             UpdateGeometry();
         }
     }   

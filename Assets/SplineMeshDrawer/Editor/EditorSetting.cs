@@ -9,13 +9,16 @@ namespace geniikw.UIMeshLab.Editors
     {
         [Header("if you want to edit position in inspector, set false")]
         public bool onlyViewWidth = true;
-        static string Path = "Assets/SplineMeshDrawer/Editor/EditorSetting.asset";
 
+        public PointHandler.Setting PS;
+        
+        static string Path = "Assets/SplineMeshDrawer/Editor/EditorSetting.asset";
+        public static EditorSetting m_instance;
         public static EditorSetting Get
         {
             get
             {
-                return AssetDatabase.LoadAssetAtPath<EditorSetting>(Path);
+                return m_instance ?? (m_instance =AssetDatabase.LoadAssetAtPath<EditorSetting>(Path));
             }
         }
     }

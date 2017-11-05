@@ -14,8 +14,6 @@ this asset include these menu
 -Edit each point in scene view.
 
 
-
-
 creator
 Kim giwon (https://github.com/geniikw)
 

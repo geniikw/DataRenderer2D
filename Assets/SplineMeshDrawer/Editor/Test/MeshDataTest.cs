@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if TEST_ENABLE
+using UnityEngine;
 using UnityEditor;
 using UnityEngine.TestTools;
 using NUnit.Framework;
@@ -28,3 +29,4 @@ namespace geniikw.UIMeshLab.Test
 
     }
 }
+#endif

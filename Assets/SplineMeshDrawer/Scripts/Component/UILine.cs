@@ -12,7 +12,7 @@ namespace geniikw.UIMeshLab
     /// </summary>
     public class UILine : Graphic, IMeshModifier, ISpline
     {
-        /// if change in code. Should call GeometryUpdate();
+        /// if change in code. Should call GeometryUpdate() after change;
         public Spline line;
 
         IMeshBuilder m_builder;

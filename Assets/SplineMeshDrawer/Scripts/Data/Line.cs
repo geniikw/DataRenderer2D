@@ -23,27 +23,27 @@ namespace geniikw.UIMeshLab
             Loop = 1,
             RoundEdge = 2
         }
-
+        [HideInInspector]
+        [Header("it's valid when useListPoint is false")]
         [Tooltip("list can't animate, so if you want to animate point, set false")]
-        public bool useListPoints;
-        [Header("it's valid when useListPoint is false")]
+        public bool splineMode;
+        [Header("it's valid when SplineMode is false")]
         public Point p0;
-        [Header("it's valid when useListPoint is false")]
+        [Header("it's valid when SplineMode is false")]
         public Point p1;
-        [Header("it's valid when useListPoint is true")]
+        [Header("it's valid when SplineMode is true")]
         public List<Point> points;
         
         public IList<Point> Points
         {
             get
             {
-                if (useListPoints)
+                if (splineMode)
                     return points;
                 else
                     return new Point[] { p0, p1 };
             }
         }
-
 
         public LineOption option;
 
@@ -54,7 +54,7 @@ namespace geniikw.UIMeshLab
                 return new Spline
                 {
                     points = new List<Point>(),
-                    useListPoints = true,
+                    splineMode = true,
                     p0 = Point.Zero,
                     p1 = new Point(Vector3.right, Vector3.zero, Vector3.zero)
                 };

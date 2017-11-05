@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Name: EditorSetting
   m_EditorClassIdentifier: 
   onlyViewWidth: 1
+  HandlerScale: 1
