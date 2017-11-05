@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
+
 namespace geniikw.UIMeshLab
 {
     /// <summary>
@@ -51,13 +53,14 @@ namespace geniikw.UIMeshLab
                 }
             }
         }
-
+        [Serializable]
         public struct LinePair
         {
             public Point n0;
             public Point n1;
-
+            [NonSerialized]
             public float sRatio;
+            [NonSerialized]
             public float eRatio;
             public float RatioLength
             {
@@ -66,8 +69,9 @@ namespace geniikw.UIMeshLab
                     return eRatio - sRatio;
                 }
             }
-
+            [NonSerialized]
             public float start;
+            [NonSerialized]
             public float end;
             public LinePair(Point n0, Point n1, float s, float e, float sr, float er)
             {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace geniikw.UIMeshLab
 {
@@ -35,14 +36,19 @@ namespace geniikw.UIMeshLab
                 var wd = Vector3.Cross(d, _line.Line.option.normalVector).normalized;
                 var wds = t ==0f ? Vector3.Cross(Curve.AutoDirection(pair.n0, pair.n1, 0), _line.Line.option.normalVector).normalized : wd;
                 var wde = Vector3.Cross(pair.GetDirection(1f), _line.Line.option.normalVector).normalized;
-                
-                var p0 = Vertex.New(t == pair.start ? ps + wds * ws : prv1, _line.Line.UVRotate(new Vector2(0, 1)), cs);
-                var p1 = Vertex.New(t == pair.start ? ps - wds * ws : prv2, _line.Line.UVRotate(new Vector2(1, 1)), cs);
+
+                var uv = new Vector2[] { new Vector2(0, 1), new Vector2(1, 1), Vector2.zero, new Vector2(1, 0) };
+
+                if (_line is Image && ((Image)_line).sprite != null)
+                    uv = ((Image)_line).sprite.uv;
+
+                var p0 = Vertex.New(t == pair.start ? ps + wds * ws : prv1, uv[0], cs);
+                var p1 = Vertex.New(t == pair.start ? ps - wds * ws : prv2, uv[1], cs);
 
                 var end = Mathf.Abs(t - pair.end) < dt;
 
-                var p2 = Vertex.New(end ? pe + wde * we : pe + wd * we, _line.Line.UVRotate(new Vector2(0, 0)), ce);
-                var p3 = Vertex.New(end ? pe - wde * we : pe - wd * we, _line.Line.UVRotate(new Vector2(1, 0)), ce);
+                var p2 = Vertex.New(end ? pe + wde * we : pe + wd * we, uv[2], ce);
+                var p3 = Vertex.New(end ? pe - wde * we : pe - wd * we, uv[3], ce);
 
                 prv1 = pe + wd * we;
                 prv2 = pe - wd * we;

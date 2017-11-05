@@ -10,7 +10,7 @@ namespace geniikw.UIMeshLab
     /// <summary>
     /// draw mesh in canvas
     /// </summary>
-    public class UILine : Graphic, IMeshModifier, ISpline
+    public class UILine : Image, IMeshModifier, ISpline
     {
         /// if change in code. Should call GeometryUpdate() after change;
         public Spline line;

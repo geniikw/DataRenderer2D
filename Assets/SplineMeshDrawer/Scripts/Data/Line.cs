@@ -24,13 +24,10 @@ namespace geniikw.UIMeshLab
             RoundEdge = 2
         }
         [HideInInspector]
-        [Header("it's valid when useListPoint is false")]
-        [Tooltip("list can't animate, so if you want to animate point, set false")]
+        [Header("if you want to animate position of node, set false")]
         public bool splineMode;
         [Header("it's valid when SplineMode is false")]
-        public Point p0;
-        [Header("it's valid when SplineMode is false")]
-        public Point p1;
+        public LinePair pair;
         [Header("it's valid when SplineMode is true")]
         public List<Point> points;
         
@@ -41,7 +38,7 @@ namespace geniikw.UIMeshLab
                 if (splineMode)
                     return points;
                 else
-                    return new Point[] { p0, p1 };
+                    return new Point[] { pair.n0, pair.n1 };
             }
         }
 
@@ -55,9 +52,9 @@ namespace geniikw.UIMeshLab
                 {
                     points = new List<Point>(),
                     splineMode = true,
-                    p0 = Point.Zero,
-                    p1 = new Point(Vector3.right, Vector3.zero, Vector3.zero)
+                    pair = new LinePair(Point.Zero, new Point(Vector3.right, Vector3.zero, Vector3.zero), 0, 1, 0, 1)
                 };
+
             }
         }
 
@@ -93,7 +90,6 @@ namespace geniikw.UIMeshLab
             return dir;
         }
 
-
         public float AllLength {
             get
             {
@@ -108,12 +104,5 @@ namespace geniikw.UIMeshLab
             }
         }
 
-        public Vector2 UVRotate(Vector2 uv)
-        {
-            uv -= Vector2.one / 2f;
-            uv = Quaternion.Euler(0,0,option.uvAngle)*uv;
-            uv += Vector2.one / 2f;
-            return uv;
-        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace geniikw.UIMeshLab
 {
@@ -42,11 +43,17 @@ namespace geniikw.UIMeshLab
             var rot = Quaternion.Euler(-nv * da);
             var d = p1 - p0;
 
+            var uv = new Vector2[] { new Vector2(0, 1), new Vector2(1, 1), Vector2.zero, new Vector2(1, 0) };
+            if (_line is Image && ((Image)_line).sprite != null)
+                uv = ((Image)_line).sprite.uv;
+
+            var center = (uv[0] + uv[1] + uv[2] + uv[3]) / 4f;
+
             for (float a = 0f; a < angle; a+=da)
             {
-                var v0 = Vertex.New(p0, Vector2.one / 2f, triple.CurrentColor);
-                var v1 = Vertex.New(p0+d, Vector2.one, triple.CurrentColor);
-                var v2 = Vertex.New(p0+rot*d, Vector2.one, triple.CurrentColor);
+                var v0 = Vertex.New(p0, center, triple.CurrentColor);
+                var v1 = Vertex.New(p0+d,uv[1], triple.CurrentColor);
+                var v2 = Vertex.New(p0+rot*d, uv[3], triple.CurrentColor);
                 mesh += MeshData.Triangle(v0, v1, v2);
 
                 d = rot * d;

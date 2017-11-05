@@ -12,6 +12,9 @@ namespace geniikw.UIMeshLab
     {
         public Spline line;
 
+        public bool useUpdate = true;
+
+
         IMeshBuilder m_builder;
         IMeshBuilder Builder {
             get
@@ -55,9 +58,8 @@ namespace geniikw.UIMeshLab
         public void Update()
         {
             //I recommand to use UniRx.
-            ///Observable.EveryUpdate()
-            ///     .Select(_=>line)
-            UpdateGeometry();
+            if(useUpdate)
+                UpdateGeometry();
         }
     }   
 }

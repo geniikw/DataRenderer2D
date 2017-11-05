@@ -54,11 +54,13 @@ namespace geniikw.UIMeshLab.Editors {
 
                 var p00 = serializedObject
                    .FindProperty("line")
-                   .FindPropertyRelative("p0");
+                   .FindPropertyRelative("pair")
+                   .FindPropertyRelative("n0");
 
                 var p11 = serializedObject
                          .FindProperty("line")
-                         .FindPropertyRelative("p1");
+                          .FindPropertyRelative("pair")
+                         .FindPropertyRelative("n1");
 
                 p00.Position().vector3Value = p0.Position().vector3Value;
                 p00.NextOffset().vector3Value = p0.NextOffset().vector3Value;

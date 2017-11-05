@@ -26,7 +26,6 @@ namespace geniikw.UIMeshLab
         [Range(5, 180)]
         public float divideAngle;
 
-        public float uvAngle;
         public Gradient color;//class reference type;
 
         public Vector3 normalVector;
@@ -51,7 +50,6 @@ namespace geniikw.UIMeshLab
                     mode = Mode.Noraml,
                     divideLength = 1f,
                     divideAngle = 10f,
-                    uvAngle = 0f,
                     color = new Gradient(),
                     normalVector = Vector3.back
                 };

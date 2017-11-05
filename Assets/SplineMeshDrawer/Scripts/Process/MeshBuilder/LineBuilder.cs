@@ -36,7 +36,7 @@ namespace geniikw.UIMeshLab
 
             var pairList = _line.Line.PairList.ToList();
             
-            if (_line.Line.option.mode == LineOption.Mode.RoundEdge)
+            if (_line.Line.option.mode == LineOption.Mode.RoundEdge && pairList.Count() > 0)
             {
                 output += _capDrawer.Build(pairList.First(), false);
             }
@@ -51,7 +51,7 @@ namespace geniikw.UIMeshLab
                 output += _bezierDrawer.Build(pair);
             }
 
-            if(_line.Line.option.mode == LineOption.Mode.RoundEdge)
+            if(_line.Line.option.mode == LineOption.Mode.RoundEdge && pairList.Count() > 0)
             {
                  output += _capDrawer.Build(pairList.Last(),true);
             }

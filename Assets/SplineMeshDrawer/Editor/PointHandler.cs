@@ -47,8 +47,8 @@ namespace geniikw.UIMeshLab.Editors
             {
                 if(!_line.FindPropertyRelative("splineMode").boolValue)
                 {
-                    yield return _line.FindPropertyRelative("p0");
-                    yield return _line.FindPropertyRelative("p1");
+                    yield return _line.FindPropertyRelative("pair").FindPropertyRelative("n0");
+                    yield return _line.FindPropertyRelative("pair").FindPropertyRelative("n1");
                 }
                 else
                 {
@@ -65,9 +65,9 @@ namespace geniikw.UIMeshLab.Editors
             if(!_line.FindPropertyRelative("splineMode").boolValue)
             {
                 if (index == 0)
-                    return _line.FindPropertyRelative("p0");
+                    return _line.FindPropertyRelative("pair").FindPropertyRelative("n0");
                 else
-                    return _line.FindPropertyRelative("p1");
+                    return _line.FindPropertyRelative("pair").FindPropertyRelative("n1");
             }
             return _line.FindPropertyRelative("points").GetArrayElementAtIndex(index);
         }

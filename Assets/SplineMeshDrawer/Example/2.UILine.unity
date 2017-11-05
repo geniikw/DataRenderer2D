@@ -229,7 +229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 84.2, y: -18.8}
+  m_AnchoredPosition: {x: 62.1, y: -20.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &411997824
@@ -243,31 +243,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58bf958ce20785440b0449396397bfcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 00c0175118d4df1489ece313f0d8c9a6, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
   line:
     splineMode: 1
-    p0:
-      position: {x: 0, y: 0, z: 0}
-      previousControlOffset: {x: 0, y: 0, z: 0}
-      nextControlOffset: {x: 0, y: 0, z: 0}
-      width: 2
-    p1:
-      position: {x: 1, y: 0, z: 0}
-      previousControlOffset: {x: 0, y: 0, z: 0}
-      nextControlOffset: {x: 0, y: 0, z: 0}
-      width: 2
+    pair:
+      n0:
+        position: {x: 0, y: 0, z: 0}
+        previousControlOffset: {x: 0, y: 0, z: 0}
+        nextControlOffset: {x: 0, y: 0, z: 0}
+        width: 2.39
+      n1:
+        position: {x: 0, y: 63.92, z: 0}
+        previousControlOffset: {x: 0, y: 0, z: 0}
+        nextControlOffset: {x: 0, y: 0, z: 0}
+        width: 0
     points:
     - position: {x: -165.4145, y: 106.80617, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 115.16092, y: 5.9075165, z: 0}
-      width: 2
+      width: 6.9
     - position: {x: 7.716812, y: 12.314384, z: 0}
       previousControlOffset: {x: -118.67937, y: 29.862816, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       width: 2
-    - position: {x: 71.22334, y: 30.044342, z: 0}
+    - position: {x: 70.02513, y: 51.612442, z: 0}
       previousControlOffset: {x: -9.470093, y: -27.629745, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       width: 2
@@ -275,7 +289,7 @@ MonoBehaviour:
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       width: 2
-    - position: {x: -94.77074, y: -108.49672, z: 0}
+    - position: {x: -174.14618, y: -61.35176, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       width: 2
@@ -283,9 +297,8 @@ MonoBehaviour:
       startRatio: 0
       endRatio: 1
       mode: 2
-      divideLength: 1
-      divideAngle: 10
-      uvAngle: 0
+      divideLength: 11
+      divideAngle: 24
       color:
         serializedVersion: 2
         key0: {r: 1, g: 0, b: 0, a: 1}
@@ -353,10 +366,10 @@ RectTransform:
   m_Father: {fileID: 1562730091}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -2.3}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -97.85, y: 113.58}
+  m_SizeDelta: {x: 195.7, y: 199.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &987695392
 MonoBehaviour:
@@ -369,21 +382,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58bf958ce20785440b0449396397bfcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 00c0175118d4df1489ece313f0d8c9a6, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
   line:
     splineMode: 0
-    p0:
-      position: {x: -111.935356, y: 29.65052, z: 0}
-      previousControlOffset: {x: 59.30188, y: 50.976532, z: 0}
-      nextControlOffset: {x: -55.577522, y: 54.131035, z: 0}
-      width: 2
-    p1:
-      position: {x: -109.85113, y: -52.10122, z: -0.98695755}
-      previousControlOffset: {x: -85.63088, y: 55.78546, z: 0}
-      nextControlOffset: {x: 86.49003, y: 70.74563, z: 0}
-      width: 2
+    pair:
+      n0:
+        position: {x: 0.18527222, y: -64.91245, z: 0}
+        previousControlOffset: {x: -92.45749, y: 52.224075, z: 0}
+        nextControlOffset: {x: 99.23639, y: 39.066437, z: 0}
+        width: 1.64
+      n1:
+        position: {x: 6.3054504, y: 40.74418, z: 0}
+        previousControlOffset: {x: 50.983154, y: 56.11664, z: 0}
+        nextControlOffset: {x: -60.568176, y: 53.10324, z: 0}
+        width: 1.82
     points:
     - position: {x: -26.457947, y: 7.1327667, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
@@ -397,9 +424,8 @@ MonoBehaviour:
       startRatio: 0
       endRatio: 1
       mode: 1
-      divideLength: 19.7
+      divideLength: 4.48
       divideAngle: 12
-      uvAngle: 0
       color:
         serializedVersion: 2
         key0: {r: 0.46044582, g: 0.44117647, b: 1, a: 1}
