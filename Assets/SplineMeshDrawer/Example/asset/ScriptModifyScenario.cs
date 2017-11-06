@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ScriptModifyScenario : MonoBehaviour {
+    delegate float F();
+    delegate void LerpFunc(float t);
 
     public Transform cube;
     public geniikw.UIMeshLab.WorldLine line;
@@ -26,16 +28,8 @@ public class ScriptModifyScenario : MonoBehaviour {
             yield return StartCoroutine(MoveOnLine(1, flag));
         }
     }
-
-    Vector3 RandomPosition
-    {
-        get
-        {
-            return new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(-10f, 10f));
-        }
-    }
-    delegate float F();
-    IEnumerator MoveOnLine(float time,bool inverse)
+    
+    IEnumerator MoveOnLine(float time, bool inverse)
     {
         float t = 0;
         F f = () => t;
@@ -51,7 +45,6 @@ public class ScriptModifyScenario : MonoBehaviour {
         }
     }
 
-    delegate void LerpFunc(float t);
     IEnumerator DrawLine(float time, bool inverse)
     {
         float t = 0f;
@@ -73,8 +66,10 @@ public class ScriptModifyScenario : MonoBehaviour {
         {
             t = Mathf.Clamp01(t + Time.deltaTime / time);
             lf(t);
+            ///when modify line, must call UpdateGeometry().
             line.UpdateGeometry();
             yield return null;
         }
     }
+
 }

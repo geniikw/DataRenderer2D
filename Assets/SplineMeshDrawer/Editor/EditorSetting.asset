@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30943c56159c82343b070cad006f5ad8, type: 3}
   m_Name: EditorSetting
   m_EditorClassIdentifier: 
-  onlyViewWidth: 0
+  onlyViewWidth: 1
   PS:
     AddButtonSize: 1.93
     DeleteButtonSize: 2.7

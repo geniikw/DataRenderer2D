@@ -222,14 +222,14 @@ RectTransform:
   m_GameObject: {fileID: 411997822}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8244411, y: 1.8244443, z: 1.8244443}
   m_Children: []
   m_Father: {fileID: 1562730091}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 62.1, y: -20.3}
+  m_AnchoredPosition: {x: 161.4, y: -45}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &411997824
@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -273,23 +273,23 @@ MonoBehaviour:
         nextControlOffset: {x: 0, y: 0, z: 0}
         width: 0
     points:
-    - position: {x: -165.4145, y: 106.80617, z: 0}
+    - position: {x: -224.85855, y: 22.983793, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
-      nextControlOffset: {x: 115.16092, y: 5.9075165, z: 0}
+      nextControlOffset: {x: 173.56256, y: -142.33919, z: 0}
       width: 6.9
-    - position: {x: 7.716812, y: 12.314384, z: 0}
-      previousControlOffset: {x: -118.67937, y: 29.862816, z: 0}
+    - position: {x: -79.163216, y: 2.0302715, z: 0}
+      previousControlOffset: {x: -187.62096, y: 138.86508, z: 0}
+      nextControlOffset: {x: -59.266785, y: -62.62522, z: 0}
+      width: 2
+    - position: {x: -5.5811257, y: 52.962566, z: 0}
+      previousControlOffset: {x: -212.27359, y: 150.54173, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       width: 2
-    - position: {x: 70.02513, y: 51.612442, z: 0}
-      previousControlOffset: {x: -9.470093, y: -27.629745, z: 0}
-      nextControlOffset: {x: 0, y: 0, z: 0}
-      width: 2
-    - position: {x: 13.331314, y: 97.92406, z: 0}
+    - position: {x: -13.220921, y: 88.92332, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
-      nextControlOffset: {x: 0, y: 0, z: 0}
+      nextControlOffset: {x: -55.31201, y: -59.54918, z: 0}
       width: 2
-    - position: {x: -174.14618, y: -61.35176, z: 0}
+    - position: {x: -168.36316, y: 66.84764, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       width: 2
@@ -297,7 +297,7 @@ MonoBehaviour:
       startRatio: 0
       endRatio: 1
       mode: 2
-      divideLength: 11
+      divideLength: 4.76
       divideAngle: 24
       color:
         serializedVersion: 2
