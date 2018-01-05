@@ -16,9 +16,10 @@ namespace geniikw.UIMeshLab.Polygon
 
         private Vector3 Calculate(float angle)
         {
+            var factor = _target.Polygon.type == PolygonType.HoleCurve ? _target.Polygon.curve.Evaluate(angle / 360f) : 1f; 
             angle *= Mathf.Deg2Rad;
-            return _target.Polygon.cosCft * Mathf.Cos(angle) * Vector3.right * _unit.Size.x * 0.5f
-                 + _target.Polygon.sinCft * Mathf.Sin(angle) * Vector3.up * _unit.Size.y * 0.5f;
+            return _target.Polygon.cosCft * Mathf.Cos(angle) * Vector3.right * _unit.Size.x * 0.5f* factor
+                 + _target.Polygon.sinCft * Mathf.Sin(angle) * Vector3.up * _unit.Size.y * 0.5f* factor;
         }
 
         private Vector2 CalculateUV(float angle)

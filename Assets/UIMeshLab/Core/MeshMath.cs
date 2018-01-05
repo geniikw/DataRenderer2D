@@ -36,6 +36,13 @@ namespace geniikw.UIMeshLab
         //outputs true, otherwise false.
         public static bool ClosestPointsOnTwoLines(out Vector3 closestPointLine1, out Vector3 closestPointLine2, Vector3 linePoint1, Vector3 lineVec1, Vector3 linePoint2, Vector3 lineVec2)
         {
+            if((linePoint1 - linePoint2).sqrMagnitude < Mathf.Epsilon)
+            {
+                closestPointLine1 = linePoint1;
+                closestPointLine2 = linePoint2;
+                return true;
+            }
+       
 
             closestPointLine1 = Vector3.zero;
             closestPointLine2 = Vector3.zero;
