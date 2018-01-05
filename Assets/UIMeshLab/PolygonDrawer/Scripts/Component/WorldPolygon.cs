@@ -12,7 +12,7 @@ namespace geniikw.UIMeshLab.Polygon
         {
             get
             {
-                return Vector2.one * 100;
+                return Vector2.one ;
             }
         }
 

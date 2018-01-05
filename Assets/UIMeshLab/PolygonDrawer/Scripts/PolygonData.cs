@@ -23,16 +23,18 @@ namespace geniikw.UIMeshLab.Polygon
         [Range(0, 1)]
         public float endAngle;
         public int count;
-        public Gradient color;
+        public Gradient outerColor;
+        public Color centerColor;
         [Range(0, 1)]
         public float innerRatio;
     }
 
     public enum PolygonType
     {
-        Simple,
-        CenterVertex,
+        ZigZag,
         Hole=5,
         HoleHalf,
+        HoleCenterColor =8,
+        HoleHalfCenterColor
     }
 }

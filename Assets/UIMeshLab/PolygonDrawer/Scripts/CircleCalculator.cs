@@ -14,17 +14,41 @@ namespace geniikw.UIMeshLab.Polygon
             _unit = size;
         }
 
-        public Vector3 Calculate(float angle)
+        private Vector3 Calculate(float angle)
         {
             angle *= Mathf.Deg2Rad;
             return _target.Polygon.cosCft * Mathf.Cos(angle) * Vector3.right * _unit.Size.x * 0.5f
                  + _target.Polygon.sinCft * Mathf.Sin(angle) * Vector3.up * _unit.Size.y * 0.5f;
         }
 
-        public Vector2 CalculateUV(float angle)
+        private Vector2 CalculateUV(float angle)
         {
             return new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad) * 0.5f + 0.5f, Mathf.Sin(angle * Mathf.Deg2Rad) * 0.5f + 0.5f);
         }
+
+        private Vector2 CalculateInnerUV(float angle)
+        {
+            return new Vector2(
+                Mathf.Cos(angle * Mathf.Deg2Rad) * 0.5f * _target.Polygon.innerRatio + 0.5f, 
+                Mathf.Sin(angle * Mathf.Deg2Rad) * 0.5f * _target.Polygon.innerRatio + 0.5f);
+        }
+
+        public Vertex CalculateVertex(float angle)
+        {
+            return Vertex.New(
+                Calculate(angle),
+                CalculateUV(angle),
+                _target.Polygon.outerColor.Evaluate(angle / 360f));
+        }
+
+        public Vertex CalculateInnerVertex(float angle)
+        {
+            return Vertex.New(
+               Calculate(angle) * _target.Polygon.innerRatio,
+               CalculateInnerUV(angle),
+               _target.Polygon.type >= PolygonType.HoleCenterColor? _target.Polygon.centerColor: _target.Polygon.outerColor.Evaluate(angle / 360f));
+        }
+        
 
     }
     public interface IUnitSizer

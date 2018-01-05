@@ -7,6 +7,7 @@ using System.IO;
 namespace geniikw.UIMeshLab {
     [ExecuteInEditMode]
     [RequireComponent(typeof(MeshFilter))]
+    [RequireComponent(typeof(MeshRenderer))]
     public abstract class WorldDataMesh : MonoBehaviour
     {
         public bool updateInUpdate = true;

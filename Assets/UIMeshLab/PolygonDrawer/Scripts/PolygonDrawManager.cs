@@ -8,15 +8,13 @@ namespace geniikw.UIMeshLab.Polygon
     {
         IPolygon _target;
         IMeshDrawer _normal;
-        IMeshDrawer _angle;
         IMeshDrawer _hole;
 
         public PolygonDrawerManager(IPolygon target ,
-            IMeshDrawer normal, IMeshDrawer angle ,IMeshDrawer hole)
+            IMeshDrawer normal, IMeshDrawer hole)
         {
             _target = target;
             _normal = normal;
-            _angle = angle;
             _hole = hole;
         }
 
@@ -29,12 +27,8 @@ namespace geniikw.UIMeshLab.Polygon
 
             var cc = polyGon.startAngle == 0 && polyGon.endAngle == 1;
 
-            if (polyGon.type == PolygonType.Simple)
+            if (polyGon.type == PolygonType.ZigZag)
                 foreach (var m in _normal.Draw())
-                    yield return m;
-
-            else if (polyGon.type == PolygonType.CenterVertex || polyGon.innerRatio <= 0f)
-                foreach (var m in _angle.Draw())
                     yield return m;
 
             else if (polyGon.type >= PolygonType.Hole)

@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace geniikw.UIMeshLab.Polygon
 {
-    public class NormalDrawer : IMeshDrawer
+    public class ZigZagPolygon : IMeshDrawer
     {
         CircleCalculator _circle;
         IPolygon _target;
 
-        public NormalDrawer(CircleCalculator cc, IPolygon target)
+        public ZigZagPolygon(CircleCalculator cc, IPolygon target)
         {
             _circle = cc;
             _target = target;
@@ -21,7 +21,7 @@ namespace geniikw.UIMeshLab.Polygon
             for (int i = 0; i < _target.Polygon.count; i++)
             {
                 var angle = 360f / _target.Polygon.count * i;
-                buffer.Add(Vertex.New(_circle.Calculate(angle),_circle.CalculateUV(angle), _target.Polygon.color.Evaluate(angle/360)));
+                buffer.Add(_circle.CalculateVertex(angle));
             }
 
             int[] v = new int[3] { 0, 1, _target.Polygon.count - 1 };

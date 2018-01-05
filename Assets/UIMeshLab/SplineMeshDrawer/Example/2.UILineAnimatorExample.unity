@@ -234,7 +234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -128.9, y: -17.3}
+  m_AnchoredPosition: {x: -106.2, y: -15.7}
   m_SizeDelta: {x: 51.97, y: 48.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &630370749
@@ -265,30 +265,30 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   data:
-    type: 2
+    type: 0
     sinCft: 1
     cosCft: 1
     startAngle: 0
-    endAngle: 1
-    count: 5
-    color:
+    endAngle: 0.72
+    count: 8
+    outerColor:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 0.9044118, g: 0.8391034, b: 0.31255406, a: 1}
-      key2: {r: 0.19117647, g: 0.83265704, b: 1, a: 0}
-      key3: {r: 0.84417915, g: 0.99312186, b: 0.16247956, a: 0}
-      key4: {r: 0.54329026, g: 0.365516, b: 0.91396886, a: 0}
-      key5: {r: 0.94807297, g: 0.058823526, b: 1, a: 0}
-      key6: {r: 0.94807297, g: 0.058823526, b: 1, a: 0}
-      key7: {r: 0.94807297, g: 0.058823526, b: 1, a: 0}
+      key0: {r: 0, g: 0.13103485, b: 1, a: 1}
+      key1: {r: 1, g: 0.19117647, b: 0.91075045, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 32382
-      ctime2: 65535
-      ctime3: 42598
-      ctime4: 54356
-      ctime5: 65535
-      ctime6: 65535
-      ctime7: 65535
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
       atime0: 0
       atime1: 65535
       atime2: 0
@@ -298,9 +298,10 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 3
+      m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    innerRatio: 0.95
+    centerColor: {r: 0.7205882, g: 0.40268165, b: 0.40268165, a: 1}
+    innerRatio: 0.77
 --- !u!222 &630370750
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -544,16 +545,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateInUpdate: 1
   data:
-    type: 0
+    type: 6
     sinCft: 0.98
     cosCft: 1
     startAngle: 0
     endAngle: 0.75
     count: 6
-    color:
+    outerColor:
       serializedVersion: 2
-      key0: {r: 0, g: 0.13103485, b: 1, a: 1}
-      key1: {r: 1, g: 0.19117647, b: 0.91075045, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -579,7 +580,8 @@ MonoBehaviour:
       m_Mode: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
-    innerRatio: 0
+    centerColor: {r: 0, g: 0, b: 0, a: 0}
+    innerRatio: 0.24
 --- !u!4 &1672515076
 Transform:
   m_ObjectHideFlags: 0
@@ -665,11 +667,11 @@ Mesh:
   m_SubMeshes:
   - serializedVersion: 2
     firstByte: 0
-    indexCount: 12
+    indexCount: 18
     topology: 0
     baseVertex: 0
     firstVertex: 0
-    vertexCount: 12
+    vertexCount: 18
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 50, y: 42.435246, z: 0}
@@ -686,11 +688,11 @@ Mesh:
   m_KeepVertices: 1
   m_KeepIndices: 1
   m_IndexFormat: 0
-  m_IndexBuffer: 00000100020003000400050006000700080009000a000b00
+  m_IndexBuffer: 00000100020003000400050006000700080009000a000b000c000d000e000f0010001100
   m_Skin: []
   m_VertexData:
     m_CurrentChannels: 15
-    m_VertexCount: 12
+    m_VertexCount: 18
     m_Channels:
     - stream: 0
       offset: 0
@@ -724,8 +726,8 @@ Mesh:
       offset: 0
       format: 0
       dimension: 0
-    m_DataSize: 576
-    _typelessdata: 0000484200000000000000000000000000000000000080bf00000000002e063e0000803f0000803f0000803f0000003ffeffc741b1bd29c2000000000000000000000000000080bf5555553f2380393ec9f56c3f0000803fffff3f3fa030893dffffc741b1bd2942000000000000000000000000000080bfabaa2a3ea171103e28317c3f0000803f0000403fecd96e3f0200c8c1b1bd2942000000000000000000000000000080bfabaaaa3e41b51a3e5062783f0000803ffeff7f3eecd96e3fffffc741b1bd2942000000000000000000000000000080bfabaa2a3ea171103e28317c3f0000803f0000403fecd96e3ffeffc741b1bd29c2000000000000000000000000000080bf5555553f2380393ec9f56c3f0000803fffff3f3fa030893d0200c8c1b1bd2942000000000000000000000000000080bfabaaaa3e41b51a3e5062783f0000803ffeff7f3eecd96e3ffeffc741b1bd29c2000000000000000000000000000080bf5555553f2380393ec9f56c3f0000803fffff3f3fa030893dfeffc7c1b1bd29c2000000800000000000000000000080bfabaa2a3f833c2f3ea1c4703f0000803f0200803ea030893d0200c8c1b1bd2942000000000000000000000000000080bfabaaaa3e41b51a3e5062783f0000803ffeff7f3eecd96e3ffeffc7c1b1bd29c2000000800000000000000000000080bfabaa2a3f833c2f3ea1c4703f0000803f0200803ea030893d000048c2d7bc8fb6000000800000000000000000000080bf0000003fe2f8243e7893743f0000803f00000000ffffff3e
+    m_DataSize: 864
+    _typelessdata: 0000484200000000000000000000000000000000000080bf0000803f0000803f0000803f0000803f0000803f0000003fffffbf408bf32241000000000000000000000000000080bf0000803f0000803f0000803f0000803f295c0f3fb39a1a3fffffc741b1bd2942000000000000000000000000000080bf0000803f0000803f0000803f0000803f0000403fecd96e3fffffc741b1bd2942000000000000000000000000000080bf0000803f0000803f0000803f0000803f0000403fecd96e3f0200c0c08bf32241000000000000000000000000000080bf0000803f0000803f0000803f0000803fae47e13eb39a1a3f0200c8c1b1bd2942000000000000000000000000000080bf0000803f0000803f0000803f0000803ffeff7f3eecd96e3f0200c8c1b1bd2942000000000000000000000000000080bf0000803f0000803f0000803f0000803ffeff7f3eecd96e3f000040c1f7fc89b5000000800000000000000000000080bf0000803f0000803f0000803f0000803f5c8fc23e0000003f000048c2d7bc8fb6000000800000000000000000000080bf0000803f0000803f0000803f0000803f00000000ffffff3e000048c2d7bc8fb6000000800000000000000000000080bf0000803f0000803f0000803f0000803f00000000ffffff3efeffbfc08bf322c1000000800000000000000000000080bf0000803f0000803f0000803f0000803fae47e13e99caca3efeffc7c1b1bd29c2000000800000000000000000000080bf0000803f0000803f0000803f0000803f0200803ea030893dfeffc7c1b1bd29c2000000800000000000000000ffff7fbf0000803f0000803f0000803f0000803f0200803ea030893dfeffbf408bf322c1000000000000000000000000ffff7fbf0000803f0000803f0000803f0000803f295c0f3f99caca3efeffc741b1bd29c2000000000000000000000000ffff7fbf0000803f0000803f0000803f0000803fffff3f3fa030893dfeffc741b1bd29c2000000000000000000000000000080bf0000803f0000803f0000803f0000803fffff3f3fa030893d0000404100000000000000000000000000000000000080bf0000803f0000803f0000803f0000803f52b81e3f0000003f0000484200000000000000000000000000000000000080bf0000803f0000803f0000803f0000803f0000803f0000003f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0

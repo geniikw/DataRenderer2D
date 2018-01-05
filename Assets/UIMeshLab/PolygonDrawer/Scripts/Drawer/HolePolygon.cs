@@ -18,36 +18,24 @@ namespace geniikw.UIMeshLab.Polygon
         
         public IEnumerable<IMesh> Draw()
         {
-            List<Vertex> buffer = new List<Vertex>();
             var count = _target.Polygon.count;
+                       
             for (int i = 0; i < count; i++)
             {
-                var angle = 360f / count * i;
-                buffer.Add(Vertex.New(_circle.Calculate(angle),_circle.CalculateUV(angle), _target.Polygon.color.Evaluate(angle/360)));
-            }
-            var aR = buffer.Average(vtx => vtx.color.r);
-            var aB = buffer.Average(vtx => vtx.color.b);
-            var aG = buffer.Average(vtx => vtx.color.g);
-         
-            for (int i = 0; i < count; i++)
-            {
-                var iv = buffer[(1 + i) % count];
-                iv.position *= _target.Polygon.innerRatio;
-                iv.uv -= Vector2.one / 2f;
-                iv.uv *= _target.Polygon.innerRatio;
-                iv.uv += Vector2.one / 2f;
-                iv.color = new Color(aR, aB, aG);
+                var unitAngle = 360f / count;
 
-                var iv2 = buffer[i];
-                iv2.position *= _target.Polygon.innerRatio;
-                iv2.uv -= Vector2.one / 2f;
-                iv2.uv *= _target.Polygon.innerRatio;
-                iv2.uv += Vector2.one / 2f;
-                iv2.color = new Color(aR, aB, aG);
+                yield return new Triangle(
+                    _circle.CalculateVertex(unitAngle * i),
+                    _circle.CalculateInnerVertex(unitAngle * ((i + 1) % count)),
+                    _circle.CalculateVertex(unitAngle * ((i + 1) % count)));
 
-                yield return new Triangle(buffer[i], iv, buffer[(i + 1)% count]);
-                if (_target.Polygon.type != PolygonType.HoleHalf)
-                    yield return new Triangle(buffer[i], iv2, iv);
+                if (_target.Polygon.innerRatio == 0f ||
+                    _target.Polygon.type == PolygonType.Hole ||
+                    _target.Polygon.type == PolygonType.HoleCenterColor)
+                    yield return new Triangle(
+                       _circle.CalculateVertex(unitAngle * i),
+                       _circle.CalculateInnerVertex(unitAngle * i),
+                       _circle.CalculateInnerVertex(unitAngle * ((i + 1) % count)));
             }
         }
     }
