@@ -1,9 +1,12 @@
 fileFormatVersion: 2
 guid: 0e2acb59b89d09649b96a3f553060aa6
+labels:
+- Polygon
 folderAsset: yes
 timeCreated: 1510062596
 licenseType: Free
 DefaultImporter:
+  externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 

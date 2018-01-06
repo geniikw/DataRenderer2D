@@ -99,7 +99,7 @@ namespace geniikw.UIMeshLab.Polygon
                     _target.Polygon.type == PolygonType.Hole ||
                     _target.Polygon.type == PolygonType.HoleCurve ||
                     _target.Polygon.type == PolygonType.HoleCenterColor)
-                    yield return new Triangle(a, c, d);
+                    yield return new Triangle(a, d, c);
 
                 if (endFlag)
                     yield break;

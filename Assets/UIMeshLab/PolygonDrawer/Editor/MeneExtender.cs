@@ -7,16 +7,17 @@ namespace geniikw.UIMeshLab.Polygon.Editors
 {
     public static class MeneExtender
     {
-        [MenuItem("GameObject/3D Object/Polygon/WorldPolygon")]
+        [MenuItem("GameObject/2D Object/Polygon/WorldPolygon")]
         public static void WorldPolygon()
         {
             var go = new GameObject("WorldPolygon");
             go.transform.SetParent(Selection.activeTransform);
             var p = go.AddComponent<WorldPolygon>();
+            go.GetComponent<MeshRenderer>().material = new Material(Shader.Find("Diffuse"));
             p.data = Defulat();
 
         }
-        [MenuItem("GameObject/3D Object/Polygon/UIPolygon")]
+        [MenuItem("GameObject/2D Object/Polygon/UIPolygon")]
         public static void UIPolygon()
         {
             var parent = Selection.activeTransform;
