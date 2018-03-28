@@ -7,7 +7,7 @@ namespace geniikw.DataRenderer2D.Polygon.Editors
 {
     public static class MeneExtender
     {
-        [MenuItem("GameObject/2D Object/Polygon/WorldPolygon")]
+        [MenuItem("GameObject/2D Object/[DR]Polygon/WorldPolygon")]
         public static void WorldPolygon()
         {
             var go = new GameObject("WorldPolygon");
@@ -17,7 +17,7 @@ namespace geniikw.DataRenderer2D.Polygon.Editors
             p.data = Defulat();
 
         }
-        [MenuItem("GameObject/2D Object/Polygon/UIPolygon")]
+        [MenuItem("GameObject/2D Object/[DR]Polygon/UIPolygon")]
         public static void UIPolygon()
         {
             var parent = Selection.activeTransform;

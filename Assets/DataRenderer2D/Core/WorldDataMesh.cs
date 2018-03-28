@@ -22,6 +22,8 @@ namespace geniikw.DataRenderer2D
         Color[] colorBuffer;
         int[] tBuffer;
 
+        bool m_geometryUpdateFlag = false;
+
         abstract protected IEnumerable<IMesh> MeshFactory { get; }
 
         MeshFilter m_mf;
@@ -55,6 +57,16 @@ namespace geniikw.DataRenderer2D
             if (updateInUpdate)
                 UpdateGeometry();
         }
+        
+        public void LateUpdate()
+        {
+            if (m_geometryUpdateFlag)
+            {
+                UpdateGeometry();
+                m_geometryUpdateFlag = false;
+            }
+        }
+
 
         public void UpdateGeometry()
         {
@@ -135,6 +147,13 @@ namespace geniikw.DataRenderer2D
             Array.Copy(tempC, colorBuffer, tempC.Length);
             Array.Copy(tempT, tBuffer, tempT.Length);
         }
+
+        
+        public void GeometyUpdateFlagUp()
+        {
+            m_geometryUpdateFlag = true;
+        }
+
 
     }
 }

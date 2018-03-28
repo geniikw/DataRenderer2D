@@ -8,13 +8,36 @@ namespace geniikw.DataRenderer2D
 {
     public abstract class UIDataMesh : Image, IMeshModifier
     {
+
+        bool m_geometryUpdateFlag = false;
+
         IEnumerable<IMesh> _mesh;
         IEnumerable<IMesh> Mesh
         {
             get { return _mesh ?? (_mesh = DrawerFactory); }
         }
         protected abstract IEnumerable<IMesh> DrawerFactory { get; }
-              
+
+        protected override void Awake()
+        {
+            base.Awake();
+            raycastTarget = false;
+
+        }
+        
+        public void GeometyUpdateFlagUp()
+        {
+            m_geometryUpdateFlag = true;
+        }
+
+        public void LateUpdate()
+        {
+            if (m_geometryUpdateFlag)
+            {
+                UpdateGeometry();
+                m_geometryUpdateFlag = false;
+            }
+        }
 
         public void ModifyMesh(Mesh mesh)
         {

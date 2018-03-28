@@ -36,9 +36,22 @@ namespace geniikw.DataRenderer2D
         protected override void Start()
         {
             base.Start();
-            line.EditCallBack += UpdateGeometry;
+            line.owner = this;
+            line.EditCallBack += GeometyUpdateFlagUp;
         }
         
+        public static UILine CreateLine(Transform parent = null)
+        {
+            var go = new GameObject("UILine");
+            if (parent != null)
+                go.transform.SetParent(parent);
+            go.transform.localPosition = Vector3.zero;
+
+            var line = go.AddComponent<UILine>();
+            line.line = Spline.Default;
+            line.Start();
+            return line;
+        }
     }
     
 }

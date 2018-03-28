@@ -25,7 +25,7 @@ namespace geniikw.DataRenderer2D
             previousControlOffset = prev;
             nextControlOffset = next;
 
-            this.width =width;
+            this.width = width;
         }
         
         public Vector3 PreviousControlPoisition

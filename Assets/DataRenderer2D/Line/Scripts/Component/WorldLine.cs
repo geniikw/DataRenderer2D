@@ -20,7 +20,7 @@ namespace geniikw.DataRenderer2D
         public bool useUpdate = false;
 
         IMeshDrawer m_builder;
-
+        
         protected override IEnumerable<IMesh> MeshFactory
         {
             get
@@ -32,9 +32,8 @@ namespace geniikw.DataRenderer2D
         protected override void Awake()
         {
             base.Awake();
-            line.EditCallBack += UpdateGeometry;
-        }
-
-           
+            line.EditCallBack += GeometyUpdateFlagUp;
+            line.owner = this;
+        }  
     }   
 }

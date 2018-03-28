@@ -7,7 +7,7 @@ namespace geniikw.DataRenderer2D.Editors
     public static class MenuExtender 
     {
         //[ContextMenu()]
-        [MenuItem("GameObject/2D Object/Line/UILine")]
+        [MenuItem("GameObject/2D Object/[DR]Line/UILine")]
         public static void CreateUILine()
         {
             var canvas = Object.FindObjectOfType<Canvas>();
@@ -29,7 +29,7 @@ namespace geniikw.DataRenderer2D.Editors
         }
         
         //[ContextMenu()]
-        [MenuItem("GameObject/2D Object/Line/GizmoLine")]
+        [MenuItem("GameObject/2D Object/[DR]Line/GizmoLine")]
         public static void CreateNoRenderLine()
         {
             var linego = new GameObject("line");
@@ -39,7 +39,7 @@ namespace geniikw.DataRenderer2D.Editors
             Selection.activeObject = linego;
         }
 
-        [MenuItem("GameObject/2D Object/Line/WorldLine")]
+        [MenuItem("GameObject/2D Object/[DR]Line/WorldLine")]
         public static void CreateWorldLine()
         {
             var linego = new GameObject("line");

@@ -14,10 +14,16 @@ namespace geniikw.DataRenderer2D
             this = Default;
         }
 
+        /// <summary>
+        /// 중간에 p.position이 worldposition에서  localposition으로 바꿈.
+        /// </summary>
+        /// <param name="p"></param>
         public void Push(Point p)
         {
             if (mode == LineMode.BezierMode)
                 throw new Exception("can't add");
+
+            p.position = owner.transform.InverseTransformPoint(p.position);
 
             points.Add(p);
 
@@ -25,9 +31,15 @@ namespace geniikw.DataRenderer2D
                 EditCallBack();
         }
 
-        public void Push(Vector3 position, Vector3 nextOffset, Vector3 prevOffset, float width)
+        public void Push()
         {
-            Push(new Point(position, nextOffset, prevOffset, width));
+            Push(Point.Zero);
+        }
+
+
+        public void Push(Vector3 worldPosition, Vector3 nextOffset, Vector3 prevOffset, float width)
+        {
+            Push(new Point(worldPosition, nextOffset, prevOffset, width));
         }
 
         public void EditPoint(int idx, Point p)
@@ -38,9 +50,10 @@ namespace geniikw.DataRenderer2D
             }
             if (points.Count <= idx || idx < 0)
             {
-                throw new Exception("can't edit");
+                throw new Exception("can't edit" + points.Count + " " + idx);
             }
-            
+
+            p.position = owner.transform.InverseTransformPoint(p.position);
             if (mode == LineMode.BezierMode)
             {
                 if (idx == 0)
@@ -57,9 +70,14 @@ namespace geniikw.DataRenderer2D
                 EditCallBack();
         }
 
-        public void EditPoint(int idx, Vector3 pos, Vector3 nOffset, Vector3 pOffset, float width)
+        public void EditPoint(int idx, Vector3 worldPos, Vector3 nOffset, Vector3 pOffset, float width)
         {
-            EditPoint(idx, new Point(pos, nOffset, pOffset, width));
+            EditPoint(idx, new Point(worldPos, nOffset, pOffset, width));
+        }
+
+        public void EditPoint(int idx, Vector3 worldPos, float width)
+        {
+            EditPoint(idx,worldPos, Vector3.zero, Vector3.zero, width);
         }
 
         /// <summary>
@@ -80,5 +98,15 @@ namespace geniikw.DataRenderer2D
             return last;
         }
         
+        public int Count
+        {
+            get
+            {
+                if (mode == LineMode.BezierMode)
+                    return 2;
+                return points.Count;
+            }
+        }
+
     }
 }
