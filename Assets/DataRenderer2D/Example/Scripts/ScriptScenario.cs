@@ -10,6 +10,7 @@ namespace geniikw.DataRenderer2D.Example {
         // Use this for initialization
         IEnumerator Start() {
             m_line = UILine.CreateLine(transform);
+            m_line.transform.SetAsFirstSibling();
             m_line.line.option.divideLength = 100;
             while(m_line.line.Count < list.Count)
                 m_line.line.Push();
