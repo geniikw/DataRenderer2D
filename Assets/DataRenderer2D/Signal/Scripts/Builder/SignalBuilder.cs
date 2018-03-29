@@ -20,16 +20,18 @@ namespace geniikw.DataRenderer2D.Signal
             _unit = unit;
         }
 
+        public void ApplySignal(ref float x0, ref float x1, SignalData.SignalOneSet data)
+        {
+
+        }
+
         public IEnumerable<IMesh> Draw()
         {
             var size = _unit.Size;
+
             var signal = _data.Signal;
             var divide = signal.divide;
-            var amp = signal.amplify;
-            var tFactor = signal.timeFactor;
-            var frq = signal.frequncy;
             var color = signal.Color;
-            var t = Time.realtimeSinceStartup;
 
             var width = size.x / divide;
 
@@ -46,16 +48,16 @@ namespace geniikw.DataRenderer2D.Signal
                 v1.position.x = -size.x / 2f + i * size.x;
                 v2.position.x = -size.x / 2f + ni * size.x;
                 v3.position.x = -size.x / 2f + ni * size.x;
-                if (signal.up)
-                {
-                    v1.position.y = size.y / 2f + amp * Mathf.Sin((i + t / tFactor) * frq);
-                    v2.position.y = size.y / 2f + amp * Mathf.Sin((ni + t / tFactor) * frq);
-                }
 
-                if (signal.down)
+                if (signal.up.use)
                 {
-                    v0.position.y = -size.y / 2f + amp * Mathf.Sin((i + t / tFactor) * frq);
-                    v3.position.y = -size.y / 2f + amp * Mathf.Sin((ni + t / tFactor) * frq);
+                    v1.position.y = size.y / 2f + signal.up.Output(i, signal.t);
+                    v2.position.y = size.y / 2f + signal.up.Output(ni, signal.t);
+                }
+                if (signal.down.use)
+                {
+                    v0.position.y = -size.y / 2f + signal.down.Output(i, signal.t);
+                    v3.position.y = -size.y / 2f + signal.down.Output(ni, signal.t);
                 }
 
                 v0.color = color.Evaluate(i);

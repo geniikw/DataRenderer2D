@@ -7,25 +7,61 @@ namespace geniikw.DataRenderer2D.Signal
 {
     public enum ESignalType
     {
-        Sin,
-        Square,
-        Triangle,
-        Sawtooth
+        Sin
     }
-
-
+    
     [Serializable]
     public struct SignalData
     {
+        [Serializable]
+        public struct SignalOneSet
+        {
+            public bool use;
+            public float amplify;
+            public float frequncy;
+            public float timeFactor;
+            public AnimationCurve AmpCurve;
+            public ESignalType type;
+
+            public float Output(float x, float t)
+            {
+                return amplify * TypeSwitch((x + t* timeFactor) * frequncy);
+            }
+
+            private float TypeSwitch(float x)
+            {
+                switch (type)
+                {
+                    case ESignalType.Sin:
+                        return Mathf.Sin(x / Mathf.PI * 2);
+                    default:
+                        return 0f;
+                }
+            }
+
+            public static SignalOneSet Default
+            {
+                get
+                {
+                    return new SignalOneSet()
+                    {
+                        use = true,
+                        AmpCurve = AnimationCurve.Constant(0, 1, 1),
+                        amplify = 10,
+                        frequncy = 10,
+                        timeFactor = 1,
+                        type = ESignalType.Sin
+                    };
+                }
+            }
+        }
+
+        public float t;
+        public SignalOneSet up;
+        public SignalOneSet down;
+
         public float divide;
-        public float amplify;
-        public float frequncy;
-        public float timeFactor;
 
-        public ESignalType type;
-
-        public AnimationCurve ampUpCurve;
-        public AnimationCurve ampDownCurve;
         //public AnimationCurve ampRightCurve;
         //public AnimationCurve ampLeftCurve;
         [SerializeField]
@@ -37,10 +73,7 @@ namespace geniikw.DataRenderer2D.Signal
                 return color ?? (color = new Gradient());
             }
         }
-
-
-        public bool up;
-        public bool down;
+                
         //public bool right;
         //public bool left;
 
@@ -50,13 +83,11 @@ namespace geniikw.DataRenderer2D.Signal
             {
                 return new SignalData()
                 {
-                    divide = 1f,
                     color = new Gradient(),
-                    ampUpCurve = AnimationCurve.Constant(0, 1, 1),
-                    ampDownCurve = AnimationCurve.Constant(0, 1, 1),
-                    amplify = 1f,
-                    frequncy = 1f,
-                    timeFactor = 100
+                    up = SignalOneSet.Default,
+                    down = SignalOneSet.Default,
+                    divide = 5f,
+                    t = 0f
                 };
            
             }

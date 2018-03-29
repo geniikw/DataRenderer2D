@@ -23,23 +23,27 @@ namespace geniikw.DataRenderer2D.Signal
         }
 
         public SignalData signal;
+        public float Speed = 1f;
 
-        protected override void Reset()
+        SignalBuilder m_meshBuilder = null;
+
+        public void Update()
         {
-            base.Reset();
-            signal = SignalData.Default;
+            if(Application.isPlaying)
+                signal.t += Time.deltaTime * Speed;
+            UpdateGeometry();
         }
 
-        private void Update()
+        protected new void Reset()
         {
-            UpdateGeometry();
+            signal = SignalData.Default;
         }
 
         protected override IEnumerable<IMesh> DrawerFactory
         {
             get
             {
-                return (new SignalBuilder(this, this)).Draw();
+                return (m_meshBuilder ?? (m_meshBuilder =new SignalBuilder(this, this))).Draw();
             }
         }
 
@@ -58,6 +62,29 @@ namespace geniikw.DataRenderer2D.Signal
                 return signal;
             }
         }
+
+        //example.
+        public void AmpHandler(float amf)
+        {
+            signal.up.amplify = amf * 10;
+            signal.down.amplify = amf * 10;
+        }
+
+        public void UpUseHandler(bool t)
+        {
+            signal.up.use = t;
+        }
+        
+        public void DownUseHandler(bool t)
+        {
+            signal.down.use = t;
+        }
+
+        public void UpFrequencyHandler(float v)
+        {
+            signal.up.frequncy = v*20;
+        }
+
     }
 
 

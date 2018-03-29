@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onlyViewWidth: 1
   PS:
-    AddButtonSize: 0.5
-    DeleteButtonSize: 1
-    AddButtonDistance: 2.1
+    AddButtonSize: 4
+    DeleteButtonSize: 4
+    AddButtonDistance: 5
     AddInitialDistance: 5
-    DeleteButtonDistance: 7
+    DeleteButtonDistance: 15

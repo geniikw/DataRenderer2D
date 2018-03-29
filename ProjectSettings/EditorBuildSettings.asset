@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/DataRenderer2D/Example/ExampleScene.unity
+    guid: b86361717004f9e4a9a3836a38c25354
