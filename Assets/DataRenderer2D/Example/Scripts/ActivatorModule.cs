@@ -30,9 +30,10 @@ namespace geniikw.DataRenderer2D.Example
 
         public void Start()
         {
+            SetDeactive();
             Deactivate(0);
-
         }
+               
 
         public void Activate(float time)
         {

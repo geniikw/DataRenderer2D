@@ -29,8 +29,8 @@ StartAngle : how draw angle from 0 angle.
 EndAngle : specifies how many degrees to draw.
 Inner ratio : ratio of inner circle radius to outer circle.
 
-# example scene include PostProcessing asset.
-
+## Signal
+Draw sin wave.
 
 reference 
 https://github.com/HTD/FastBezier
