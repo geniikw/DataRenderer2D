@@ -30,6 +30,19 @@ namespace geniikw.DataRenderer2D.Polygon
         public Gradient outerColor;
         
         public AnimationCurve curve;
+
+        private Action m_onEditCollback;
+        public Action OnEditCollback
+        {
+            get
+            {
+                return m_onEditCollback;
+            }
+            set
+            {
+                m_onEditCollback = value;
+            }
+        }
     }
 
     public enum PolygonType

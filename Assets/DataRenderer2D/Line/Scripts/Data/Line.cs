@@ -26,7 +26,10 @@ namespace geniikw.DataRenderer2D
         LinePair pair;
         [SerializeField]
         List<Point> points;
-        
+
+        public event Action EditCallBack;
+        public MonoBehaviour owner;
+
         public LineOption option;
                 
         public static Spline Default

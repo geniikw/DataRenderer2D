@@ -25,7 +25,7 @@ namespace geniikw.DataRenderer2D.Polygon
             if (polyGon.count < 3)
                 yield break;
 
-            var cc = polyGon.startAngle == 0 && polyGon.endAngle == 1;
+            //var cc = polyGon.startAngle == 0 && polyGon.endAngle == 1;
 
             if (polyGon.type == PolygonType.ZigZag)
                 foreach (var m in _normal.Draw())

@@ -10,6 +10,9 @@ this asset include these menu
 2.GameObject/2D Object/Line/UILine
 3.GameObject/2D Object/Line/GizmoLine
 
+you can edit view setting (button size, ditance etc..)
+in [DataRenderer2D/Line/Editor/EditorSetting.asset]
+
 ## polygon
 1.GameObject/Polygon/WorldPolygon
 2.GameObject/Polygon/UIPolygon 
