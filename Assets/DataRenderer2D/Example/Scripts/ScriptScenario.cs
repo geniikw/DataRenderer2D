@@ -8,7 +8,12 @@ namespace geniikw.DataRenderer2D.Example {
         public List<Transform> list = new List<Transform>();
         UILine m_line;
         // Use this for initialization
-        IEnumerator Start() {
+        public void Start()
+        {
+            StartCoroutine(StartRoutine());
+        }
+
+        IEnumerator StartRoutine() {
             m_line = UILine.CreateLine(transform);
             m_line.transform.SetAsFirstSibling();
             m_line.line.option.divideLength = 100;
@@ -33,7 +38,6 @@ namespace geniikw.DataRenderer2D.Example {
                     m_line.line.option.startRatio = t;
                     yield return null;
                 }
-
             }
         }
 
