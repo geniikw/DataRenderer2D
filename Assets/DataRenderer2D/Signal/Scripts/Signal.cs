@@ -46,7 +46,7 @@ namespace geniikw.DataRenderer2D.Signal
                     return new SignalOneSet()
                     {
                         use = true,
-                        AmpCurve = AnimationCurve.Constant(0, 1, 1),
+                        AmpCurve = AnimationCurve.Linear(0, 0, 1, 1),
                         amplify = 10,
                         frequncy = 10,
                         timeFactor = 1,
