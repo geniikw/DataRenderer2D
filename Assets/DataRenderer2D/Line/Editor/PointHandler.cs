@@ -28,16 +28,9 @@ namespace geniikw.DataRenderer2D.Editors
         readonly SerializedProperty _line;
         readonly SerializedObject _target;
 
-        [Serializable]
-        public class Setting
-        {
-            public float AddButtonSize = 3f;
-            public float DeleteButtonSize = 3f;
-            public float AddButtonDistance = 10f;
-            public float AddInitialDistance = 30f;
-            public float DeleteButtonDistance = 20f;
-        }
-        
+        public float m_sizeBuffer = 0f;
+        public float m_distanceBuffer = 0f;
+                
         readonly float AddButtonAngle = 20f;
         
         public IEnumerable<SerializedProperty> Points
@@ -129,6 +122,8 @@ namespace geniikw.DataRenderer2D.Editors
             var nextDistance = Vector3.Distance(pos, nextPosition);
 
             var buttonSize = Mathf.Min(2f, nextDistance / 10f);
+            m_sizeBuffer = buttonSize;
+            m_distanceBuffer = Mathf.Max(0.5f, m_sizeBuffer * 6f);
             var buttonDistance = nextDistance / 4f;
 
             var buffer = Handles.color;
@@ -247,10 +242,10 @@ namespace geniikw.DataRenderer2D.Editors
             var buffer = Handles.color;
             Handles.color = Color.green;
             
-            if (Handles.Button(_owner.transform.TransformPoint(last + direction * EditorSetting.Get.PS.AddButtonDistance),
+            if (Handles.Button(_owner.transform.TransformPoint(last + direction *m_distanceBuffer),
                                _owner.transform.rotation,
-                               EditorSetting.Get.PS.AddButtonSize,
-                               EditorSetting.Get.PS.AddButtonSize, 
+                               m_sizeBuffer,
+                               m_sizeBuffer, 
                                Handles.DotHandleCap))
             {
                 var index = Size;
@@ -261,7 +256,7 @@ namespace geniikw.DataRenderer2D.Editors
                 _line.FindPropertyRelative("points").InsertArrayElementAtIndex(index);
 
                 var addedPoint = _line.FindPropertyRelative("points").GetArrayElementAtIndex(index);
-                addedPoint.FindPropertyRelative("position").vector3Value = index == 0 ? Vector3.zero : last + direction * EditorSetting.Get.PS.AddInitialDistance;
+                addedPoint.FindPropertyRelative("position").vector3Value = index == 0 ? Vector3.zero : last + direction * m_distanceBuffer;
                 addedPoint.FindPropertyRelative("previousControlOffset").vector3Value = Vector3.zero;
                 addedPoint.FindPropertyRelative("nextControlOffset").vector3Value = Vector3.zero;
                 addedPoint.FindPropertyRelative("width").floatValue = width;
@@ -273,10 +268,10 @@ namespace geniikw.DataRenderer2D.Editors
             if (Size > 1)
             {
                 Handles.color = Color.black;
-                if (Handles.Button(_owner.transform.TransformPoint(last + direction * EditorSetting.Get.PS.DeleteButtonDistance), 
+                if (Handles.Button(_owner.transform.TransformPoint(last + direction * m_distanceBuffer * 2), 
                                    _owner.transform.rotation,
-                                   EditorSetting.Get.PS.DeleteButtonSize,
-                                   EditorSetting.Get.PS.DeleteButtonSize, 
+                                   m_sizeBuffer,
+                                   m_sizeBuffer, 
                                    Handles.DotHandleCap))
                 {
                     _line.FindPropertyRelative("points").DeleteArrayElementAtIndex(Size - 1);

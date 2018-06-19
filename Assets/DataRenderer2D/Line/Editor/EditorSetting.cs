@@ -10,8 +10,6 @@ namespace geniikw.DataRenderer2D.Editors
         [Header("if you want to edit position in inspector, set false")]
         public bool onlyViewWidth = true;
 
-        public PointHandler.Setting PS;
-
         public static EditorSetting m_instance;
         public static EditorSetting Get
         {
