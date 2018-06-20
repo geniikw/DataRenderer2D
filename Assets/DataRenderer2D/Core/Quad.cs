@@ -24,9 +24,9 @@ namespace geniikw.DataRenderer2D
         public Quad(Vector2 size, Vector2 center, Color color)
         {
             _p0 = Vertex.New(center - new Vector2(-size.x, -size.y) / 2f, new Vector2(0, 0), color);
-            _p1 = Vertex.New(center - new Vector2(-size.x, size.y) / 2f, new Vector2(0, 0), color);
-            _p2 = Vertex.New(center - new Vector2(size.x, size.y) / 2f, new Vector2(0, 0), color);
-            _p3 = Vertex.New(center - new Vector2(size.x, -size.y) / 2f, new Vector2(0, 0), color);
+            _p1 = Vertex.New(center - new Vector2(size.x, -size.y) / 2f, new Vector2(0, 0), color);
+            _p2 = Vertex.New(center - new Vector2(-size.x, size.y) / 2f, new Vector2(0, 0), color);
+            _p3 = Vertex.New(center - new Vector2(size.x, size.y) / 2f, new Vector2(0, 0), color);
         }
 
         public IEnumerable<Vertex> Vertices
