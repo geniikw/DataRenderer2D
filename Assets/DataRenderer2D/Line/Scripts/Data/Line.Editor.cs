@@ -6,7 +6,9 @@ using System;
 namespace geniikw.DataRenderer2D
 {
     public partial struct Spline
-    {     
+    {
+        public event Action EditCallBack;
+        public MonoBehaviour owner;
         
         public void Initialize() {
             this = Default;

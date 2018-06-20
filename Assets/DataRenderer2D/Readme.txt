@@ -10,6 +10,9 @@ this asset include these menu
 2.GameObject/2D Object/Line/UILine
 3.GameObject/2D Object/Line/GizmoLine
 
+you can edit view setting (button size, ditance etc..)
+in [DataRenderer2D/Line/Editor/EditorSetting.asset]
+
 ## polygon
 1.GameObject/Polygon/WorldPolygon
 2.GameObject/Polygon/UIPolygon 
@@ -29,8 +32,8 @@ StartAngle : how draw angle from 0 angle.
 EndAngle : specifies how many degrees to draw.
 Inner ratio : ratio of inner circle radius to outer circle.
 
-# example scene include PostProcessing asset.
-
+## Signal
+Draw sin wave.
 
 reference 
 https://github.com/HTD/FastBezier

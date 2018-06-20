@@ -79,8 +79,6 @@ namespace geniikw.DataRenderer2D
 
             foreach (var mesh in Mesh)
             {
-                var e = mesh.Vertices.GetEnumerator();
-
                 foreach (var t in mesh.Triangles)
                 {
                     if (tc > tBuffer.Length - 1)
