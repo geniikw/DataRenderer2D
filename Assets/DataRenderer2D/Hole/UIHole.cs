@@ -17,6 +17,12 @@ namespace geniikw.DataRenderer2D.Hole
 
         IMeshDrawer m_holeDrawer;
 
+        protected override void Start()
+        {
+            hole.editCallback += GeometyUpdateFlagUp;
+        }
+
+
         public Vector2 Size
         {
             get

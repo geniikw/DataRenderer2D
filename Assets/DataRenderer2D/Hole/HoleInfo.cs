@@ -10,7 +10,7 @@ namespace geniikw.DataRenderer2D.Hole
     [Serializable]
     public struct HoleInfo
     {
-        [SerializeField]
+        [SerializeField][Range(3, 30)]
         private int inner;
         [SerializeField]
         private Vector2 offset;
@@ -18,6 +18,8 @@ namespace geniikw.DataRenderer2D.Hole
         private Vector2 size;
         [SerializeField]
         private float angle;
+        [SerializeField]
+        private Color color;
 
         public Action editCallback;
             
@@ -86,6 +88,23 @@ namespace geniikw.DataRenderer2D.Hole
                     editCallback();
                 }
                 angle = value;
+            }
+        }
+
+        public Color Color
+        {
+            get
+            {
+                return color;
+            }
+
+            set
+            {
+                if (editCallback != null)
+                {
+                    editCallback();
+                }
+                color = value;
             }
         }
     }

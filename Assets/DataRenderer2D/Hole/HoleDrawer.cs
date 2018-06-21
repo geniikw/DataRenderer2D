@@ -5,10 +5,10 @@ using System;
 
 namespace geniikw.DataRenderer2D.Hole
 {
-    public struct Pair<T>
+    public struct Pair<T> 
     {
         public T first;
-        public T second;
+        public T second; 
     }
 
     public static class ListUtil
@@ -30,12 +30,35 @@ namespace geniikw.DataRenderer2D.Hole
                     };
                     previous = it.Current;
                 }
-                yield return new Pair<T>{
-                    first = it.Current,
-                    second = previous
+                yield return new Pair<T> {
+                    first = previous,
+                    second = ff
                 };
             }
         }
+
+        public static Vertex FindNearst(this Vertex[] source, Vector3 target, Vector3 dir)
+        {
+            var dest = float.MaxValue;
+            Vertex result = default(Vertex); 
+            
+            foreach(var v in source)
+            {
+                var pos = v.position;
+                var d = (pos - target).normalized;
+                var f = Vector3.Dot(d, dir);
+                var calc = Vector3.Distance(target, pos) * f;
+
+                if (dest > calc)
+                {
+                    dest = calc;
+                    result = v;
+                }
+            }
+
+            return result;
+        }
+
     }
 
 
@@ -80,8 +103,31 @@ namespace geniikw.DataRenderer2D.Hole
                 inner[i] = new Vertex(pos, uv, Color.white);
             }
 
+            foreach(var p in inner.Pairloop())
+            {
+                var c = (p.first.position + p.second.position) / 2f;
+
+                var normal = Vector3.Cross(p.first.position - p.second.position, Vector3.forward).normalized;
+
+                var n = outer.FindNearst(c, normal);
+
+                yield return new Triangle(p.first, n, p.second );
+            }
+
+            foreach(var p in new Pair<Vertex>[] {   new Pair<Vertex>{first= p1, second = p0 },
+                                                    new Pair<Vertex>{first= p0, second = p2 },
+                                                    new Pair<Vertex>{first= p3, second = p1 },
+                                                    new Pair<Vertex>{first= p2, second = p3 }}){
+                var c = (p.first.position + p.second.position) / 2f;
+                var normal = -Vector3.Cross(p.first.position - p.second.position, Vector3.forward).normalized;
+
+                var n = inner.FindNearst(c,normal);
+
+                yield return new Triangle(p.first, n, p.second);
+            }
+
             //yield return new Quad(p0,p1,p2,p3);            
-            yield return new Triangle(inner[0], inner[1], inner[2]);
+            //yield return new Triangle(inner[0], inner[1], inner[2]);
         }
     }
 }

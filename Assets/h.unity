@@ -284,8 +284,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 298.8, y: -124.5}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 339.8, y: -69.9}
+  m_SizeDelta: {x: 100, y: 118.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1817194305
 MonoBehaviour:
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.625, g: 0.24816178, b: 0.24816178, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -315,10 +315,11 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   hole:
-    inner: 3
-    offset: {x: 0.06, y: 0.2}
-    size: {x: 0.77, y: 0.56}
-    angle: 99.11
+    inner: 7
+    offset: {x: 0.03, y: -0.05}
+    size: {x: 0.4, y: 0.4}
+    angle: -5.07
+    color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!222 &1817194306
 CanvasRenderer:
   m_ObjectHideFlags: 0
