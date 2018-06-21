@@ -10,12 +10,28 @@ namespace geniikw.DataRenderer2D.Hole
     [Serializable]
     public struct HoleInfo
     {
-        [SerializeField][Range(3, 30)]
+        [SerializeField]
+        [Range(3, 30)]
         private int inner;
+
+
+
         [SerializeField]
-        private Vector2 offset;
+        [Range(-0.5f, 0.5f)]
+        private float offsetY;
+
         [SerializeField]
-        private Vector2 size;
+        [Range(-0.5f, 0.5f)]
+        private float offsetX;
+        
+        [SerializeField]
+        [Range(0, 1)]
+        private float sizeX;
+
+        [SerializeField]
+        [Range(0, 1)]
+        private float sizeY;
+
         [SerializeField]
         private float angle;
         [SerializeField]
@@ -40,39 +56,7 @@ namespace geniikw.DataRenderer2D.Hole
             }
         }
 
-        public Vector2 Offset
-        {
-            get
-            {
-                return offset;
-            }
-
-            set
-            {
-                if (editCallback != null)
-                {
-                    editCallback();
-                }
-                offset = value;
-            }
-        }
-
-        public Vector2 Size
-        {
-            get
-            {
-                return size;
-            }
-
-            set
-            {
-                if (editCallback != null)
-                {
-                    editCallback();
-                }
-                size = value;
-            }
-        }
+      
 
         public float Angle
         {
@@ -105,6 +89,74 @@ namespace geniikw.DataRenderer2D.Hole
                     editCallback();
                 }
                 color = value;
+            }
+        }
+
+        public float OffsetY
+        {
+            get
+            {
+                return offsetY;
+            }
+
+            set
+            {
+                if (editCallback != null)
+                {
+                    editCallback();
+                }
+                offsetY = value;
+            }
+        }
+
+        public float OffsetX
+        {
+            get
+            {
+                return offsetX;
+            }
+
+            set
+            {
+                if (editCallback != null)
+                {
+                    editCallback();
+                }
+                offsetX = value;
+            }
+        }
+
+        public float SizeX
+        {
+            get
+            {
+                return sizeX;
+            }
+
+            set
+            {
+                if (editCallback != null)
+                {
+                    editCallback();
+                }
+                sizeX = value;
+            }
+        }
+
+        public float SizeY
+        {
+            get
+            {
+                return sizeY;
+            }
+
+            set
+            {
+                if (editCallback != null)
+                {
+                    editCallback();
+                }
+                sizeY = value;
             }
         }
     }
