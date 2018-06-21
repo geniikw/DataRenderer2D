@@ -1,9 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace geniikw.DataRenderer2D.Hole
 {
+    public struct Pair<T>
+    {
+        public T first;
+        public T second;
+    }
+
+    public static class ListUtil
+    {
+        public static IEnumerable<Pair<T>> Pairloop<T>(this IEnumerable<T> source)
+        {
+            T previous = default(T);
+            using (var it = source.GetEnumerator())
+            {
+                if (it.MoveNext())
+                    previous = it.Current;
+                var ff = previous;
+                while (it.MoveNext())
+                {
+                    yield return new Pair<T>
+                    {
+                        first = previous,
+                        second = it.Current
+                    };
+                    previous = it.Current;
+                }
+                yield return new Pair<T>{
+                    first = it.Current,
+                    second = previous
+                };
+            }
+        }
+    }
+
+
     public class HoleDrawer : IMeshDrawer
     {
         IUnitSize m_unit;
