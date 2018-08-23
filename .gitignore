@@ -89,3 +89,8 @@ Assets/uimeshtool.unitypackage.meta
 /.vs/Polygon/v15/Server/sqlite3/storage.ide
 /.vs/Polygon/v15/Server/sqlite3/db.lock
 /.vs/Polygon/DesignTimeBuild/.dtbcache
+*.ide-shm
+*.dtbcache
+*.ide-wal
+*.ide
+*.lock

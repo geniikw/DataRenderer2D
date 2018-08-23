@@ -93,13 +93,13 @@ namespace geniikw.DataRenderer2D.Polygon
                 }
                 
 
-                yield return new Triangle(a, c, b);
+                yield return new Triangle(a, b, c);
 
                 if (_target.Polygon.innerRatio == 0f ||
                     _target.Polygon.type == PolygonType.Hole ||
                     _target.Polygon.type == PolygonType.HoleCurve ||
                     _target.Polygon.type == PolygonType.HoleCenterColor)
-                    yield return new Triangle(a, d, c);
+                    yield return new Triangle(a, c, d);
 
                 if (endFlag)
                     yield break;
