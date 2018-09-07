@@ -46,16 +46,13 @@ namespace geniikw.DataRenderer2D
 
             if (mf.sharedMesh == null)
             {
-                var mesh = new Mesh();
-                mesh.name = name;
-                mf.sharedMesh = mesh;
+                MakeNewMesh();
             }
         }
 
         private void Update()
         {
-            if (updateInUpdate)
-                UpdateGeometry();
+            m_geometryUpdateFlag = true;
         }
         
         public void LateUpdate()
@@ -65,6 +62,15 @@ namespace geniikw.DataRenderer2D
                 UpdateGeometry();
                 m_geometryUpdateFlag = false;
             }
+        }
+
+        public void MakeNewMesh()
+        {
+            var mf = GetComponent<MeshFilter>();
+
+            var mesh = new Mesh();
+            mesh.name = name;
+            mf.mesh = mesh;
         }
 
 
@@ -119,7 +125,8 @@ namespace geniikw.DataRenderer2D
             mf.sharedMesh.triangles = tBuffer;
             mf.sharedMesh.colors = colorBuffer;
             mf.sharedMesh.RecalculateNormals();
-
+            mf.sharedMesh.RecalculateTangents();
+            mf.sharedMesh.RecalculateBounds();
         }
         
         private void AllocateBuffer(int size)

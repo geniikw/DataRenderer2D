@@ -24,12 +24,12 @@ namespace geniikw.DataRenderer2D.Signal
             public ESignalType type;
 
             public float Output(float x, float t)
-            {
+            {  
                 return amplify * TypeSwitch((x + t* timeFactor) * frequncy);
             }
 
             private float TypeSwitch(float x)
-            {
+            {  
                 switch (type)
                 {
                     case ESignalType.Sin:

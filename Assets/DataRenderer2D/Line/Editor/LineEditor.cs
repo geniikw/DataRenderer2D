@@ -24,14 +24,20 @@ namespace geniikw.DataRenderer2D.Editors {
             _pointHandler.OnSceneGUI();
         }
 
-        public override void OnInspectorGUI()
-        {
-            base.OnInspectorGUI();
-        }
     }
     
     [CustomEditor(typeof(WorldLine))]
-    public class WorldLineEditor : LineEditor { }
+    public class WorldLineEditor : LineEditor {
+
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+            if (GUILayout.Button("MakeNewMesh"))
+            {
+                ((WorldLine)target).MakeNewMesh();
+            }
+        }
+    }
 
     [CustomEditor(typeof(GizmoLine))]
     public class NoRenderLineEditor : LineEditor { }
