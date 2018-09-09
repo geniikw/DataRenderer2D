@@ -29,9 +29,9 @@ namespace geniikw.DataRenderer2D.Polygon
             while(n < _target.Polygon.count - 2)
             {
                 if (n % 2 == 1)
-                    yield return new Triangle(buffer[v[0]], buffer[v[1]], buffer[v[2]]);
-                else
                     yield return new Triangle(buffer[v[0]], buffer[v[2]], buffer[v[1]]);
+                else
+                    yield return new Triangle(buffer[v[0]], buffer[v[1]], buffer[v[2]]);
 
                 v[n % 3] += (v[n % 3] == 0) ? 2 : (_target.Polygon.count - 2 - n) * (n % 2 == 1 ? 1 : -1);
                 n++;
