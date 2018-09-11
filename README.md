@@ -3,6 +3,11 @@
 DataRenderer2D is a simple drawing tool. you can make mesh from data and control it using animator.
 all of PR, bug report, comment, sugestion are vary grateful.
 
+* Currently DataRenderer2d wants volunteers to create key images. DataRenderer2D will continue to be available free of charge, and there are no plans to charge it in the future.
+The key images are (128x128), (200x124), and (516x389) respectively.
+You can also include the ID or symbol of the author in the image. 
+If you are interested, please send it to geniikw@gmail.com and it will be applied to the Asset Store after review.
+
 [PatchNote](https://github.com/geniikw/SplineMeshDrawer-PatchNote/blob/master/PatchNode.md)
 
 [AssetStore(free)](https://assetstore.unity.com/packages/tools/modeling/data-renderer-2d-102377)
