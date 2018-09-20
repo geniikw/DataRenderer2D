@@ -67,6 +67,15 @@ namespace geniikw.DataRenderer2D
                 EditCallBack();
         }
 
+        /// <summary>
+        /// edit last point.
+        /// </summary>
+        /// <param name="worldPos"></param>
+        public void EditPoint(Vector3 worldPos)
+        {
+            EditPoint(points.Count - 1, new Point(worldPos, Vector3.zero, Vector3.zero));
+        }
+
         public void EditPoint(int idx, Vector3 worldPos, Vector3 nOffset, Vector3 pOffset, float width)
         {
             EditPoint(idx, new Point(worldPos, nOffset, pOffset, width));
@@ -103,6 +112,12 @@ namespace geniikw.DataRenderer2D
                     return 2;
                 return points.Count;
             }
+        }
+        public void Clear()
+        {
+            points.Clear();
+            if (EditCallBack != null)
+                EditCallBack();
         }
 
     }

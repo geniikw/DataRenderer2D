@@ -8,7 +8,6 @@ namespace geniikw.DataRenderer2D
 {
     public abstract class UIDataMesh : Image, IMeshModifier
     {
-
         bool m_geometryUpdateFlag = false;
 
         IEnumerable<IMesh> _mesh;
@@ -21,8 +20,6 @@ namespace geniikw.DataRenderer2D
         protected override void Awake()
         {
             base.Awake();
-            raycastTarget = false;
-
         }
         
         public void GeometyUpdateFlagUp()
