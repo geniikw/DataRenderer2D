@@ -9,7 +9,7 @@ all of PR, bug report, comment, suggestion are vary grateful.
 
 ## Script Edit
 If you want to control by script, you have to call GeometryUpdateFlagup() after adjust value.
-```charp
+```csharp
 public UILine line;
 public float time;
 
