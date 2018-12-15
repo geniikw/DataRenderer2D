@@ -7,6 +7,24 @@ all of PR, bug report, comment, suggestion are vary grateful.
 
 [AssetStore(free)](https://assetstore.unity.com/packages/tools/modeling/data-renderer-2d-102377)
 
+## Script Edit
+If you want to control by script, you have to call GeometryUpdateFlagup() after adjust value.
+```charp
+public UILine line;
+public float time;
+
+IEnumerator Corotuine(){
+   var t = 0f;
+   while(t < 1f)
+   {
+      t+=Time.deltaTime/time;
+      line.line.option.endRatio = t;
+      line.UpdateGeometryFlagUp();
+      yield return null;
+   }
+}
+```
+
 ## Bezier line
 - Each node has control point and width.
 - set line drawing rate using start rate and end rate.
