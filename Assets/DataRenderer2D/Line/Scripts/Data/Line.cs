@@ -162,7 +162,7 @@ namespace geniikw.DataRenderer2D
             {
                 var length = 0f;
                 foreach (var pair in TargetPairList)
-                    length = pair.Length;
+                    length += pair.Length;
 
                 return length;
             }
