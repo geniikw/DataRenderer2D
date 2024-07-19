@@ -10,7 +10,8 @@ namespace geniikw.DataRenderer2D.Hole.Editor
         [MenuItem("GameObject/2D Object/DataRenderer/UIHole")]
         public static void CreateUILine()
         {
-            var canvas = Object.FindObjectOfType<Canvas>();
+            
+            var canvas = Object.FindFirstObjectByType<Canvas>();
             if (canvas == null)
             {
                 var canvasGo = new GameObject("Canvas");
