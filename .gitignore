@@ -95,3 +95,5 @@ Assets/uimeshtool.unitypackage.meta
 *.ide-wal
 *.ide
 *.lock
+
+.fake
