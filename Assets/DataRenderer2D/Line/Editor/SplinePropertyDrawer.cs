@@ -12,7 +12,7 @@ namespace geniikw.DataRenderer2D.Editors
                 if (EditorSetting.Get.onlyViewWidth)
                     return 1.2f;
                 else
-                    return 4.7f;
+                    return 6.7f;
             }
         }
 

@@ -16,15 +16,17 @@ namespace geniikw.DataRenderer2D
         public Vector3 nextControlOffset;
         [Range(0,100)]
         public float width;
+        [Range(-90, 90)]
+        public float angle;
         //todo : move normalVector from LineOption to Point.
         //public float normal;
 
-        public Point(Vector3 pos, Vector3 next, Vector3 prev, float width = 2)
+        public Point(Vector3 pos, Vector3 next, Vector3 prev, float width = 2,float angle = 0)
         {
             position = pos;
             previousControlOffset = prev;
             nextControlOffset = next;
-
+            this.angle = angle;
             this.width = width;
         }
         
