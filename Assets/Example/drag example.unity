@@ -771,7 +771,7 @@ MonoBehaviour:
         forwardAngle: 0
         backAngle: 0
     points:
-    - position: {x: 12.367401, y: -37.102234, z: 0}
+    - position: {x: 96.32962, y: -80.729645, z: 0}
       previousControlOffset: {x: 0, y: 0, z: 0}
       nextControlOffset: {x: 0, y: 0, z: 0}
       width: 2
