@@ -81,14 +81,21 @@ namespace geniikw.DataRenderer2D
             public Vector3 ForwardDirection {
                 get
                 {
-                    return Curve.AutoDirection(target, next, 0f);
+                    var dir = Curve.AutoDirection(target, next, 0f);
+                    var angle = target.forwardAngle;
+                    dir = Quaternion.Euler(0, 0, angle) * dir;
+                    return dir;
+
                 }
             }
             public Vector3 BackDirection
             {
                 get
                 {
-                    return Curve.AutoDirection(previous, target, 1f);
+                    var dir = Curve.AutoDirection(previous, target, 1f);
+                    var angle = target.backAngle;
+                    dir = Quaternion.Euler(0, 0, angle) * dir;
+                    return dir;
                 }
             }
             public Vector3 Position

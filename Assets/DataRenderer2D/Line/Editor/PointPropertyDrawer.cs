@@ -11,7 +11,7 @@ namespace geniikw.DataRenderer2D.Editors
     {
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            var lineCount = 6.5f;
+            var lineCount = 7.5f;
 
             if (EditorSetting.Get.onlyViewWidth)
                 lineCount = 1f;
@@ -42,7 +42,10 @@ namespace geniikw.DataRenderer2D.Editors
                 EditorGUI.PropertyField(pos, sp.PrevOffset());
                 pos.y += EditorGUIUtility.singleLineHeight;
 
-                EditorGUI.PropertyField(pos, sp.Angle());
+                EditorGUI.PropertyField(pos, sp.StartAngle());
+                pos.y += EditorGUIUtility.singleLineHeight;
+
+                EditorGUI.PropertyField(pos, sp.EndAngle());
                 pos.y += EditorGUIUtility.singleLineHeight;
 
                 pos.height /= 2f;
@@ -73,9 +76,13 @@ namespace geniikw.DataRenderer2D.Editors
         {
             return sp.FindPropertyRelative("width");
         }
-        public static SerializedProperty Angle(this SerializedProperty sp)
+        public static SerializedProperty StartAngle(this SerializedProperty sp)
         {
-            return sp.FindPropertyRelative("angle");
+            return sp.FindPropertyRelative("forwardAngle");
+        }
+        public static SerializedProperty EndAngle(this SerializedProperty sp)
+        {
+            return sp.FindPropertyRelative("backAngle");
         }
 
         

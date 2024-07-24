@@ -28,6 +28,8 @@ namespace geniikw.DataRenderer2D
             if ((Vector3.Cross(bd, fd).normalized + nv).magnitude < nv.magnitude)
             {
                 p1 = p0 + Vector3.Cross(nv, bd).normalized * triple.CurrentWidth;
+                
+
                 p2 = p0 + Vector3.Cross(nv, fd).normalized * triple.CurrentWidth;
             }
             else

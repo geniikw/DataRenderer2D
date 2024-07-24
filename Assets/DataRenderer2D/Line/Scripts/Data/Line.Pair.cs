@@ -123,6 +123,12 @@ namespace geniikw.DataRenderer2D
             {
                 return Mathf.Lerp(n0.width, n1.width, Mathf.Lerp(start, end, t));
             }
+
+            public float GetAngle(float t)
+            {
+                return Mathf.Lerp(n0.forwardAngle, n1.backAngle, Mathf.Lerp(start, end, t));
+            }
+
         }
     }
 }

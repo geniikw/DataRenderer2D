@@ -33,8 +33,8 @@ namespace geniikw.DataRenderer2D
                 var ps = Curve.Auto(pair.n0, pair.n1, t);
                 var pe = Curve.Auto(pair.n0, pair.n1, Mathf.Min(pair.end,t + dt));
 
-                var angle1 = Mathf.Lerp(pair.n0.angle, pair.n1.angle, t);
-                var angle2 = Mathf.Lerp(pair.n0.angle, pair.n1.angle, t + dt);
+                var angle1 = Mathf.Lerp(pair.n0.forwardAngle, pair.n1.backAngle, t);
+                var angle2 = Mathf.Lerp(pair.n0.forwardAngle, pair.n1.backAngle, t + dt);
 
 
                 var cs = LineData.option.color.Evaluate(pair.sRatio + t * pair.RatioLength);

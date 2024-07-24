@@ -21,7 +21,7 @@ namespace geniikw.DataRenderer2D
 
             var Line = _line.Line; // hardCopy.
 
-            var divideAngle = Line.option.DivideAngle;
+            var divide = Line.option.DivideAngle;
 
             var t = isEnd ? 1f : 0f;
 
@@ -30,10 +30,13 @@ namespace geniikw.DataRenderer2D
 
             var radian = pair.GetWidth(t);
 
+            var angle = pair.GetAngle(t);
             var direction = pair.GetDirection(isEnd ? 1f : 0f) *(isEnd?-1f:1f);
+            direction = Quaternion.Euler(0, 0, angle) * direction;
+
             var wv = Vector3.Cross(direction, normal).normalized;
             wv *= radian;
-            var dc = Mathf.Max(1, Mathf.Floor(180f / divideAngle));
+            var dc = Mathf.Max(1, Mathf.Floor(180f / divide));
             var da = 180f / dc;
    
             var uv = new Vector2[] { new(0, 1), new(1, 1), new(0, 0), new (1, 0) };
