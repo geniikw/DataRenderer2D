@@ -46,8 +46,9 @@ namespace geniikw.DataRenderer2D
                 wd = Quaternion.Euler(0, 0, angle2) * wd;
                 
                 
-                var startStartWidth = t == 0f ? Vector3.Cross(pair.GetDirection(0f), Vector3.back).normalized : wd;
+                var startStartWidth =  Vector3.Cross(pair.GetDirection(0f), Vector3.back).normalized ;
                 var endEndWidth = Vector3.Cross(pair.GetDirection(1f), Vector3.back).normalized;
+  
 
                 startStartWidth = Quaternion.Euler(0, 0, angle1) * startStartWidth;
                 endEndWidth = Quaternion.Euler(0, 0, angle2) * endEndWidth;
@@ -61,7 +62,7 @@ namespace geniikw.DataRenderer2D
                 var p0 = Vertex.New(t == pair.start ? ps + startStartWidth * ws : prv1, uv[0], cs);
                 var p1 = Vertex.New(t == pair.start ? ps - startStartWidth * ws : prv2, uv[1], cs);
 
-                var end = Mathf.Abs(t - pair.end) < dt;
+                var end = t + dt == pair.end;
 
                 var p2 = Vertex.New(end ? pe + endEndWidth * we : pe + wd * we, uv[2], ce);
                 var p3 = Vertex.New(end ? pe - endEndWidth * we : pe - wd * we, uv[3], ce);
