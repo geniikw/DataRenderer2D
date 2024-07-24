@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace geniikw.DataRenderer2D.Example
 {
@@ -14,6 +15,8 @@ namespace geniikw.DataRenderer2D.Example
 
         UILine m_line;
         Vector3 m_prevPos;
+
+        public Text text;
 
         private void Start()
         {
@@ -40,6 +43,7 @@ namespace geniikw.DataRenderer2D.Example
         public void Toggle()
         {
             modeToggle = !modeToggle;
+            text.text = modeToggle ? "Drag!" : "Click!";
         }
     }
 }
