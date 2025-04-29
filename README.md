@@ -13,7 +13,7 @@ If you want to control by script, you have to call GeometryUpdateFlagup() after 
 public UILine line;
 public float time;
 
-IEnumerator Corotuine(){
+IEnumerator Coroutine(){
    var t = 0f;
    while(t < 1f)
    {
