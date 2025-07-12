@@ -25,7 +25,7 @@ namespace geniikw.DataRenderer2D
         [SerializeField]
         LinePair pair;
         [SerializeField]
-        List<Point> points;
+        public List<Point> points;
 
         public event Action EditCallBack;
         public MonoBehaviour owner;
